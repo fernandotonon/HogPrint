@@ -1,0 +1,3053 @@
+gplink-0.13.7 beta
+Copyright (c) 1998-2005 gputils project
+Listing File Generated: 1-19-2011  22:58:13
+ 
+ 
+Address  Value    Disassembly              Source
+-------  -----    -----------              ------
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 2.9.0 #5416 (Mar 22 2009) (MINGW32)
+                                           ; This file was generated Wed Jan 19 22:58:02 2011
+                                           ;--------------------------------------------------------
+                                           ; PIC16 port for the Microchip 16-bit core micros
+                                           ;--------------------------------------------------------
+                                           	list	p=18f452
+                                           
+                                           	radix dec
+                                           
+                                           ;--------------------------------------------------------
+                                           ; public variables in this module
+                                           ;--------------------------------------------------------
+                                           	global _channel
+                                           	global _c_c
+                                           	global _c_total
+                                           	global _c
+                                           	global _NPeriodosPassadosNoCanal
+                                           	global _up
+                                           	global _top
+                                           	global _down
+                                           	global _control
+                                           	global _main
+                                           
+                                           ;--------------------------------------------------------
+                                           ; extern variables in this module
+                                           ;--------------------------------------------------------
+                                           	extern _PORTAbits
+                                           	extern _PORTBbits
+                                           	extern _PORTCbits
+                                           	extern _PORTDbits
+                                           	extern _PORTEbits
+                                           	extern _LATAbits
+                                           	extern _LATBbits
+                                           	extern _LATCbits
+                                           	extern _LATDbits
+                                           	extern _LATEbits
+                                           	extern _TRISAbits
+                                           	extern _TRISBbits
+                                           	extern _TRISCbits
+                                           	extern _TRISDbits
+                                           	extern _TRISEbits
+                                           	extern _PIE1bits
+                                           	extern _PIR1bits
+                                           	extern _IPR1bits
+                                           	extern _PIE2bits
+                                           	extern _PIR2bits
+                                           	extern _IPR2bits
+                                           	extern _EECON1bits
+                                           	extern _RCSTAbits
+                                           	extern _TXSTAbits
+                                           	extern _T3CONbits
+                                           	extern _CCP2CONbits
+                                           	extern _CCP1CONbits
+                                           	extern _ADCON1bits
+                                           	extern _ADCON0bits
+                                           	extern _SSPCON2bits
+                                           	extern _SSPCON1bits
+                                           	extern _SSPSTATbits
+                                           	extern _T2CONbits
+                                           	extern _T1CONbits
+                                           	extern _RCONbits
+                                           	extern _WDTCONbits
+                                           	extern _LVDCONbits
+                                           	extern _OSCCONbits
+                                           	extern _T0CONbits
+                                           	extern _STATUSbits
+                                           	extern _INTCON3bits
+                                           	extern _INTCON2bits
+                                           	extern _INTCONbits
+                                           	extern _STKPTRbits
+                                           	extern _PORTA
+                                           	extern _PORTB
+                                           	extern _PORTC
+                                           	extern _PORTD
+                                           	extern _PORTE
+                                           	extern _LATA
+                                           	extern _LATB
+                                           	extern _LATC
+                                           	extern _LATD
+                                           	extern _LATE
+                                           	extern _TRISA
+                                           	extern _TRISB
+                                           	extern _TRISC
+                                           	extern _TRISD
+                                           	extern _TRISE
+                                           	extern _PIE1
+                                           	extern _PIR1
+                                           	extern _IPR1
+                                           	extern _PIE2
+                                           	extern _PIR2
+                                           	extern _IPR2
+                                           	extern _EECON1
+                                           	extern _EECON2
+                                           	extern _EEDATA
+                                           	extern _EEADR
+                                           	extern _RCSTA
+                                           	extern _TXSTA
+                                           	extern _TXREG
+                                           	extern _RCREG
+                                           	extern _SPBRG
+                                           	extern _T3CON
+                                           	extern _TMR3L
+                                           	extern _TMR3H
+                                           	extern _CCP2CON
+                                           	extern _CCPR2L
+                                           	extern _CCPR2H
+                                           	extern _CCP1CON
+                                           	extern _CCPR1L
+                                           	extern _CCPR1H
+                                           	extern _ADCON1
+                                           	extern _ADCON0
+                                           	extern _ADRESL
+                                           	extern _ADRESH
+                                           	extern _SSPCON2
+                                           	extern _SSPCON1
+                                           	extern _SSPSTAT
+                                           	extern _SSPADD
+                                           	extern _SSPBUF
+                                           	extern _T2CON
+                                           	extern _PR2
+                                           	extern _TMR2
+                                           	extern _T1CON
+                                           	extern _TMR1L
+                                           	extern _TMR1H
+                                           	extern _RCON
+                                           	extern _WDTCON
+                                           	extern _LVDCON
+                                           	extern _OSCCON
+                                           	extern _T0CON
+                                           	extern _TMR0L
+                                           	extern _TMR0H
+                                           	extern _STATUS
+                                           	extern _FSR2L
+                                           	extern _FSR2H
+                                           	extern _PLUSW2
+                                           	extern _PREINC2
+                                           	extern _POSTDEC2
+                                           	extern _POSTINC2
+                                           	extern _INDF2
+                                           	extern _BSR
+                                           	extern _FSR1L
+                                           	extern _FSR1H
+                                           	extern _PLUSW1
+                                           	extern _PREINC1
+                                           	extern _POSTDEC1
+                                           	extern _POSTINC1
+                                           	extern _INDF1
+                                           	extern _WREG
+                                           	extern _FSR0L
+                                           	extern _FSR0H
+                                           	extern _PLUSW0
+                                           	extern _PREINC0
+                                           	extern _POSTDEC0
+                                           	extern _POSTINC0
+                                           	extern _INDF0
+                                           	extern _INTCON3
+                                           	extern _INTCON2
+                                           	extern _INTCON
+                                           	extern _PRODL
+                                           	extern _PRODH
+                                           	extern _TABLAT
+                                           	extern _TBLPTRL
+                                           	extern _TBLPTRH
+                                           	extern _TBLPTRU
+                                           	extern _PCL
+                                           	extern _PCLATH
+                                           	extern _PCLATU
+                                           	extern _STKPTR
+                                           	extern _TOSL
+                                           	extern _TOSH
+                                           	extern _TOSU
+                                           	extern __mulint
+                                           	extern __divslong
+                                           	extern __mullong
+                                           	extern ___slong2fs
+                                           	extern ___fsdiv
+                                           	extern ___fsmul
+                                           	extern ___fsgt
+                                           	extern __modsint
+                                           	extern ___fssub
+                                           ;--------------------------------------------------------
+                                           ;	Equates to used internal registers
+                                           ;--------------------------------------------------------
+                                           STATUS	equ	0xfd8
+                                           WREG	equ	0xfe8
+                                           FSR0L	equ	0xfe9
+                                           FSR0H	equ	0xfea
+                                           FSR1L	equ	0xfe1
+                                           FSR2L	equ	0xfd9
+                                           INDF0	equ	0xfef
+                                           POSTINC0	equ	0xfee
+                                           POSTDEC1	equ	0xfe5
+                                           PREINC1	equ	0xfe4
+                                           PLUSW2	equ	0xfdb
+                                           PRODL	equ	0xff3
+                                           PRODH	equ	0xff4
+                                           
+                                           
+                                           ; Internal registers
+                                           .registers	udata_ovr	0x0000
+                                           r0x00	res	1
+                                           r0x01	res	1
+                                           r0x02	res	1
+                                           r0x03	res	1
+                                           r0x04	res	1
+                                           r0x05	res	1
+                                           r0x06	res	1
+                                           r0x07	res	1
+                                           r0x08	res	1
+                                           r0x09	res	1
+                                           r0x0a	res	1
+                                           r0x0b	res	1
+                                           r0x0c	res	1
+                                           r0x0d	res	1
+                                           r0x0e	res	1
+                                           r0x0f	res	1
+                                           r0x10	res	1
+                                           r0x11	res	1
+                                           
+                                           udata_main_0	udata
+                                           _channel	res	120
+                                           
+                                           udata_main_1	udata
+                                           _c_c	res	16
+                                           
+                                           udata_main_2	udata
+                                           _NPeriodosPassadosNoCanal	res	8
+                                           
+                                           udata_main_3	udata
+                                           _c	res	2
+                                           
+                                           udata_main_4	udata
+                                           _c_total	res	2
+                                           
+                                           ;--------------------------------------------------------
+                                           ; interrupt vector 
+                                           ;--------------------------------------------------------
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global & static initialisations
+                                           ;--------------------------------------------------------
+                                           ; I code from now on!
+                                           ; ; Starting pCode block
+                                           S_main__main	code
+                                           _main:
+                                           ;	.line	116; main.c	TRISC = 0;
+000004   6a94     clrf	0x94, 0             	CLRF	_TRISC
+                                           ;	.line	119; main.c	PORTC = 0;
+000006   6a82     clrf	0x82, 0             	CLRF	_PORTC
+                                           ;	.line	122; main.c	channel[0].T = 10;
+000008   0e0a     movlw	0xa                	MOVLW	0x0a
+00000a   0100     movlb	0                  	BANKSEL	(_channel + 16)
+00000c   6f90     movwf	0x90, 0x1          	MOVWF	(_channel + 16), B
+00000e   0100     movlb	0                  	BANKSEL	(_channel + 17)
+000010   6b91     clrf	0x91, 0x1           	CLRF	(_channel + 17), B
+000012   0100     movlb	0                  	BANKSEL	(_channel + 18)
+000014   6b92     clrf	0x92, 0x1           	CLRF	(_channel + 18), B
+000016   0100     movlb	0                  	BANKSEL	(_channel + 19)
+000018   6b93     clrf	0x93, 0x1           	CLRF	(_channel + 19), B
+                                           ;	.line	123; main.c	channel[1].T = 10;
+00001a   0e0a     movlw	0xa                	MOVLW	0x0a
+00001c   0100     movlb	0                  	BANKSEL	(_channel + 46)
+00001e   6fae     movwf	0xae, 0x1          	MOVWF	(_channel + 46), B
+000020   0100     movlb	0                  	BANKSEL	(_channel + 47)
+000022   6baf     clrf	0xaf, 0x1           	CLRF	(_channel + 47), B
+000024   0100     movlb	0                  	BANKSEL	(_channel + 48)
+000026   6bb0     clrf	0xb0, 0x1           	CLRF	(_channel + 48), B
+000028   0100     movlb	0                  	BANKSEL	(_channel + 49)
+00002a   6bb1     clrf	0xb1, 0x1           	CLRF	(_channel + 49), B
+                                           ;	.line	124; main.c	channel[2].T = 14;
+00002c   0e0e     movlw	0xe                	MOVLW	0x0e
+00002e   0100     movlb	0                  	BANKSEL	(_channel + 76)
+000030   6fcc     movwf	0xcc, 0x1          	MOVWF	(_channel + 76), B
+000032   0100     movlb	0                  	BANKSEL	(_channel + 77)
+000034   6bcd     clrf	0xcd, 0x1           	CLRF	(_channel + 77), B
+000036   0100     movlb	0                  	BANKSEL	(_channel + 78)
+000038   6bce     clrf	0xce, 0x1           	CLRF	(_channel + 78), B
+00003a   0100     movlb	0                  	BANKSEL	(_channel + 79)
+00003c   6bcf     clrf	0xcf, 0x1           	CLRF	(_channel + 79), B
+                                           ;	.line	125; main.c	channel[3].T = 50;
+00003e   0e32     movlw	0x32               	MOVLW	0x32
+000040   0100     movlb	0                  	BANKSEL	(_channel + 106)
+000042   6fea     movwf	0xea, 0x1          	MOVWF	(_channel + 106), B
+000044   0100     movlb	0                  	BANKSEL	(_channel + 107)
+000046   6beb     clrf	0xeb, 0x1           	CLRF	(_channel + 107), B
+000048   0100     movlb	0                  	BANKSEL	(_channel + 108)
+00004a   6bec     clrf	0xec, 0x1           	CLRF	(_channel + 108), B
+00004c   0100     movlb	0                  	BANKSEL	(_channel + 109)
+00004e   6bed     clrf	0xed, 0x1           	CLRF	(_channel + 109), B
+                                           ;	.line	128; main.c	channel[0].pulse_interval = 100;
+000050   0e64     movlw	0x64               	MOVLW	0x64
+000052   0100     movlb	0                  	BANKSEL	_channel
+000054   6f80     movwf	0x80, 0x1          	MOVWF	_channel, B
+000056   0100     movlb	0                  	BANKSEL	(_channel + 1)
+000058   6b81     clrf	0x81, 0x1           	CLRF	(_channel + 1), B
+00005a   0100     movlb	0                  	BANKSEL	(_channel + 2)
+00005c   6b82     clrf	0x82, 0x1           	CLRF	(_channel + 2), B
+00005e   0100     movlb	0                  	BANKSEL	(_channel + 3)
+000060   6b83     clrf	0x83, 0x1           	CLRF	(_channel + 3), B
+                                           ;	.line	129; main.c	channel[1].pulse_interval = 100;
+000062   0e64     movlw	0x64               	MOVLW	0x64
+000064   0100     movlb	0                  	BANKSEL	(_channel + 30)
+000066   6f9e     movwf	0x9e, 0x1          	MOVWF	(_channel + 30), B
+000068   0100     movlb	0                  	BANKSEL	(_channel + 31)
+00006a   6b9f     clrf	0x9f, 0x1           	CLRF	(_channel + 31), B
+00006c   0100     movlb	0                  	BANKSEL	(_channel + 32)
+00006e   6ba0     clrf	0xa0, 0x1           	CLRF	(_channel + 32), B
+000070   0100     movlb	0                  	BANKSEL	(_channel + 33)
+000072   6ba1     clrf	0xa1, 0x1           	CLRF	(_channel + 33), B
+                                           ;	.line	130; main.c	channel[2].pulse_interval = 100;
+000074   0e64     movlw	0x64               	MOVLW	0x64
+000076   0100     movlb	0                  	BANKSEL	(_channel + 60)
+000078   6fbc     movwf	0xbc, 0x1          	MOVWF	(_channel + 60), B
+00007a   0100     movlb	0                  	BANKSEL	(_channel + 61)
+00007c   6bbd     clrf	0xbd, 0x1           	CLRF	(_channel + 61), B
+00007e   0100     movlb	0                  	BANKSEL	(_channel + 62)
+000080   6bbe     clrf	0xbe, 0x1           	CLRF	(_channel + 62), B
+000082   0100     movlb	0                  	BANKSEL	(_channel + 63)
+000084   6bbf     clrf	0xbf, 0x1           	CLRF	(_channel + 63), B
+                                           ;	.line	131; main.c	channel[3].pulse_interval = 110;
+000086   0e6e     movlw	0x6e               	MOVLW	0x6e
+000088   0100     movlb	0                  	BANKSEL	(_channel + 90)
+00008a   6fda     movwf	0xda, 0x1          	MOVWF	(_channel + 90), B
+00008c   0100     movlb	0                  	BANKSEL	(_channel + 91)
+00008e   6bdb     clrf	0xdb, 0x1           	CLRF	(_channel + 91), B
+000090   0100     movlb	0                  	BANKSEL	(_channel + 92)
+000092   6bdc     clrf	0xdc, 0x1           	CLRF	(_channel + 92), B
+000094   0100     movlb	0                  	BANKSEL	(_channel + 93)
+000096   6bdd     clrf	0xdd, 0x1           	CLRF	(_channel + 93), B
+000098   0100     movlb	0                  	BANKSEL	(_channel + 4)
+                                           ;	.line	134; main.c	channel[0].initial = 0;
+00009a   6b84     clrf	0x84, 0x1           	CLRF	(_channel + 4), B
+00009c   0100     movlb	0                  	BANKSEL	(_channel + 5)
+00009e   6b85     clrf	0x85, 0x1           	CLRF	(_channel + 5), B
+0000a0   0100     movlb	0                  	BANKSEL	(_channel + 6)
+0000a2   6b86     clrf	0x86, 0x1           	CLRF	(_channel + 6), B
+0000a4   0100     movlb	0                  	BANKSEL	(_channel + 7)
+0000a6   6b87     clrf	0x87, 0x1           	CLRF	(_channel + 7), B
+                                           ;	.line	135; main.c	channel[1].initial = 100;
+0000a8   0e64     movlw	0x64               	MOVLW	0x64
+0000aa   0100     movlb	0                  	BANKSEL	(_channel + 34)
+0000ac   6fa2     movwf	0xa2, 0x1          	MOVWF	(_channel + 34), B
+0000ae   0100     movlb	0                  	BANKSEL	(_channel + 35)
+0000b0   6ba3     clrf	0xa3, 0x1           	CLRF	(_channel + 35), B
+0000b2   0100     movlb	0                  	BANKSEL	(_channel + 36)
+0000b4   6ba4     clrf	0xa4, 0x1           	CLRF	(_channel + 36), B
+0000b6   0100     movlb	0                  	BANKSEL	(_channel + 37)
+0000b8   6ba5     clrf	0xa5, 0x1           	CLRF	(_channel + 37), B
+                                           ;	.line	136; main.c	channel[2].initial = 200;
+0000ba   0ec8     movlw	0xc8               	MOVLW	0xc8
+0000bc   0100     movlb	0                  	BANKSEL	(_channel + 64)
+0000be   6fc0     movwf	0xc0, 0x1          	MOVWF	(_channel + 64), B
+0000c0   0100     movlb	0                  	BANKSEL	(_channel + 65)
+0000c2   6bc1     clrf	0xc1, 0x1           	CLRF	(_channel + 65), B
+0000c4   0100     movlb	0                  	BANKSEL	(_channel + 66)
+0000c6   6bc2     clrf	0xc2, 0x1           	CLRF	(_channel + 66), B
+0000c8   0100     movlb	0                  	BANKSEL	(_channel + 67)
+0000ca   6bc3     clrf	0xc3, 0x1           	CLRF	(_channel + 67), B
+                                           ;	.line	137; main.c	channel[3].initial = 300;
+0000cc   0e2c     movlw	0x2c               	MOVLW	0x2c
+0000ce   0100     movlb	0                  	BANKSEL	(_channel + 94)
+0000d0   6fde     movwf	0xde, 0x1          	MOVWF	(_channel + 94), B
+0000d2   0e01     movlw	0x1                	MOVLW	0x01
+0000d4   0100     movlb	0                  	BANKSEL	(_channel + 95)
+0000d6   6fdf     movwf	0xdf, 0x1          	MOVWF	(_channel + 95), B
+0000d8   0100     movlb	0                  	BANKSEL	(_channel + 96)
+0000da   6be0     clrf	0xe0, 0x1           	CLRF	(_channel + 96), B
+0000dc   0100     movlb	0                  	BANKSEL	(_channel + 97)
+0000de   6be1     clrf	0xe1, 0x1           	CLRF	(_channel + 97), B
+                                           ;	.line	140; main.c	channel[0].time = 1000;
+0000e0   0ee8     movlw	0xe8               	MOVLW	0xe8
+0000e2   0100     movlb	0                  	BANKSEL	(_channel + 8)
+0000e4   6f88     movwf	0x88, 0x1          	MOVWF	(_channel + 8), B
+0000e6   0e03     movlw	0x3                	MOVLW	0x03
+0000e8   0100     movlb	0                  	BANKSEL	(_channel + 9)
+0000ea   6f89     movwf	0x89, 0x1          	MOVWF	(_channel + 9), B
+0000ec   0100     movlb	0                  	BANKSEL	(_channel + 10)
+0000ee   6b8a     clrf	0x8a, 0x1           	CLRF	(_channel + 10), B
+0000f0   0100     movlb	0                  	BANKSEL	(_channel + 11)
+0000f2   6b8b     clrf	0x8b, 0x1           	CLRF	(_channel + 11), B
+                                           ;	.line	141; main.c	channel[1].time = 1000;
+0000f4   0ee8     movlw	0xe8               	MOVLW	0xe8
+0000f6   0100     movlb	0                  	BANKSEL	(_channel + 38)
+0000f8   6fa6     movwf	0xa6, 0x1          	MOVWF	(_channel + 38), B
+0000fa   0e03     movlw	0x3                	MOVLW	0x03
+0000fc   0100     movlb	0                  	BANKSEL	(_channel + 39)
+0000fe   6fa7     movwf	0xa7, 0x1          	MOVWF	(_channel + 39), B
+000100   0100     movlb	0                  	BANKSEL	(_channel + 40)
+000102   6ba8     clrf	0xa8, 0x1           	CLRF	(_channel + 40), B
+000104   0100     movlb	0                  	BANKSEL	(_channel + 41)
+000106   6ba9     clrf	0xa9, 0x1           	CLRF	(_channel + 41), B
+                                           ;	.line	142; main.c	channel[2].time = 2000;
+000108   0ed0     movlw	0xd0               	MOVLW	0xd0
+00010a   0100     movlb	0                  	BANKSEL	(_channel + 68)
+00010c   6fc4     movwf	0xc4, 0x1          	MOVWF	(_channel + 68), B
+00010e   0e07     movlw	0x7                	MOVLW	0x07
+000110   0100     movlb	0                  	BANKSEL	(_channel + 69)
+000112   6fc5     movwf	0xc5, 0x1          	MOVWF	(_channel + 69), B
+000114   0100     movlb	0                  	BANKSEL	(_channel + 70)
+000116   6bc6     clrf	0xc6, 0x1           	CLRF	(_channel + 70), B
+000118   0100     movlb	0                  	BANKSEL	(_channel + 71)
+00011a   6bc7     clrf	0xc7, 0x1           	CLRF	(_channel + 71), B
+                                           ;	.line	143; main.c	channel[3].time = 1500;
+00011c   0edc     movlw	0xdc               	MOVLW	0xdc
+00011e   0100     movlb	0                  	BANKSEL	(_channel + 98)
+000120   6fe2     movwf	0xe2, 0x1          	MOVWF	(_channel + 98), B
+000122   0e05     movlw	0x5                	MOVLW	0x05
+000124   0100     movlb	0                  	BANKSEL	(_channel + 99)
+000126   6fe3     movwf	0xe3, 0x1          	MOVWF	(_channel + 99), B
+000128   0100     movlb	0                  	BANKSEL	(_channel + 100)
+00012a   6be4     clrf	0xe4, 0x1           	CLRF	(_channel + 100), B
+00012c   0100     movlb	0                  	BANKSEL	(_channel + 101)
+00012e   6be5     clrf	0xe5, 0x1           	CLRF	(_channel + 101), B
+                                           ;	.line	146; main.c	channel[0].timeup = 100;
+000130   0e64     movlw	0x64               	MOVLW	0x64
+000132   0100     movlb	0                  	BANKSEL	(_channel + 12)
+000134   6f8c     movwf	0x8c, 0x1          	MOVWF	(_channel + 12), B
+000136   0100     movlb	0                  	BANKSEL	(_channel + 13)
+000138   6b8d     clrf	0x8d, 0x1           	CLRF	(_channel + 13), B
+00013a   0100     movlb	0                  	BANKSEL	(_channel + 14)
+00013c   6b8e     clrf	0x8e, 0x1           	CLRF	(_channel + 14), B
+00013e   0100     movlb	0                  	BANKSEL	(_channel + 15)
+000140   6b8f     clrf	0x8f, 0x1           	CLRF	(_channel + 15), B
+                                           ;	.line	147; main.c	channel[1].timeup = 100;
+000142   0e64     movlw	0x64               	MOVLW	0x64
+000144   0100     movlb	0                  	BANKSEL	(_channel + 42)
+000146   6faa     movwf	0xaa, 0x1          	MOVWF	(_channel + 42), B
+000148   0100     movlb	0                  	BANKSEL	(_channel + 43)
+00014a   6bab     clrf	0xab, 0x1           	CLRF	(_channel + 43), B
+00014c   0100     movlb	0                  	BANKSEL	(_channel + 44)
+00014e   6bac     clrf	0xac, 0x1           	CLRF	(_channel + 44), B
+000150   0100     movlb	0                  	BANKSEL	(_channel + 45)
+000152   6bad     clrf	0xad, 0x1           	CLRF	(_channel + 45), B
+                                           ;	.line	148; main.c	channel[2].timeup = 500;
+000154   0ef4     movlw	0xf4               	MOVLW	0xf4
+000156   0100     movlb	0                  	BANKSEL	(_channel + 72)
+000158   6fc8     movwf	0xc8, 0x1          	MOVWF	(_channel + 72), B
+00015a   0e01     movlw	0x1                	MOVLW	0x01
+00015c   0100     movlb	0                  	BANKSEL	(_channel + 73)
+00015e   6fc9     movwf	0xc9, 0x1          	MOVWF	(_channel + 73), B
+000160   0100     movlb	0                  	BANKSEL	(_channel + 74)
+000162   6bca     clrf	0xca, 0x1           	CLRF	(_channel + 74), B
+000164   0100     movlb	0                  	BANKSEL	(_channel + 75)
+000166   6bcb     clrf	0xcb, 0x1           	CLRF	(_channel + 75), B
+                                           ;	.line	149; main.c	channel[3].timeup = 600;
+000168   0e58     movlw	0x58               	MOVLW	0x58
+00016a   0100     movlb	0                  	BANKSEL	(_channel + 102)
+00016c   6fe6     movwf	0xe6, 0x1          	MOVWF	(_channel + 102), B
+00016e   0e02     movlw	0x2                	MOVLW	0x02
+000170   0100     movlb	0                  	BANKSEL	(_channel + 103)
+000172   6fe7     movwf	0xe7, 0x1          	MOVWF	(_channel + 103), B
+000174   0100     movlb	0                  	BANKSEL	(_channel + 104)
+000176   6be8     clrf	0xe8, 0x1           	CLRF	(_channel + 104), B
+000178   0100     movlb	0                  	BANKSEL	(_channel + 105)
+00017a   6be9     clrf	0xe9, 0x1           	CLRF	(_channel + 105), B
+00017c   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	152; main.c	for (c=0;c<4;c++)
+00017e   6b70     clrf	0x70, 0x1           	CLRF	_c, B
+000180   0102     movlb	0x2                	BANKSEL	(_c + 1)
+000182   6b71     clrf	0x71, 0x1           	CLRF	(_c + 1), B
+                                           _00176_DS_:
+000184   0102     movlb	0x2                	BANKSEL	(_c + 1)
+000186   5171     movf	0x71, 0, 0x1        	MOVF	(_c + 1), W, B
+000188   0f80     addlw	0x80               	ADDLW	0x80
+00018a   0f80     addlw	0x80               	ADDLW	0x80
+00018c   e103     bnz	0x194                	BNZ	_00205_DS_
+00018e   0e04     movlw	0x4                	MOVLW	0x04
+000190   0102     movlb	0x2                	BANKSEL	_c
+000192   5d70     subwf	0x70, 0, 0x1       	SUBWF	_c, W, B
+                                           _00205_DS_:
+000194   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+000196   d0a6     bra	0x2e4                	BRA	_00174_DS_
+000198   0102     movlb	0x2                	BANKSEL	(_c + 1)
+                                           ;	.line	154; main.c	channel[c].timetotal = channel[c].timeup *2 + channel[c].time + channel[c].pulse_interval;
+00019a   5171     movf	0x71, 0, 0x1        	MOVF	(_c + 1), W, B
+00019c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00019e   0102     movlb	0x2                	BANKSEL	_c
+0001a0   5170     movf	0x70, 0, 0x1        	MOVF	_c, W, B
+0001a2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0001a4   0e00     movlw	0                  	MOVLW	0x00
+0001a6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0001a8   0e1e     movlw	0x1e               	MOVLW	0x1e
+0001aa   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0001ac   ec71     call	0x2ae2, 0           	CALL	__mulint
+0001ae   f015
+0001b0   6e00     movwf	0, 0               	MOVWF	r0x00
+0001b2   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+0001b4   f001
+0001b6   0e04     movlw	0x4                	MOVLW	0x04
+0001b8   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+0001ba   0e80     movlw	0x80               	MOVLW	LOW(_channel)
+0001bc   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+0001be   0e00     movlw	0                  	MOVLW	HIGH(_channel)
+0001c0   2201     addwfc	0x1, 0x1, 0       	ADDWFC	r0x01, F
+0001c2   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0001c4   0f14     addlw	0x14               	ADDLW	0x14
+0001c6   6e02     movwf	0x2, 0             	MOVWF	r0x02
+0001c8   0e00     movlw	0                  	MOVLW	0x00
+0001ca   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+0001cc   6e03     movwf	0x3, 0             	MOVWF	r0x03
+0001ce   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0001d0   0f0c     addlw	0xc                	ADDLW	0x0c
+0001d2   6e04     movwf	0x4, 0             	MOVWF	r0x04
+0001d4   0e00     movlw	0                  	MOVLW	0x00
+0001d6   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+0001d8   6e05     movwf	0x5, 0             	MOVWF	r0x05
+0001da   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+0001dc   ffe9
+0001de   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+0001e0   ffea
+0001e2   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+0001e4   f004
+0001e6   cfee     movff	0xfee, 0x5         	MOVFF	POSTINC0, r0x05
+0001e8   f005
+0001ea   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+0001ec   f006
+0001ee   cfef     movff	0xfef, 0x7         	MOVFF	INDF0, r0x07
+0001f0   f007
+0001f2   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+0001f4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0001f6   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+0001f8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0001fa   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+0001fc   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0001fe   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000200   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000202   0e00     movlw	0                  	MOVLW	0x00
+000204   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000206   0e00     movlw	0                  	MOVLW	0x00
+000208   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00020a   0e00     movlw	0                  	MOVLW	0x00
+00020c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00020e   0e02     movlw	0x2                	MOVLW	0x02
+000210   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000212   ecc2     call	0x1f84, 0           	CALL	__mullong
+000214   f00f
+000216   6e04     movwf	0x4, 0             	MOVWF	r0x04
+000218   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+00021a   f005
+00021c   cff4     movff	0xff4, 0x6         	MOVFF	PRODH, r0x06
+00021e   f006
+000220   cfe9     movff	0xfe9, 0x7         	MOVFF	FSR0L, r0x07
+000222   f007
+000224   0e08     movlw	0x8                	MOVLW	0x08
+000226   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000228   5000     movf	0, 0, 0             	MOVF	r0x00, W
+00022a   0f08     addlw	0x8                	ADDLW	0x08
+00022c   6e08     movwf	0x8, 0             	MOVWF	r0x08
+00022e   0e00     movlw	0                  	MOVLW	0x00
+000230   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+000232   6e09     movwf	0x9, 0             	MOVWF	r0x09
+000234   c008     movff	0x8, 0xfe9         	MOVFF	r0x08, FSR0L
+000236   ffe9
+000238   c009     movff	0x9, 0xfea         	MOVFF	r0x09, FSR0H
+00023a   ffea
+00023c   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+00023e   f008
+000240   cfee     movff	0xfee, 0x9         	MOVFF	POSTINC0, r0x09
+000242   f009
+000244   cfee     movff	0xfee, 0xa         	MOVFF	POSTINC0, r0x0a
+000246   f00a
+000248   cfef     movff	0xfef, 0xb         	MOVFF	INDF0, r0x0b
+00024a   f00b
+00024c   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+00024e   2604     addwf	0x4, 0x1, 0        	ADDWF	r0x04, F
+000250   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000252   2205     addwfc	0x5, 0x1, 0       	ADDWFC	r0x05, F
+000254   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000256   2206     addwfc	0x6, 0x1, 0       	ADDWFC	r0x06, F
+000258   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+00025a   2207     addwfc	0x7, 0x1, 0       	ADDWFC	r0x07, F
+00025c   c000     movff	0, 0xfe9           	MOVFF	r0x00, FSR0L
+00025e   ffe9
+000260   c001     movff	0x1, 0xfea         	MOVFF	r0x01, FSR0H
+000262   ffea
+000264   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+000266   f008
+000268   cfee     movff	0xfee, 0x9         	MOVFF	POSTINC0, r0x09
+00026a   f009
+00026c   cfee     movff	0xfee, 0xa         	MOVFF	POSTINC0, r0x0a
+00026e   f00a
+000270   cfef     movff	0xfef, 0xb         	MOVFF	INDF0, r0x0b
+000272   f00b
+000274   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000276   2604     addwf	0x4, 0x1, 0        	ADDWF	r0x04, F
+000278   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+00027a   2205     addwfc	0x5, 0x1, 0       	ADDWFC	r0x05, F
+00027c   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+00027e   2206     addwfc	0x6, 0x1, 0       	ADDWFC	r0x06, F
+000280   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000282   2207     addwfc	0x7, 0x1, 0       	ADDWFC	r0x07, F
+000284   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+000286   ffe9
+000288   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+00028a   ffea
+00028c   c004     movff	0x4, 0xfee         	MOVFF	r0x04, POSTINC0
+00028e   ffee
+000290   c005     movff	0x5, 0xfee         	MOVFF	r0x05, POSTINC0
+000292   ffee
+000294   c006     movff	0x6, 0xfee         	MOVFF	r0x06, POSTINC0
+000296   ffee
+000298   c007     movff	0x7, 0xfef         	MOVFF	r0x07, INDF0
+00029a   ffef
+                                           ;	.line	155; main.c	channel[c].started = 0;
+00029c   5000     movf	0, 0, 0             	MOVF	r0x00, W
+00029e   0f1c     addlw	0x1c               	ADDLW	0x1c
+0002a0   6e02     movwf	0x2, 0             	MOVWF	r0x02
+0002a2   0e00     movlw	0                  	MOVLW	0x00
+0002a4   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+0002a6   6e03     movwf	0x3, 0             	MOVWF	r0x03
+0002a8   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+0002aa   ffe9
+0002ac   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+0002ae   ffea
+0002b0   0e00     movlw	0                  	MOVLW	0x00
+0002b2   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+0002b4   0e00     movlw	0                  	MOVLW	0x00
+0002b6   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	156; main.c	channel[c].currTime = 0;
+0002b8   0e18     movlw	0x18               	MOVLW	0x18
+0002ba   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+0002bc   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+0002be   2a01     incf	0x1, 0x1, 0         	INCF	r0x01, F
+0002c0   c000     movff	0, 0xfe9           	MOVFF	r0x00, FSR0L
+0002c2   ffe9
+0002c4   c001     movff	0x1, 0xfea         	MOVFF	r0x01, FSR0H
+0002c6   ffea
+0002c8   0e00     movlw	0                  	MOVLW	0x00
+0002ca   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+0002cc   0e00     movlw	0                  	MOVLW	0x00
+0002ce   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+0002d0   0e00     movlw	0                  	MOVLW	0x00
+0002d2   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+0002d4   0e00     movlw	0                  	MOVLW	0x00
+0002d6   6eef     movwf	0xef, 0            	MOVWF	INDF0
+0002d8   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	152; main.c	for (c=0;c<4;c++)
+0002da   2b70     incf	0x70, 0x1, 0x1      	INCF	_c, F, B
+0002dc   e302     bnc	0x2e2                	BNC	_10166_DS_
+0002de   0102     movlb	0x2                	BANKSEL	(_c + 1)
+0002e0   2b71     incf	0x71, 0x1, 0x1      	INCF	(_c + 1), F, B
+                                           _10166_DS_:
+0002e2   d750     bra	0x184                	BRA	_00176_DS_
+                                           _00174_DS_:
+0002e4   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	165; main.c	for (c=0;c<8;c++)
+0002e6   6b70     clrf	0x70, 0x1           	CLRF	_c, B
+0002e8   0102     movlb	0x2                	BANKSEL	(_c + 1)
+0002ea   6b71     clrf	0x71, 0x1           	CLRF	(_c + 1), B
+                                           _00180_DS_:
+0002ec   0102     movlb	0x2                	BANKSEL	(_c + 1)
+0002ee   5171     movf	0x71, 0, 0x1        	MOVF	(_c + 1), W, B
+0002f0   0f80     addlw	0x80               	ADDLW	0x80
+0002f2   0f80     addlw	0x80               	ADDLW	0x80
+0002f4   e103     bnz	0x2fc                	BNZ	_00206_DS_
+0002f6   0e08     movlw	0x8                	MOVLW	0x08
+0002f8   0102     movlb	0x2                	BANKSEL	_c
+0002fa   5d70     subwf	0x70, 0, 0x1       	SUBWF	_c, W, B
+                                           _00206_DS_:
+0002fc   e223     bc	0x344                 	BC	_00183_DS_
+0002fe   0102     movlb	0x2                	BANKSEL	(_c + 1)
+                                           ;	.line	166; main.c	c_c[c] = 0;
+000300   5171     movf	0x71, 0, 0x1        	MOVF	(_c + 1), W, B
+000302   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000304   0102     movlb	0x2                	BANKSEL	_c
+000306   5170     movf	0x70, 0, 0x1        	MOVF	_c, W, B
+000308   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00030a   0e00     movlw	0                  	MOVLW	0x00
+00030c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00030e   0e02     movlw	0x2                	MOVLW	0x02
+000310   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000312   ec71     call	0x2ae2, 0           	CALL	__mulint
+000314   f015
+000316   6e00     movwf	0, 0               	MOVWF	r0x00
+000318   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+00031a   f001
+00031c   0e04     movlw	0x4                	MOVLW	0x04
+00031e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000320   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000322   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+000324   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000326   2201     addwfc	0x1, 0x1, 0       	ADDWFC	r0x01, F
+000328   c000     movff	0, 0xfe9           	MOVFF	r0x00, FSR0L
+00032a   ffe9
+00032c   c001     movff	0x1, 0xfea         	MOVFF	r0x01, FSR0H
+00032e   ffea
+000330   0e00     movlw	0                  	MOVLW	0x00
+000332   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000334   0e00     movlw	0                  	MOVLW	0x00
+000336   6eef     movwf	0xef, 0            	MOVWF	INDF0
+000338   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	165; main.c	for (c=0;c<8;c++)
+00033a   2b70     incf	0x70, 0x1, 0x1      	INCF	_c, F, B
+00033c   e302     bnc	0x342                	BNC	_20167_DS_
+00033e   0102     movlb	0x2                	BANKSEL	(_c + 1)
+000340   2b71     incf	0x71, 0x1, 0x1      	INCF	(_c + 1), F, B
+                                           _20167_DS_:
+000342   d7d4     bra	0x2ec                	BRA	_00180_DS_
+                                           _00183_DS_:
+000344   0102     movlb	0x2                	BANKSEL	_c_total
+                                           ;	.line	168; main.c	c_total = 0;
+000346   6b72     clrf	0x72, 0x1           	CLRF	_c_total, B
+000348   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+00034a   6b73     clrf	0x73, 0x1           	CLRF	(_c_total + 1), B
+                                           ;	.line	170; main.c	control();
+00034c   ec67     call	0x1ace, 0           	CALL	_control
+00034e   f00d
+                                           ;	.line	172; main.c	c_total = c_c[0];
+000350   c200     movff	0x200, 0x272       	MOVFF	_c_c, _c_total
+000352   f272
+000354   c201     movff	0x201, 0x273       	MOVFF	(_c_c + 1), (_c_total + 1)
+000356   f273
+000358   0102     movlb	0x2                	BANKSEL	(_c_c + 3)
+                                           ;	.line	173; main.c	c_total += c_c[1]*2;
+00035a   5103     movf	0x3, 0, 0x1         	MOVF	(_c_c + 3), W, B
+00035c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00035e   0102     movlb	0x2                	BANKSEL	(_c_c + 2)
+000360   5102     movf	0x2, 0, 0x1         	MOVF	(_c_c + 2), W, B
+000362   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000364   0e00     movlw	0                  	MOVLW	0x00
+000366   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000368   0e02     movlw	0x2                	MOVLW	0x02
+00036a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00036c   ec71     call	0x2ae2, 0           	CALL	__mulint
+00036e   f015
+000370   6e00     movwf	0, 0               	MOVWF	r0x00
+000372   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+000374   f001
+000376   0e04     movlw	0x4                	MOVLW	0x04
+000378   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+00037a   5000     movf	0, 0, 0             	MOVF	r0x00, W
+00037c   0102     movlb	0x2                	BANKSEL	_c_total
+00037e   2772     addwf	0x72, 0x1, 0x1     	ADDWF	_c_total, F, B
+000380   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+000382   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+000384   2373     addwfc	0x73, 0x1, 0x1    	ADDWFC	(_c_total + 1), F, B
+000386   0102     movlb	0x2                	BANKSEL	(_c_c + 5)
+                                           ;	.line	174; main.c	c_total += c_c[2]*4;
+000388   5105     movf	0x5, 0, 0x1         	MOVF	(_c_c + 5), W, B
+00038a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00038c   0102     movlb	0x2                	BANKSEL	(_c_c + 4)
+00038e   5104     movf	0x4, 0, 0x1         	MOVF	(_c_c + 4), W, B
+000390   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000392   0e00     movlw	0                  	MOVLW	0x00
+000394   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000396   0e04     movlw	0x4                	MOVLW	0x04
+000398   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00039a   ec71     call	0x2ae2, 0           	CALL	__mulint
+00039c   f015
+00039e   6e00     movwf	0, 0               	MOVWF	r0x00
+0003a0   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+0003a2   f001
+0003a4   0e04     movlw	0x4                	MOVLW	0x04
+0003a6   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+0003a8   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0003aa   0102     movlb	0x2                	BANKSEL	_c_total
+0003ac   2772     addwf	0x72, 0x1, 0x1     	ADDWF	_c_total, F, B
+0003ae   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+0003b0   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+0003b2   2373     addwfc	0x73, 0x1, 0x1    	ADDWFC	(_c_total + 1), F, B
+0003b4   0102     movlb	0x2                	BANKSEL	(_c_c + 7)
+                                           ;	.line	175; main.c	c_total += c_c[3]*8;
+0003b6   5107     movf	0x7, 0, 0x1         	MOVF	(_c_c + 7), W, B
+0003b8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003ba   0102     movlb	0x2                	BANKSEL	(_c_c + 6)
+0003bc   5106     movf	0x6, 0, 0x1         	MOVF	(_c_c + 6), W, B
+0003be   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003c0   0e00     movlw	0                  	MOVLW	0x00
+0003c2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003c4   0e08     movlw	0x8                	MOVLW	0x08
+0003c6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003c8   ec71     call	0x2ae2, 0           	CALL	__mulint
+0003ca   f015
+0003cc   6e00     movwf	0, 0               	MOVWF	r0x00
+0003ce   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+0003d0   f001
+0003d2   0e04     movlw	0x4                	MOVLW	0x04
+0003d4   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+0003d6   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0003d8   0102     movlb	0x2                	BANKSEL	_c_total
+0003da   2772     addwf	0x72, 0x1, 0x1     	ADDWF	_c_total, F, B
+0003dc   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+0003de   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+0003e0   2373     addwfc	0x73, 0x1, 0x1    	ADDWFC	(_c_total + 1), F, B
+0003e2   0102     movlb	0x2                	BANKSEL	(_c_c + 9)
+                                           ;	.line	176; main.c	c_total += c_c[4]*16;
+0003e4   5109     movf	0x9, 0, 0x1         	MOVF	(_c_c + 9), W, B
+0003e6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003e8   0102     movlb	0x2                	BANKSEL	(_c_c + 8)
+0003ea   5108     movf	0x8, 0, 0x1         	MOVF	(_c_c + 8), W, B
+0003ec   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003ee   0e00     movlw	0                  	MOVLW	0x00
+0003f0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003f2   0e10     movlw	0x10               	MOVLW	0x10
+0003f4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0003f6   ec71     call	0x2ae2, 0           	CALL	__mulint
+0003f8   f015
+0003fa   6e00     movwf	0, 0               	MOVWF	r0x00
+0003fc   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+0003fe   f001
+000400   0e04     movlw	0x4                	MOVLW	0x04
+000402   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000404   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000406   0102     movlb	0x2                	BANKSEL	_c_total
+000408   2772     addwf	0x72, 0x1, 0x1     	ADDWF	_c_total, F, B
+00040a   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+00040c   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+00040e   2373     addwfc	0x73, 0x1, 0x1    	ADDWFC	(_c_total + 1), F, B
+000410   0102     movlb	0x2                	BANKSEL	(_c_c + 11)
+                                           ;	.line	177; main.c	c_total += c_c[5]*32;
+000412   510b     movf	0xb, 0, 0x1         	MOVF	(_c_c + 11), W, B
+000414   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000416   0102     movlb	0x2                	BANKSEL	(_c_c + 10)
+000418   510a     movf	0xa, 0, 0x1         	MOVF	(_c_c + 10), W, B
+00041a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00041c   0e00     movlw	0                  	MOVLW	0x00
+00041e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000420   0e20     movlw	0x20               	MOVLW	0x20
+000422   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000424   ec71     call	0x2ae2, 0           	CALL	__mulint
+000426   f015
+000428   6e00     movwf	0, 0               	MOVWF	r0x00
+00042a   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+00042c   f001
+00042e   0e04     movlw	0x4                	MOVLW	0x04
+000430   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000432   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000434   0102     movlb	0x2                	BANKSEL	_c_total
+000436   2772     addwf	0x72, 0x1, 0x1     	ADDWF	_c_total, F, B
+000438   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+00043a   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+00043c   2373     addwfc	0x73, 0x1, 0x1    	ADDWFC	(_c_total + 1), F, B
+00043e   0102     movlb	0x2                	BANKSEL	(_c_c + 13)
+                                           ;	.line	178; main.c	c_total += c_c[6]*64;
+000440   510d     movf	0xd, 0, 0x1         	MOVF	(_c_c + 13), W, B
+000442   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000444   0102     movlb	0x2                	BANKSEL	(_c_c + 12)
+000446   510c     movf	0xc, 0, 0x1         	MOVF	(_c_c + 12), W, B
+000448   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00044a   0e00     movlw	0                  	MOVLW	0x00
+00044c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00044e   0e40     movlw	0x40               	MOVLW	0x40
+000450   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000452   ec71     call	0x2ae2, 0           	CALL	__mulint
+000454   f015
+000456   6e00     movwf	0, 0               	MOVWF	r0x00
+000458   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+00045a   f001
+00045c   0e04     movlw	0x4                	MOVLW	0x04
+00045e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000460   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000462   0102     movlb	0x2                	BANKSEL	_c_total
+000464   2772     addwf	0x72, 0x1, 0x1     	ADDWF	_c_total, F, B
+000466   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+000468   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+00046a   2373     addwfc	0x73, 0x1, 0x1    	ADDWFC	(_c_total + 1), F, B
+00046c   0102     movlb	0x2                	BANKSEL	(_c_c + 15)
+                                           ;	.line	179; main.c	c_total += c_c[7]*128;
+00046e   510f     movf	0xf, 0, 0x1         	MOVF	(_c_c + 15), W, B
+000470   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000472   0102     movlb	0x2                	BANKSEL	(_c_c + 14)
+000474   510e     movf	0xe, 0, 0x1         	MOVF	(_c_c + 14), W, B
+000476   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000478   0e00     movlw	0                  	MOVLW	0x00
+00047a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00047c   0e80     movlw	0x80               	MOVLW	0x80
+00047e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000480   ec71     call	0x2ae2, 0           	CALL	__mulint
+000482   f015
+000484   6e00     movwf	0, 0               	MOVWF	r0x00
+000486   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+000488   f001
+00048a   0e04     movlw	0x4                	MOVLW	0x04
+00048c   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+00048e   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000490   0102     movlb	0x2                	BANKSEL	_c_total
+000492   2772     addwf	0x72, 0x1, 0x1     	ADDWF	_c_total, F, B
+000494   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+000496   0102     movlb	0x2                	BANKSEL	(_c_total + 1)
+000498   2373     addwfc	0x73, 0x1, 0x1    	ADDWFC	(_c_total + 1), F, B
+00049a   0102     movlb	0x2                	BANKSEL	_c_total
+                                           ;	.line	181; main.c	PORTC = c_total;
+00049c   5172     movf	0x72, 0, 0x1        	MOVF	_c_total, W, B
+00049e   6e82     movwf	0x82, 0            	MOVWF	_PORTC
+                                           ;	.line	185; main.c	for (c=0;c<4;c++)
+0004a0   0e04     movlw	0x4                	MOVLW	0x04
+0004a2   0102     movlb	0x2                	BANKSEL	_c
+0004a4   6f70     movwf	0x70, 0x1          	MOVWF	_c, B
+0004a6   0102     movlb	0x2                	BANKSEL	(_c + 1)
+0004a8   6b71     clrf	0x71, 0x1           	CLRF	(_c + 1), B
+                                           _00186_DS_:
+0004aa   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	186; main.c	channel[c].currTime++;
+0004ac   5170     movf	0x70, 0, 0x1        	MOVF	_c, W, B
+0004ae   0fff     addlw	0xff               	ADDLW	0xff
+0004b0   6e00     movwf	0, 0               	MOVWF	r0x00
+0004b2   0eff     movlw	0xff               	MOVLW	0xff
+0004b4   0102     movlb	0x2                	BANKSEL	(_c + 1)
+0004b6   2171     addwfc	0x71, 0, 0x1      	ADDWFC	(_c + 1), W, B
+0004b8   6e01     movwf	0x1, 0             	MOVWF	r0x01
+0004ba   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+0004bc   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0004be   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0004c0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0004c2   0e00     movlw	0                  	MOVLW	0x00
+0004c4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0004c6   0e1e     movlw	0x1e               	MOVLW	0x1e
+0004c8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0004ca   ec71     call	0x2ae2, 0           	CALL	__mulint
+0004cc   f015
+0004ce   6e02     movwf	0x2, 0             	MOVWF	r0x02
+0004d0   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+0004d2   f003
+0004d4   0e04     movlw	0x4                	MOVLW	0x04
+0004d6   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+0004d8   0e80     movlw	0x80               	MOVLW	LOW(_channel)
+0004da   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+0004dc   0e00     movlw	0                  	MOVLW	HIGH(_channel)
+0004de   2203     addwfc	0x3, 0x1, 0       	ADDWFC	r0x03, F
+0004e0   0e18     movlw	0x18               	MOVLW	0x18
+0004e2   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+0004e4   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+0004e6   2a03     incf	0x3, 0x1, 0         	INCF	r0x03, F
+0004e8   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+0004ea   ffe9
+0004ec   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+0004ee   ffea
+0004f0   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+0004f2   f004
+0004f4   cfee     movff	0xfee, 0x5         	MOVFF	POSTINC0, r0x05
+0004f6   f005
+0004f8   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+0004fa   f006
+0004fc   cfef     movff	0xfef, 0x7         	MOVFF	INDF0, r0x07
+0004fe   f007
+000500   2a04     incf	0x4, 0x1, 0         	INCF	r0x04, F
+000502   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+000504   2a05     incf	0x5, 0x1, 0         	INCF	r0x05, F
+000506   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+000508   2a06     incf	0x6, 0x1, 0         	INCF	r0x06, F
+00050a   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+00050c   2a07     incf	0x7, 0x1, 0         	INCF	r0x07, F
+00050e   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+000510   ffe9
+000512   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+000514   ffea
+000516   c004     movff	0x4, 0xfee         	MOVFF	r0x04, POSTINC0
+000518   ffee
+00051a   c005     movff	0x5, 0xfee         	MOVFF	r0x05, POSTINC0
+00051c   ffee
+00051e   c006     movff	0x6, 0xfee         	MOVFF	r0x06, POSTINC0
+000520   ffee
+000522   c007     movff	0x7, 0xfef         	MOVFF	r0x07, INDF0
+000524   ffef
+000526   c000     movff	0, 0x270           	MOVFF	r0x00, _c
+000528   f270
+00052a   c001     movff	0x1, 0x271         	MOVFF	r0x01, (_c + 1)
+00052c   f271
+00052e   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	185; main.c	for (c=0;c<4;c++)
+000530   5170     movf	0x70, 0, 0x1        	MOVF	_c, W, B
+000532   0102     movlb	0x2                	BANKSEL	(_c + 1)
+000534   1171     iorwf	0x71, 0, 0x1       	IORWF	(_c + 1), W, B
+000536   a4d8     btfss	0xd8, 0x2, 0       	BTFSS	STATUS, 2
+000538   d7b8     bra	0x4aa                	BRA	_00186_DS_
+00053a   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	190; main.c	for (c=0;c<4;c++)
+00053c   6b70     clrf	0x70, 0x1           	CLRF	_c, B
+00053e   0102     movlb	0x2                	BANKSEL	(_c + 1)
+000540   6b71     clrf	0x71, 0x1           	CLRF	(_c + 1), B
+                                           _00187_DS_:
+000542   0102     movlb	0x2                	BANKSEL	(_c + 1)
+000544   5171     movf	0x71, 0, 0x1        	MOVF	(_c + 1), W, B
+000546   0f80     addlw	0x80               	ADDLW	0x80
+000548   0f80     addlw	0x80               	ADDLW	0x80
+00054a   e103     bnz	0x552                	BNZ	_00207_DS_
+00054c   0e04     movlw	0x4                	MOVLW	0x04
+00054e   0102     movlb	0x2                	BANKSEL	_c
+000550   5d70     subwf	0x70, 0, 0x1       	SUBWF	_c, W, B
+                                           _00207_DS_:
+000552   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+000554   d6c7     bra	0x2e4                	BRA	_00174_DS_
+000556   0102     movlb	0x2                	BANKSEL	(_c + 1)
+                                           ;	.line	192; main.c	if(channel[c].started==0)
+000558   5171     movf	0x71, 0, 0x1        	MOVF	(_c + 1), W, B
+00055a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00055c   0102     movlb	0x2                	BANKSEL	_c
+00055e   5170     movf	0x70, 0, 0x1        	MOVF	_c, W, B
+000560   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000562   0e00     movlw	0                  	MOVLW	0x00
+000564   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000566   0e1e     movlw	0x1e               	MOVLW	0x1e
+000568   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00056a   ec71     call	0x2ae2, 0           	CALL	__mulint
+00056c   f015
+00056e   6e00     movwf	0, 0               	MOVWF	r0x00
+000570   cff3     movff	0xff3, 0x1         	MOVFF	PRODL, r0x01
+000572   f001
+000574   0e04     movlw	0x4                	MOVLW	0x04
+000576   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000578   0e80     movlw	0x80               	MOVLW	LOW(_channel)
+00057a   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+00057c   0e00     movlw	0                  	MOVLW	HIGH(_channel)
+00057e   2201     addwfc	0x1, 0x1, 0       	ADDWFC	r0x01, F
+000580   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000582   0f1c     addlw	0x1c               	ADDLW	0x1c
+000584   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000586   0e00     movlw	0                  	MOVLW	0x00
+000588   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+00058a   6e03     movwf	0x3, 0             	MOVWF	r0x03
+00058c   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+00058e   ffe9
+000590   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+000592   ffea
+000594   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+000596   f004
+000598   cfef     movff	0xfef, 0x5         	MOVFF	INDF0, r0x05
+00059a   f005
+00059c   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+00059e   1005     iorwf	0x5, 0, 0          	IORWF	r0x05, W
+0005a0   a4d8     btfss	0xd8, 0x2, 0       	BTFSS	STATUS, 2
+0005a2   d05f     bra	0x662                	BRA	_00171_DS_
+                                           ;	.line	194; main.c	if(channel[c].currTime>channel[c].initial)
+0005a4   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0005a6   0f18     addlw	0x18               	ADDLW	0x18
+0005a8   6e04     movwf	0x4, 0             	MOVWF	r0x04
+0005aa   0e00     movlw	0                  	MOVLW	0x00
+0005ac   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+0005ae   6e05     movwf	0x5, 0             	MOVWF	r0x05
+0005b0   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+0005b2   ffe9
+0005b4   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+0005b6   ffea
+0005b8   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+0005ba   f006
+0005bc   cfee     movff	0xfee, 0x7         	MOVFF	POSTINC0, r0x07
+0005be   f007
+0005c0   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+0005c2   f008
+0005c4   cfef     movff	0xfef, 0x9         	MOVFF	INDF0, r0x09
+0005c6   f009
+0005c8   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0005ca   0f04     addlw	0x4                	ADDLW	0x04
+0005cc   6e0a     movwf	0xa, 0             	MOVWF	r0x0a
+0005ce   0e00     movlw	0                  	MOVLW	0x00
+0005d0   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+0005d2   6e0b     movwf	0xb, 0             	MOVWF	r0x0b
+0005d4   c00a     movff	0xa, 0xfe9         	MOVFF	r0x0a, FSR0L
+0005d6   ffe9
+0005d8   c00b     movff	0xb, 0xfea         	MOVFF	r0x0b, FSR0H
+0005da   ffea
+0005dc   cfee     movff	0xfee, 0xa         	MOVFF	POSTINC0, r0x0a
+0005de   f00a
+0005e0   cfee     movff	0xfee, 0xb         	MOVFF	POSTINC0, r0x0b
+0005e2   f00b
+0005e4   cfee     movff	0xfee, 0xc         	MOVFF	POSTINC0, r0x0c
+0005e6   f00c
+0005e8   cfef     movff	0xfef, 0xd         	MOVFF	INDF0, r0x0d
+0005ea   f00d
+0005ec   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+0005ee   0f80     addlw	0x80               	ADDLW	0x80
+0005f0   6ef3     movwf	0xf3, 0            	MOVWF	PRODL
+0005f2   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+0005f4   0f80     addlw	0x80               	ADDLW	0x80
+0005f6   5cf3     subwf	0xf3, 0, 0         	SUBWF	PRODL, W
+0005f8   e108     bnz	0x60a                	BNZ	_00208_DS_
+0005fa   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+0005fc   5c0c     subwf	0xc, 0, 0          	SUBWF	r0x0c, W
+0005fe   e105     bnz	0x60a                	BNZ	_00208_DS_
+000600   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000602   5c0b     subwf	0xb, 0, 0          	SUBWF	r0x0b, W
+000604   e102     bnz	0x60a                	BNZ	_00208_DS_
+000606   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000608   5c0a     subwf	0xa, 0, 0          	SUBWF	r0x0a, W
+                                           _00208_DS_:
+00060a   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+00060c   d070     bra	0x6ee                	BRA	_00189_DS_
+                                           ;	.line	196; main.c	channel[c].started = 1;
+00060e   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+000610   ffe9
+000612   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+000614   ffea
+000616   0e01     movlw	0x1                	MOVLW	0x01
+000618   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+00061a   0e00     movlw	0                  	MOVLW	0x00
+00061c   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	197; main.c	channel[c].currTime-=channel[c].started;
+00061e   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+000620   ffe9
+000622   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+000624   ffea
+000626   cfee     movff	0xfee, 0x2         	MOVFF	POSTINC0, r0x02
+000628   f002
+00062a   cfef     movff	0xfef, 0x3         	MOVFF	INDF0, r0x03
+00062c   f003
+00062e   6ae8     clrf	0xe8, 0             	CLRF	WREG
+000630   be03     btfsc	0x3, 0x7, 0        	BTFSC	r0x03, 7
+000632   0eff     movlw	0xff               	MOVLW	0xff
+000634   6e0a     movwf	0xa, 0             	MOVWF	r0x0a
+000636   6e0b     movwf	0xb, 0             	MOVWF	r0x0b
+000638   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+00063a   5e06     subwf	0x6, 0x1, 0        	SUBWF	r0x06, F
+00063c   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+00063e   5a07     subwfb	0x7, 0x1, 0       	SUBWFB	r0x07, F
+000640   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000642   5a08     subwfb	0x8, 0x1, 0       	SUBWFB	r0x08, F
+000644   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000646   5a09     subwfb	0x9, 0x1, 0       	SUBWFB	r0x09, F
+000648   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+00064a   ffe9
+00064c   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+00064e   ffea
+000650   c006     movff	0x6, 0xfee         	MOVFF	r0x06, POSTINC0
+000652   ffee
+000654   c007     movff	0x7, 0xfee         	MOVFF	r0x07, POSTINC0
+000656   ffee
+000658   c008     movff	0x8, 0xfee         	MOVFF	r0x08, POSTINC0
+00065a   ffee
+00065c   c009     movff	0x9, 0xfef         	MOVFF	r0x09, INDF0
+00065e   ffef
+000660   d046     bra	0x6ee                	BRA	_00189_DS_
+                                           _00171_DS_:
+                                           ;	.line	200; main.c	else if(channel[c].currTime>channel[c].timetotal)
+000662   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000664   0f18     addlw	0x18               	ADDLW	0x18
+000666   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000668   0e00     movlw	0                  	MOVLW	0x00
+00066a   2001     addwfc	0x1, 0, 0         	ADDWFC	r0x01, W
+00066c   6e03     movwf	0x3, 0             	MOVWF	r0x03
+00066e   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+000670   ffe9
+000672   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+000674   ffea
+000676   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+000678   f004
+00067a   cfee     movff	0xfee, 0x5         	MOVFF	POSTINC0, r0x05
+00067c   f005
+00067e   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+000680   f006
+000682   cfef     movff	0xfef, 0x7         	MOVFF	INDF0, r0x07
+000684   f007
+000686   0e14     movlw	0x14               	MOVLW	0x14
+000688   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+00068a   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+00068c   2a01     incf	0x1, 0x1, 0         	INCF	r0x01, F
+00068e   c000     movff	0, 0xfe9           	MOVFF	r0x00, FSR0L
+000690   ffe9
+000692   c001     movff	0x1, 0xfea         	MOVFF	r0x01, FSR0H
+000694   ffea
+000696   cfee     movff	0xfee, 0           	MOVFF	POSTINC0, r0x00
+000698   f000
+00069a   cfee     movff	0xfee, 0x1         	MOVFF	POSTINC0, r0x01
+00069c   f001
+00069e   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+0006a0   f008
+0006a2   cfef     movff	0xfef, 0x9         	MOVFF	INDF0, r0x09
+0006a4   f009
+0006a6   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+0006a8   0f80     addlw	0x80               	ADDLW	0x80
+0006aa   6ef3     movwf	0xf3, 0            	MOVWF	PRODL
+0006ac   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+0006ae   0f80     addlw	0x80               	ADDLW	0x80
+0006b0   5cf3     subwf	0xf3, 0, 0         	SUBWF	PRODL, W
+0006b2   e108     bnz	0x6c4                	BNZ	_00209_DS_
+0006b4   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+0006b6   5c08     subwf	0x8, 0, 0          	SUBWF	r0x08, W
+0006b8   e105     bnz	0x6c4                	BNZ	_00209_DS_
+0006ba   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+0006bc   5c01     subwf	0x1, 0, 0          	SUBWF	r0x01, W
+0006be   e102     bnz	0x6c4                	BNZ	_00209_DS_
+0006c0   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+0006c2   5c00     subwf	0, 0, 0            	SUBWF	r0x00, W
+                                           _00209_DS_:
+0006c4   e214     bc	0x6ee                 	BC	_00189_DS_
+                                           ;	.line	202; main.c	channel[c].currTime-=channel[c].timetotal;
+0006c6   5000     movf	0, 0, 0             	MOVF	r0x00, W
+0006c8   5e04     subwf	0x4, 0x1, 0        	SUBWF	r0x04, F
+0006ca   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+0006cc   5a05     subwfb	0x5, 0x1, 0       	SUBWFB	r0x05, F
+0006ce   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+0006d0   5a06     subwfb	0x6, 0x1, 0       	SUBWFB	r0x06, F
+0006d2   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+0006d4   5a07     subwfb	0x7, 0x1, 0       	SUBWFB	r0x07, F
+0006d6   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+0006d8   ffe9
+0006da   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+0006dc   ffea
+0006de   c004     movff	0x4, 0xfee         	MOVFF	r0x04, POSTINC0
+0006e0   ffee
+0006e2   c005     movff	0x5, 0xfee         	MOVFF	r0x05, POSTINC0
+0006e4   ffee
+0006e6   c006     movff	0x6, 0xfee         	MOVFF	r0x06, POSTINC0
+0006e8   ffee
+0006ea   c007     movff	0x7, 0xfef         	MOVFF	r0x07, INDF0
+0006ec   ffef
+                                           _00189_DS_:
+0006ee   0102     movlb	0x2                	BANKSEL	_c
+                                           ;	.line	190; main.c	for (c=0;c<4;c++)
+0006f0   2b70     incf	0x70, 0x1, 0x1      	INCF	_c, F, B
+0006f2   e302     bnc	0x6f8                	BNC	_30168_DS_
+0006f4   0102     movlb	0x2                	BANKSEL	(_c + 1)
+0006f6   2b71     incf	0x71, 0x1, 0x1      	INCF	(_c + 1), F, B
+                                           _30168_DS_:
+0006f8   d724     bra	0x542                	BRA	_00187_DS_
+0006fa   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__control	code
+                                           _control:
+                                           ;	.line	84; main.c	void control()
+001ace   cfd9     movff	0xfd9, 0xfe5       	MOVFF	FSR2L, POSTDEC1
+001ad0   ffe5
+001ad2   cfe1     movff	0xfe1, 0xfd9       	MOVFF	FSR1L, FSR2L
+001ad4   ffd9
+001ad6   c000     movff	0, 0xfe5           	MOVFF	r0x00, POSTDEC1
+001ad8   ffe5
+001ada   c001     movff	0x1, 0xfe5         	MOVFF	r0x01, POSTDEC1
+001adc   ffe5
+001ade   c002     movff	0x2, 0xfe5         	MOVFF	r0x02, POSTDEC1
+001ae0   ffe5
+001ae2   c003     movff	0x3, 0xfe5         	MOVFF	r0x03, POSTDEC1
+001ae4   ffe5
+001ae6   c004     movff	0x4, 0xfe5         	MOVFF	r0x04, POSTDEC1
+001ae8   ffe5
+001aea   c005     movff	0x5, 0xfe5         	MOVFF	r0x05, POSTDEC1
+001aec   ffe5
+001aee   c006     movff	0x6, 0xfe5         	MOVFF	r0x06, POSTDEC1
+001af0   ffe5
+001af2   c007     movff	0x7, 0xfe5         	MOVFF	r0x07, POSTDEC1
+001af4   ffe5
+001af6   c008     movff	0x8, 0xfe5         	MOVFF	r0x08, POSTDEC1
+001af8   ffe5
+001afa   c009     movff	0x9, 0xfe5         	MOVFF	r0x09, POSTDEC1
+001afc   ffe5
+001afe   c00a     movff	0xa, 0xfe5         	MOVFF	r0x0a, POSTDEC1
+001b00   ffe5
+001b02   c00b     movff	0xb, 0xfe5         	MOVFF	r0x0b, POSTDEC1
+001b04   ffe5
+001b06   c00c     movff	0xc, 0xfe5         	MOVFF	r0x0c, POSTDEC1
+001b08   ffe5
+001b0a   c00d     movff	0xd, 0xfe5         	MOVFF	r0x0d, POSTDEC1
+001b0c   ffe5
+001b0e   c00e     movff	0xe, 0xfe5         	MOVFF	r0x0e, POSTDEC1
+001b10   ffe5
+001b12   c00f     movff	0xf, 0xfe5         	MOVFF	r0x0f, POSTDEC1
+001b14   ffe5
+                                           ;	.line	87; main.c	for (control_c=0; control_c<4; control_c++)
+001b16   6a00     clrf	0, 0                	CLRF	r0x00
+001b18   6a01     clrf	0x1, 0              	CLRF	r0x01
+001b1a   6a02     clrf	0x2, 0              	CLRF	r0x02
+001b1c   6a03     clrf	0x3, 0              	CLRF	r0x03
+                                           _00144_DS_:
+001b1e   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+001b20   0f80     addlw	0x80               	ADDLW	0x80
+001b22   0f80     addlw	0x80               	ADDLW	0x80
+001b24   e102     bnz	0x1b2a               	BNZ	_00157_DS_
+001b26   0e04     movlw	0x4                	MOVLW	0x04
+001b28   5c00     subwf	0, 0, 0            	SUBWF	r0x00, W
+                                           _00157_DS_:
+001b2a   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+001b2c   d0de     bra	0x1cea               	BRA	_00148_DS_
+                                           ;	.line	89; main.c	if (channel[control_c].started>0) /// Se já passou do delay inicial do canal
+001b2e   0e80     movlw	0x80               	MOVLW	LOW(_channel)
+001b30   2402     addwf	0x2, 0, 0          	ADDWF	r0x02, W
+001b32   6e04     movwf	0x4, 0             	MOVWF	r0x04
+001b34   0e00     movlw	0                  	MOVLW	HIGH(_channel)
+001b36   2003     addwfc	0x3, 0, 0         	ADDWFC	r0x03, W
+001b38   6e05     movwf	0x5, 0             	MOVWF	r0x05
+001b3a   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001b3c   0f1c     addlw	0x1c               	ADDLW	0x1c
+001b3e   6e06     movwf	0x6, 0             	MOVWF	r0x06
+001b40   0e00     movlw	0                  	MOVLW	0x00
+001b42   2005     addwfc	0x5, 0, 0         	ADDWFC	r0x05, W
+001b44   6e07     movwf	0x7, 0             	MOVWF	r0x07
+001b46   c006     movff	0x6, 0xfe9         	MOVFF	r0x06, FSR0L
+001b48   ffe9
+001b4a   c007     movff	0x7, 0xfea         	MOVFF	r0x07, FSR0H
+001b4c   ffea
+001b4e   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+001b50   f006
+001b52   cfef     movff	0xfef, 0x7         	MOVFF	INDF0, r0x07
+001b54   f007
+001b56   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+001b58   0f80     addlw	0x80               	ADDLW	0x80
+001b5a   0f80     addlw	0x80               	ADDLW	0x80
+001b5c   e102     bnz	0x1b62               	BNZ	_00158_DS_
+001b5e   0e01     movlw	0x1                	MOVLW	0x01
+001b60   5c06     subwf	0x6, 0, 0          	SUBWF	r0x06, W
+                                           _00158_DS_:
+001b62   a0d8     btfss	0xd8, 0, 0         	BTFSS	STATUS, 0
+001b64   d0ba     bra	0x1cda               	BRA	_00146_DS_
+                                           ;	.line	91; main.c	if (channel[control_c].currTime<channel[control_c].timeup) ///Se está no tempo de subida do canal
+001b66   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001b68   0f18     addlw	0x18               	ADDLW	0x18
+001b6a   6e06     movwf	0x6, 0             	MOVWF	r0x06
+001b6c   0e00     movlw	0                  	MOVLW	0x00
+001b6e   2005     addwfc	0x5, 0, 0         	ADDWFC	r0x05, W
+001b70   6e07     movwf	0x7, 0             	MOVWF	r0x07
+001b72   c006     movff	0x6, 0xfe9         	MOVFF	r0x06, FSR0L
+001b74   ffe9
+001b76   c007     movff	0x7, 0xfea         	MOVFF	r0x07, FSR0H
+001b78   ffea
+001b7a   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+001b7c   f006
+001b7e   cfee     movff	0xfee, 0x7         	MOVFF	POSTINC0, r0x07
+001b80   f007
+001b82   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+001b84   f008
+001b86   cfef     movff	0xfef, 0x9         	MOVFF	INDF0, r0x09
+001b88   f009
+001b8a   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001b8c   0f0c     addlw	0xc                	ADDLW	0x0c
+001b8e   6e0a     movwf	0xa, 0             	MOVWF	r0x0a
+001b90   0e00     movlw	0                  	MOVLW	0x00
+001b92   2005     addwfc	0x5, 0, 0         	ADDWFC	r0x05, W
+001b94   6e0b     movwf	0xb, 0             	MOVWF	r0x0b
+001b96   c00a     movff	0xa, 0xfe9         	MOVFF	r0x0a, FSR0L
+001b98   ffe9
+001b9a   c00b     movff	0xb, 0xfea         	MOVFF	r0x0b, FSR0H
+001b9c   ffea
+001b9e   cfee     movff	0xfee, 0xa         	MOVFF	POSTINC0, r0x0a
+001ba0   f00a
+001ba2   cfee     movff	0xfee, 0xb         	MOVFF	POSTINC0, r0x0b
+001ba4   f00b
+001ba6   cfee     movff	0xfee, 0xc         	MOVFF	POSTINC0, r0x0c
+001ba8   f00c
+001baa   cfef     movff	0xfef, 0xd         	MOVFF	INDF0, r0x0d
+001bac   f00d
+001bae   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+001bb0   0f80     addlw	0x80               	ADDLW	0x80
+001bb2   6ef3     movwf	0xf3, 0            	MOVWF	PRODL
+001bb4   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+001bb6   0f80     addlw	0x80               	ADDLW	0x80
+001bb8   5cf3     subwf	0xf3, 0, 0         	SUBWF	PRODL, W
+001bba   e108     bnz	0x1bcc               	BNZ	_00159_DS_
+001bbc   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+001bbe   5c08     subwf	0x8, 0, 0          	SUBWF	r0x08, W
+001bc0   e105     bnz	0x1bcc               	BNZ	_00159_DS_
+001bc2   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+001bc4   5c07     subwf	0x7, 0, 0          	SUBWF	r0x07, W
+001bc6   e102     bnz	0x1bcc               	BNZ	_00159_DS_
+001bc8   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+001bca   5c06     subwf	0x6, 0, 0          	SUBWF	r0x06, W
+                                           _00159_DS_:
+001bcc   e209     bc	0x1be0                	BC	_00140_DS_
+                                           ;	.line	93; main.c	up(control_c);
+001bce   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+001bd0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001bd2   5000     movf	0, 0, 0             	MOVF	r0x00, W
+001bd4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001bd6   ecbe     call	0xb7c, 0            	CALL	_up
+001bd8   f005
+001bda   0e02     movlw	0x2                	MOVLW	0x02
+001bdc   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001bde   d07d     bra	0x1cda               	BRA	_00146_DS_
+                                           _00140_DS_:
+                                           ;	.line	95; main.c	else if (channel[control_c].currTime<channel[control_c].timeup+channel[control_c].time) ///Se está no tempo de subida do canal
+001be0   0e08     movlw	0x8                	MOVLW	0x08
+001be2   2604     addwf	0x4, 0x1, 0        	ADDWF	r0x04, F
+001be4   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+001be6   2a05     incf	0x5, 0x1, 0         	INCF	r0x05, F
+001be8   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+001bea   ffe9
+001bec   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+001bee   ffea
+001bf0   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+001bf2   f004
+001bf4   cfee     movff	0xfee, 0x5         	MOVFF	POSTINC0, r0x05
+001bf6   f005
+001bf8   cfee     movff	0xfee, 0xe         	MOVFF	POSTINC0, r0x0e
+001bfa   f00e
+001bfc   cfef     movff	0xfef, 0xf         	MOVFF	INDF0, r0x0f
+001bfe   f00f
+001c00   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+001c02   2604     addwf	0x4, 0x1, 0        	ADDWF	r0x04, F
+001c04   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+001c06   2205     addwfc	0x5, 0x1, 0       	ADDWFC	r0x05, F
+001c08   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+001c0a   220e     addwfc	0xe, 0x1, 0       	ADDWFC	r0x0e, F
+001c0c   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+001c0e   220f     addwfc	0xf, 0x1, 0       	ADDWFC	r0x0f, F
+001c10   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+001c12   0f80     addlw	0x80               	ADDLW	0x80
+001c14   6ef3     movwf	0xf3, 0            	MOVWF	PRODL
+001c16   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+001c18   0f80     addlw	0x80               	ADDLW	0x80
+001c1a   5cf3     subwf	0xf3, 0, 0         	SUBWF	PRODL, W
+001c1c   e108     bnz	0x1c2e               	BNZ	_00160_DS_
+001c1e   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+001c20   5c08     subwf	0x8, 0, 0          	SUBWF	r0x08, W
+001c22   e105     bnz	0x1c2e               	BNZ	_00160_DS_
+001c24   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+001c26   5c07     subwf	0x7, 0, 0          	SUBWF	r0x07, W
+001c28   e102     bnz	0x1c2e               	BNZ	_00160_DS_
+001c2a   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001c2c   5c06     subwf	0x6, 0, 0          	SUBWF	r0x06, W
+                                           _00160_DS_:
+001c2e   e209     bc	0x1c42                	BC	_00137_DS_
+                                           ;	.line	97; main.c	top(control_c);
+001c30   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+001c32   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001c34   5000     movf	0, 0, 0             	MOVF	r0x00, W
+001c36   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001c38   ec98     call	0x1d30, 0           	CALL	_top
+001c3a   f00e
+001c3c   0e02     movlw	0x2                	MOVLW	0x02
+001c3e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001c40   d04c     bra	0x1cda               	BRA	_00146_DS_
+                                           _00137_DS_:
+                                           ;	.line	99; main.c	else if (channel[control_c].currTime<channel[control_c].timeup+channel[control_c].time+channel[control_c].timeup) ///Se está no tempo de subida do canal
+001c42   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001c44   260a     addwf	0xa, 0x1, 0        	ADDWF	r0x0a, F
+001c46   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+001c48   220b     addwfc	0xb, 0x1, 0       	ADDWFC	r0x0b, F
+001c4a   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+001c4c   220c     addwfc	0xc, 0x1, 0       	ADDWFC	r0x0c, F
+001c4e   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+001c50   220d     addwfc	0xd, 0x1, 0       	ADDWFC	r0x0d, F
+001c52   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+001c54   0f80     addlw	0x80               	ADDLW	0x80
+001c56   6ef3     movwf	0xf3, 0            	MOVWF	PRODL
+001c58   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+001c5a   0f80     addlw	0x80               	ADDLW	0x80
+001c5c   5cf3     subwf	0xf3, 0, 0         	SUBWF	PRODL, W
+001c5e   e108     bnz	0x1c70               	BNZ	_00161_DS_
+001c60   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+001c62   5c08     subwf	0x8, 0, 0          	SUBWF	r0x08, W
+001c64   e105     bnz	0x1c70               	BNZ	_00161_DS_
+001c66   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+001c68   5c07     subwf	0x7, 0, 0          	SUBWF	r0x07, W
+001c6a   e102     bnz	0x1c70               	BNZ	_00161_DS_
+001c6c   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+001c6e   5c06     subwf	0x6, 0, 0          	SUBWF	r0x06, W
+                                           _00161_DS_:
+001c70   e209     bc	0x1c84                	BC	_00134_DS_
+                                           ;	.line	101; main.c	down(control_c);
+001c72   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+001c74   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001c76   5000     movf	0, 0, 0             	MOVF	r0x00, W
+001c78   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001c7a   ec7e     call	0x6fc, 0            	CALL	_down
+001c7c   f003
+001c7e   0e02     movlw	0x2                	MOVLW	0x02
+001c80   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001c82   d02b     bra	0x1cda               	BRA	_00146_DS_
+                                           _00134_DS_:
+                                           ;	.line	105; main.c	c_c[control_c*2]=0;
+001c84   5000     movf	0, 0, 0             	MOVF	r0x00, W
+001c86   6e04     movwf	0x4, 0             	MOVWF	r0x04
+                                           ; ;multiply lit val:0x02 by variable r0x04 and store in r0x04
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001c88   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001c8a   3604     rlcf	0x4, 0x1, 0         	RLCF	r0x04, F
+                                           ; ;multiply lit val:0x02 by variable r0x04 and store in r0x05
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001c8c   0e00     movlw	0                  	MOVLW	0x00
+001c8e   be04     btfsc	0x4, 0x7, 0        	BTFSC	r0x04, 7
+001c90   0eff     movlw	0xff               	MOVLW	0xff
+001c92   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001c94   3404     rlcf	0x4, 0, 0           	RLCF	r0x04, W
+001c96   6e05     movwf	0x5, 0             	MOVWF	r0x05
+001c98   6a06     clrf	0x6, 0              	CLRF	r0x06
+001c9a   be05     btfsc	0x5, 0x7, 0        	BTFSC	r0x05, 7
+001c9c   6806     setf	0x6, 0              	SETF	r0x06
+001c9e   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+001ca0   2605     addwf	0x5, 0x1, 0        	ADDWF	r0x05, F
+001ca2   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+001ca4   2206     addwfc	0x6, 0x1, 0       	ADDWFC	r0x06, F
+001ca6   c005     movff	0x5, 0xfe9         	MOVFF	r0x05, FSR0L
+001ca8   ffe9
+001caa   c006     movff	0x6, 0xfea         	MOVFF	r0x06, FSR0H
+001cac   ffea
+001cae   0e00     movlw	0                  	MOVLW	0x00
+001cb0   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+001cb2   0e00     movlw	0                  	MOVLW	0x00
+001cb4   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	106; main.c	c_c[control_c*2+1]=0;
+001cb6   2a04     incf	0x4, 0x1, 0         	INCF	r0x04, F
+                                           ; ;multiply lit val:0x02 by variable r0x04 and store in r0x04
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001cb8   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001cba   3604     rlcf	0x4, 0x1, 0         	RLCF	r0x04, F
+001cbc   6a05     clrf	0x5, 0              	CLRF	r0x05
+001cbe   be04     btfsc	0x4, 0x7, 0        	BTFSC	r0x04, 7
+001cc0   6805     setf	0x5, 0              	SETF	r0x05
+001cc2   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+001cc4   2604     addwf	0x4, 0x1, 0        	ADDWF	r0x04, F
+001cc6   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+001cc8   2205     addwfc	0x5, 0x1, 0       	ADDWFC	r0x05, F
+001cca   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+001ccc   ffe9
+001cce   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+001cd0   ffea
+001cd2   0e00     movlw	0                  	MOVLW	0x00
+001cd4   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+001cd6   0e00     movlw	0                  	MOVLW	0x00
+001cd8   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           _00146_DS_:
+                                           ;	.line	87; main.c	for (control_c=0; control_c<4; control_c++)
+001cda   0e1e     movlw	0x1e               	MOVLW	0x1e
+001cdc   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+001cde   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+001ce0   2a03     incf	0x3, 0x1, 0         	INCF	r0x03, F
+001ce2   2a00     incf	0, 0x1, 0           	INCF	r0x00, F
+001ce4   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+001ce6   2a01     incf	0x1, 0x1, 0         	INCF	r0x01, F
+001ce8   d71a     bra	0x1b1e               	BRA	_00144_DS_
+                                           _00148_DS_:
+001cea   cfe4     movff	0xfe4, 0xf         	MOVFF	PREINC1, r0x0f
+001cec   f00f
+001cee   cfe4     movff	0xfe4, 0xe         	MOVFF	PREINC1, r0x0e
+001cf0   f00e
+001cf2   cfe4     movff	0xfe4, 0xd         	MOVFF	PREINC1, r0x0d
+001cf4   f00d
+001cf6   cfe4     movff	0xfe4, 0xc         	MOVFF	PREINC1, r0x0c
+001cf8   f00c
+001cfa   cfe4     movff	0xfe4, 0xb         	MOVFF	PREINC1, r0x0b
+001cfc   f00b
+001cfe   cfe4     movff	0xfe4, 0xa         	MOVFF	PREINC1, r0x0a
+001d00   f00a
+001d02   cfe4     movff	0xfe4, 0x9         	MOVFF	PREINC1, r0x09
+001d04   f009
+001d06   cfe4     movff	0xfe4, 0x8         	MOVFF	PREINC1, r0x08
+001d08   f008
+001d0a   cfe4     movff	0xfe4, 0x7         	MOVFF	PREINC1, r0x07
+001d0c   f007
+001d0e   cfe4     movff	0xfe4, 0x6         	MOVFF	PREINC1, r0x06
+001d10   f006
+001d12   cfe4     movff	0xfe4, 0x5         	MOVFF	PREINC1, r0x05
+001d14   f005
+001d16   cfe4     movff	0xfe4, 0x4         	MOVFF	PREINC1, r0x04
+001d18   f004
+001d1a   cfe4     movff	0xfe4, 0x3         	MOVFF	PREINC1, r0x03
+001d1c   f003
+001d1e   cfe4     movff	0xfe4, 0x2         	MOVFF	PREINC1, r0x02
+001d20   f002
+001d22   cfe4     movff	0xfe4, 0x1         	MOVFF	PREINC1, r0x01
+001d24   f001
+001d26   cfe4     movff	0xfe4, 0           	MOVFF	PREINC1, r0x00
+001d28   f000
+001d2a   cfe4     movff	0xfe4, 0xfd9       	MOVFF	PREINC1, FSR2L
+001d2c   ffd9
+001d2e   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__down	code
+                                           _down:
+                                           ;	.line	66; main.c	void down(int _channel)
+0006fc   cfd9     movff	0xfd9, 0xfe5       	MOVFF	FSR2L, POSTDEC1
+0006fe   ffe5
+000700   cfe1     movff	0xfe1, 0xfd9       	MOVFF	FSR1L, FSR2L
+000702   ffd9
+000704   c000     movff	0, 0xfe5           	MOVFF	r0x00, POSTDEC1
+000706   ffe5
+000708   c001     movff	0x1, 0xfe5         	MOVFF	r0x01, POSTDEC1
+00070a   ffe5
+00070c   c002     movff	0x2, 0xfe5         	MOVFF	r0x02, POSTDEC1
+00070e   ffe5
+000710   c003     movff	0x3, 0xfe5         	MOVFF	r0x03, POSTDEC1
+000712   ffe5
+000714   c004     movff	0x4, 0xfe5         	MOVFF	r0x04, POSTDEC1
+000716   ffe5
+000718   c005     movff	0x5, 0xfe5         	MOVFF	r0x05, POSTDEC1
+00071a   ffe5
+00071c   c006     movff	0x6, 0xfe5         	MOVFF	r0x06, POSTDEC1
+00071e   ffe5
+000720   c007     movff	0x7, 0xfe5         	MOVFF	r0x07, POSTDEC1
+000722   ffe5
+000724   c008     movff	0x8, 0xfe5         	MOVFF	r0x08, POSTDEC1
+000726   ffe5
+000728   c009     movff	0x9, 0xfe5         	MOVFF	r0x09, POSTDEC1
+00072a   ffe5
+00072c   c00a     movff	0xa, 0xfe5         	MOVFF	r0x0a, POSTDEC1
+00072e   ffe5
+000730   c00b     movff	0xb, 0xfe5         	MOVFF	r0x0b, POSTDEC1
+000732   ffe5
+000734   c00c     movff	0xc, 0xfe5         	MOVFF	r0x0c, POSTDEC1
+000736   ffe5
+000738   c00d     movff	0xd, 0xfe5         	MOVFF	r0x0d, POSTDEC1
+00073a   ffe5
+00073c   c00e     movff	0xe, 0xfe5         	MOVFF	r0x0e, POSTDEC1
+00073e   ffe5
+000740   c00f     movff	0xf, 0xfe5         	MOVFF	r0x0f, POSTDEC1
+000742   ffe5
+000744   c010     movff	0x10, 0xfe5        	MOVFF	r0x10, POSTDEC1
+000746   ffe5
+000748   c011     movff	0x11, 0xfe5        	MOVFF	r0x11, POSTDEC1
+00074a   ffe5
+00074c   0e02     movlw	0x2                	MOVLW	0x02
+00074e   cfdb     movff	0xfdb, 0           	MOVFF	PLUSW2, r0x00
+000750   f000
+000752   0e03     movlw	0x3                	MOVLW	0x03
+000754   cfdb     movff	0xfdb, 0x1         	MOVFF	PLUSW2, r0x01
+000756   f001
+                                           ;	.line	68; main.c	long TD = channel[_channel].currTime-channel[_channel].timeup-channel[_channel].time;
+000758   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+00075a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00075c   5000     movf	0, 0, 0             	MOVF	r0x00, W
+00075e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000760   0e00     movlw	0                  	MOVLW	0x00
+000762   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000764   0e1e     movlw	0x1e               	MOVLW	0x1e
+000766   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000768   ec71     call	0x2ae2, 0           	CALL	__mulint
+00076a   f015
+00076c   6e02     movwf	0x2, 0             	MOVWF	r0x02
+00076e   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+000770   f003
+000772   0e04     movlw	0x4                	MOVLW	0x04
+000774   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000776   0e80     movlw	0x80               	MOVLW	LOW(_channel)
+000778   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+00077a   0e00     movlw	0                  	MOVLW	HIGH(_channel)
+00077c   2203     addwfc	0x3, 0x1, 0       	ADDWFC	r0x03, F
+00077e   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000780   0f18     addlw	0x18               	ADDLW	0x18
+000782   6e04     movwf	0x4, 0             	MOVWF	r0x04
+000784   0e00     movlw	0                  	MOVLW	0x00
+000786   2003     addwfc	0x3, 0, 0         	ADDWFC	r0x03, W
+000788   6e05     movwf	0x5, 0             	MOVWF	r0x05
+00078a   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+00078c   ffe9
+00078e   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+000790   ffea
+000792   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+000794   f004
+000796   cfee     movff	0xfee, 0x5         	MOVFF	POSTINC0, r0x05
+000798   f005
+00079a   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+00079c   f006
+00079e   cfef     movff	0xfef, 0x7         	MOVFF	INDF0, r0x07
+0007a0   f007
+0007a2   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+0007a4   0f0c     addlw	0xc                	ADDLW	0x0c
+0007a6   6e08     movwf	0x8, 0             	MOVWF	r0x08
+0007a8   0e00     movlw	0                  	MOVLW	0x00
+0007aa   2003     addwfc	0x3, 0, 0         	ADDWFC	r0x03, W
+0007ac   6e09     movwf	0x9, 0             	MOVWF	r0x09
+0007ae   c008     movff	0x8, 0xfe9         	MOVFF	r0x08, FSR0L
+0007b0   ffe9
+0007b2   c009     movff	0x9, 0xfea         	MOVFF	r0x09, FSR0H
+0007b4   ffea
+0007b6   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+0007b8   f008
+0007ba   cfee     movff	0xfee, 0x9         	MOVFF	POSTINC0, r0x09
+0007bc   f009
+0007be   cfee     movff	0xfee, 0xa         	MOVFF	POSTINC0, r0x0a
+0007c0   f00a
+0007c2   cfef     movff	0xfef, 0xb         	MOVFF	INDF0, r0x0b
+0007c4   f00b
+0007c6   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+0007c8   5e04     subwf	0x4, 0x1, 0        	SUBWF	r0x04, F
+0007ca   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+0007cc   5a05     subwfb	0x5, 0x1, 0       	SUBWFB	r0x05, F
+0007ce   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+0007d0   5a06     subwfb	0x6, 0x1, 0       	SUBWFB	r0x06, F
+0007d2   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+0007d4   5a07     subwfb	0x7, 0x1, 0       	SUBWFB	r0x07, F
+0007d6   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+0007d8   0f08     addlw	0x8                	ADDLW	0x08
+0007da   6e0c     movwf	0xc, 0             	MOVWF	r0x0c
+0007dc   0e00     movlw	0                  	MOVLW	0x00
+0007de   2003     addwfc	0x3, 0, 0         	ADDWFC	r0x03, W
+0007e0   6e0d     movwf	0xd, 0             	MOVWF	r0x0d
+0007e2   c00c     movff	0xc, 0xfe9         	MOVFF	r0x0c, FSR0L
+0007e4   ffe9
+0007e6   c00d     movff	0xd, 0xfea         	MOVFF	r0x0d, FSR0H
+0007e8   ffea
+0007ea   cfee     movff	0xfee, 0xc         	MOVFF	POSTINC0, r0x0c
+0007ec   f00c
+0007ee   cfee     movff	0xfee, 0xd         	MOVFF	POSTINC0, r0x0d
+0007f0   f00d
+0007f2   cfee     movff	0xfee, 0xe         	MOVFF	POSTINC0, r0x0e
+0007f4   f00e
+0007f6   cfef     movff	0xfef, 0xf         	MOVFF	INDF0, r0x0f
+0007f8   f00f
+0007fa   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+0007fc   5e04     subwf	0x4, 0x1, 0        	SUBWF	r0x04, F
+0007fe   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000800   5a05     subwfb	0x5, 0x1, 0       	SUBWFB	r0x05, F
+000802   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+000804   5a06     subwfb	0x6, 0x1, 0       	SUBWFB	r0x06, F
+000806   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+000808   5a07     subwfb	0x7, 0x1, 0       	SUBWFB	r0x07, F
+                                           ;	.line	69; main.c	long timeInT = TD-(((int)(TD / channel[_channel].T))*channel[_channel].T);
+00080a   0e10     movlw	0x10               	MOVLW	0x10
+00080c   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+00080e   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+000810   2a03     incf	0x3, 0x1, 0         	INCF	r0x03, F
+000812   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+000814   ffe9
+000816   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+000818   ffea
+00081a   cfee     movff	0xfee, 0x2         	MOVFF	POSTINC0, r0x02
+00081c   f002
+00081e   cfee     movff	0xfee, 0x3         	MOVFF	POSTINC0, r0x03
+000820   f003
+000822   cfee     movff	0xfee, 0xc         	MOVFF	POSTINC0, r0x0c
+000824   f00c
+000826   cfef     movff	0xfef, 0xd         	MOVFF	INDF0, r0x0d
+000828   f00d
+00082a   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+00082c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00082e   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000830   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000832   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000834   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000836   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000838   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00083a   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+00083c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00083e   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000840   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000842   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000844   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000846   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000848   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00084a   eccc     call	0x2198, 0           	CALL	__divslong
+00084c   f010
+00084e   6e0e     movwf	0xe, 0             	MOVWF	r0x0e
+000850   cff3     movff	0xff3, 0xf         	MOVFF	PRODL, r0x0f
+000852   f00f
+000854   cff4     movff	0xff4, 0x10        	MOVFF	PRODH, r0x10
+000856   f010
+000858   cfe9     movff	0xfe9, 0x11        	MOVFF	FSR0L, r0x11
+00085a   f011
+00085c   0e08     movlw	0x8                	MOVLW	0x08
+00085e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000860   6ae8     clrf	0xe8, 0             	CLRF	WREG
+000862   be0f     btfsc	0xf, 0x7, 0        	BTFSC	r0x0f, 7
+000864   0eff     movlw	0xff               	MOVLW	0xff
+000866   6e10     movwf	0x10, 0            	MOVWF	r0x10
+000868   6e11     movwf	0x11, 0            	MOVWF	r0x11
+00086a   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+00086c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00086e   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000870   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000872   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000874   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000876   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000878   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00087a   5011     movf	0x11, 0, 0          	MOVF	r0x11, W
+00087c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00087e   5010     movf	0x10, 0, 0          	MOVF	r0x10, W
+000880   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000882   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+000884   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000886   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+000888   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00088a   ecc2     call	0x1f84, 0           	CALL	__mullong
+00088c   f00f
+00088e   6e0e     movwf	0xe, 0             	MOVWF	r0x0e
+000890   cff3     movff	0xff3, 0xf         	MOVFF	PRODL, r0x0f
+000892   f00f
+000894   cff4     movff	0xff4, 0x10        	MOVFF	PRODH, r0x10
+000896   f010
+000898   cfe9     movff	0xfe9, 0x11        	MOVFF	FSR0L, r0x11
+00089a   f011
+00089c   0e08     movlw	0x8                	MOVLW	0x08
+00089e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+0008a0   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+0008a2   5c04     subwf	0x4, 0, 0          	SUBWF	r0x04, W
+0008a4   6e0e     movwf	0xe, 0             	MOVWF	r0x0e
+0008a6   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+0008a8   5805     subwfb	0x5, 0, 0         	SUBWFB	r0x05, W
+0008aa   6e0f     movwf	0xf, 0             	MOVWF	r0x0f
+0008ac   5010     movf	0x10, 0, 0          	MOVF	r0x10, W
+0008ae   5806     subwfb	0x6, 0, 0         	SUBWFB	r0x06, W
+0008b0   6e10     movwf	0x10, 0            	MOVWF	r0x10
+0008b2   5011     movf	0x11, 0, 0          	MOVF	r0x11, W
+0008b4   5807     subwfb	0x7, 0, 0         	SUBWFB	r0x07, W
+0008b6   6e11     movwf	0x11, 0            	MOVWF	r0x11
+                                           ;	.line	70; main.c	float perTimeUP = (float)TD/(float)channel[_channel].timeup;
+0008b8   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+0008ba   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008bc   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+0008be   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008c0   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+0008c2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008c4   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+0008c6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008c8   ec28     call	0x2850, 0           	CALL	___slong2fs
+0008ca   f014
+0008cc   6e04     movwf	0x4, 0             	MOVWF	r0x04
+0008ce   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+0008d0   f005
+0008d2   cff4     movff	0xff4, 0x6         	MOVFF	PRODH, r0x06
+0008d4   f006
+0008d6   cfe9     movff	0xfe9, 0x7         	MOVFF	FSR0L, r0x07
+0008d8   f007
+0008da   0e04     movlw	0x4                	MOVLW	0x04
+0008dc   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+0008de   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+0008e0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008e2   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+0008e4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008e6   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+0008e8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008ea   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+0008ec   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0008ee   ec28     call	0x2850, 0           	CALL	___slong2fs
+0008f0   f014
+0008f2   6e08     movwf	0x8, 0             	MOVWF	r0x08
+0008f4   cff3     movff	0xff3, 0x9         	MOVFF	PRODL, r0x09
+0008f6   f009
+0008f8   cff4     movff	0xff4, 0xa         	MOVFF	PRODH, r0x0a
+0008fa   f00a
+0008fc   cfe9     movff	0xfe9, 0xb         	MOVFF	FSR0L, r0x0b
+0008fe   f00b
+000900   0e04     movlw	0x4                	MOVLW	0x04
+000902   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000904   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000906   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000908   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+00090a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00090c   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+00090e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000910   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000912   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000914   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000916   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000918   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+00091a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00091c   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+00091e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000920   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000922   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000924   ec9f     call	0x173e, 0           	CALL	___fsdiv
+000926   f00b
+000928   6e04     movwf	0x4, 0             	MOVWF	r0x04
+00092a   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+00092c   f005
+00092e   cff4     movff	0xff4, 0x6         	MOVFF	PRODH, r0x06
+000930   f006
+000932   cfe9     movff	0xfe9, 0x7         	MOVFF	FSR0L, r0x07
+000934   f007
+000936   0e08     movlw	0x8                	MOVLW	0x08
+000938   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+                                           ;	.line	71; main.c	if (timeInT<=(1-perTimeUP)*channel[_channel].T/2) /// Se o tempo que passou dentro do período for menor q a metade do tempo que é pra ficar on
+00093a   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+00093c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00093e   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000940   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000942   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000944   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000946   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000948   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00094a   0e3f     movlw	0x3f               	MOVLW	0x3f
+00094c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00094e   0e80     movlw	0x80               	MOVLW	0x80
+000950   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000952   0e00     movlw	0                  	MOVLW	0x00
+000954   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000956   0e00     movlw	0                  	MOVLW	0x00
+000958   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00095a   ec61     call	0x24c2, 0           	CALL	___fssub
+00095c   f012
+00095e   6e04     movwf	0x4, 0             	MOVWF	r0x04
+000960   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+000962   f005
+000964   cff4     movff	0xff4, 0x6         	MOVFF	PRODH, r0x06
+000966   f006
+000968   cfe9     movff	0xfe9, 0x7         	MOVFF	FSR0L, r0x07
+00096a   f007
+00096c   0e08     movlw	0x8                	MOVLW	0x08
+00096e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000970   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000972   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000974   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000976   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000978   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+00097a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00097c   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+00097e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000980   ec28     call	0x2850, 0           	CALL	___slong2fs
+000982   f014
+000984   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000986   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+000988   f003
+00098a   cff4     movff	0xff4, 0x8         	MOVFF	PRODH, r0x08
+00098c   f008
+00098e   cfe9     movff	0xfe9, 0x9         	MOVFF	FSR0L, r0x09
+000990   f009
+000992   0e04     movlw	0x4                	MOVLW	0x04
+000994   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000996   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000998   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00099a   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+00099c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+00099e   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+0009a0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009a2   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+0009a4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009a6   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+0009a8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009aa   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+0009ac   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009ae   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+0009b0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009b2   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+0009b4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009b6   ecbb     call	0x1376, 0           	CALL	___fsmul
+0009b8   f009
+0009ba   6e02     movwf	0x2, 0             	MOVWF	r0x02
+0009bc   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+0009be   f003
+0009c0   cff4     movff	0xff4, 0x4         	MOVFF	PRODH, r0x04
+0009c2   f004
+0009c4   cfe9     movff	0xfe9, 0x5         	MOVFF	FSR0L, r0x05
+0009c6   f005
+0009c8   0e08     movlw	0x8                	MOVLW	0x08
+0009ca   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+0009cc   0e40     movlw	0x40               	MOVLW	0x40
+0009ce   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009d0   0e00     movlw	0                  	MOVLW	0x00
+0009d2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009d4   0e00     movlw	0                  	MOVLW	0x00
+0009d6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009d8   0e00     movlw	0                  	MOVLW	0x00
+0009da   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009dc   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+0009de   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009e0   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+0009e2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009e4   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+0009e6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009e8   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+0009ea   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+0009ec   ec9f     call	0x173e, 0           	CALL	___fsdiv
+0009ee   f00b
+0009f0   6e06     movwf	0x6, 0             	MOVWF	r0x06
+0009f2   cff3     movff	0xff3, 0x7         	MOVFF	PRODL, r0x07
+0009f4   f007
+0009f6   cff4     movff	0xff4, 0x8         	MOVFF	PRODH, r0x08
+0009f8   f008
+0009fa   cfe9     movff	0xfe9, 0x9         	MOVFF	FSR0L, r0x09
+0009fc   f009
+0009fe   0e08     movlw	0x8                	MOVLW	0x08
+000a00   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000a02   5011     movf	0x11, 0, 0          	MOVF	r0x11, W
+000a04   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a06   5010     movf	0x10, 0, 0          	MOVF	r0x10, W
+000a08   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a0a   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+000a0c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a0e   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+000a10   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a12   ec28     call	0x2850, 0           	CALL	___slong2fs
+000a14   f014
+000a16   6e0a     movwf	0xa, 0             	MOVWF	r0x0a
+000a18   cff3     movff	0xff3, 0xb         	MOVFF	PRODL, r0x0b
+000a1a   f00b
+000a1c   cff4     movff	0xff4, 0xc         	MOVFF	PRODH, r0x0c
+000a1e   f00c
+000a20   cfe9     movff	0xfe9, 0xd         	MOVFF	FSR0L, r0x0d
+000a22   f00d
+000a24   0e04     movlw	0x4                	MOVLW	0x04
+000a26   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000a28   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000a2a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a2c   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000a2e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a30   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000a32   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a34   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000a36   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a38   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000a3a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a3c   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000a3e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a40   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000a42   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a44   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000a46   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000a48   ec0b     call	0x2616, 0           	CALL	___fsgt
+000a4a   f013
+000a4c   6e06     movwf	0x6, 0             	MOVWF	r0x06
+000a4e   0e08     movlw	0x8                	MOVLW	0x08
+000a50   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000a52   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000a54   e12c     bnz	0xaae                	BNZ	_00126_DS_
+                                           ;	.line	73; main.c	c_c[_channel*2] = 1;
+000a56   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000a58   6e06     movwf	0x6, 0             	MOVWF	r0x06
+                                           ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000a5a   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000a5c   3606     rlcf	0x6, 0x1, 0         	RLCF	r0x06, F
+                                           ; ;multiply lit val:0x02 by variable r0x06 and store in r0x07
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000a5e   0e00     movlw	0                  	MOVLW	0x00
+000a60   be06     btfsc	0x6, 0x7, 0        	BTFSC	r0x06, 7
+000a62   0eff     movlw	0xff               	MOVLW	0xff
+000a64   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000a66   3406     rlcf	0x6, 0, 0           	RLCF	r0x06, W
+000a68   6e07     movwf	0x7, 0             	MOVWF	r0x07
+000a6a   6a08     clrf	0x8, 0              	CLRF	r0x08
+000a6c   be07     btfsc	0x7, 0x7, 0        	BTFSC	r0x07, 7
+000a6e   6808     setf	0x8, 0              	SETF	r0x08
+000a70   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000a72   2607     addwf	0x7, 0x1, 0        	ADDWF	r0x07, F
+000a74   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000a76   2208     addwfc	0x8, 0x1, 0       	ADDWFC	r0x08, F
+000a78   c007     movff	0x7, 0xfe9         	MOVFF	r0x07, FSR0L
+000a7a   ffe9
+000a7c   c008     movff	0x8, 0xfea         	MOVFF	r0x08, FSR0H
+000a7e   ffea
+000a80   0e01     movlw	0x1                	MOVLW	0x01
+000a82   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000a84   0e00     movlw	0                  	MOVLW	0x00
+000a86   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	74; main.c	c_c[_channel*2+1] = 0;
+000a88   2a06     incf	0x6, 0x1, 0         	INCF	r0x06, F
+                                           ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000a8a   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000a8c   3606     rlcf	0x6, 0x1, 0         	RLCF	r0x06, F
+000a8e   6a07     clrf	0x7, 0              	CLRF	r0x07
+000a90   be06     btfsc	0x6, 0x7, 0        	BTFSC	r0x06, 7
+000a92   6807     setf	0x7, 0              	SETF	r0x07
+000a94   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000a96   2606     addwf	0x6, 0x1, 0        	ADDWF	r0x06, F
+000a98   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000a9a   2207     addwfc	0x7, 0x1, 0       	ADDWFC	r0x07, F
+000a9c   c006     movff	0x6, 0xfe9         	MOVFF	r0x06, FSR0L
+000a9e   ffe9
+000aa0   c007     movff	0x7, 0xfea         	MOVFF	r0x07, FSR0H
+000aa2   ffea
+000aa4   0e00     movlw	0                  	MOVLW	0x00
+000aa6   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000aa8   0e00     movlw	0                  	MOVLW	0x00
+000aaa   6eef     movwf	0xef, 0            	MOVWF	INDF0
+000aac   d040     bra	0xb2e                	BRA	_00128_DS_
+                                           _00126_DS_:
+                                           ;	.line	76; main.c	else if (timeInT<=(1-perTimeUP)*channel[_channel].T) /// Se for a outra metade
+000aae   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000ab0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ab2   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000ab4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ab6   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000ab8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000aba   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000abc   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000abe   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000ac0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ac2   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000ac4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ac6   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000ac8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000aca   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000acc   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ace   ec0b     call	0x2616, 0           	CALL	___fsgt
+000ad0   f013
+000ad2   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000ad4   0e08     movlw	0x8                	MOVLW	0x08
+000ad6   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000ad8   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000ada   e129     bnz	0xb2e                	BNZ	_00128_DS_
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+                                           ;	.line	78; main.c	c_c[_channel*2] = 0;
+000adc   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000ade   3600     rlcf	0, 0x1, 0           	RLCF	r0x00, F
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x01
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000ae0   0e00     movlw	0                  	MOVLW	0x00
+000ae2   be00     btfsc	0, 0x7, 0          	BTFSC	r0x00, 7
+000ae4   0eff     movlw	0xff               	MOVLW	0xff
+000ae6   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000ae8   3400     rlcf	0, 0, 0             	RLCF	r0x00, W
+000aea   6e01     movwf	0x1, 0             	MOVWF	r0x01
+000aec   6a02     clrf	0x2, 0              	CLRF	r0x02
+000aee   be01     btfsc	0x1, 0x7, 0        	BTFSC	r0x01, 7
+000af0   6802     setf	0x2, 0              	SETF	r0x02
+000af2   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000af4   2601     addwf	0x1, 0x1, 0        	ADDWF	r0x01, F
+000af6   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000af8   2202     addwfc	0x2, 0x1, 0       	ADDWFC	r0x02, F
+000afa   c001     movff	0x1, 0xfe9         	MOVFF	r0x01, FSR0L
+000afc   ffe9
+000afe   c002     movff	0x2, 0xfea         	MOVFF	r0x02, FSR0H
+000b00   ffea
+000b02   0e00     movlw	0                  	MOVLW	0x00
+000b04   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000b06   0e00     movlw	0                  	MOVLW	0x00
+000b08   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	79; main.c	c_c[_channel*2+1] = 1;
+000b0a   2a00     incf	0, 0x1, 0           	INCF	r0x00, F
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000b0c   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000b0e   3600     rlcf	0, 0x1, 0           	RLCF	r0x00, F
+000b10   6a01     clrf	0x1, 0              	CLRF	r0x01
+000b12   be00     btfsc	0, 0x7, 0          	BTFSC	r0x00, 7
+000b14   6801     setf	0x1, 0              	SETF	r0x01
+000b16   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000b18   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+000b1a   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000b1c   2201     addwfc	0x1, 0x1, 0       	ADDWFC	r0x01, F
+000b1e   c000     movff	0, 0xfe9           	MOVFF	r0x00, FSR0L
+000b20   ffe9
+000b22   c001     movff	0x1, 0xfea         	MOVFF	r0x01, FSR0H
+000b24   ffea
+000b26   0e01     movlw	0x1                	MOVLW	0x01
+000b28   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000b2a   0e00     movlw	0                  	MOVLW	0x00
+000b2c   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           _00128_DS_:
+000b2e   cfe4     movff	0xfe4, 0x11        	MOVFF	PREINC1, r0x11
+000b30   f011
+000b32   cfe4     movff	0xfe4, 0x10        	MOVFF	PREINC1, r0x10
+000b34   f010
+000b36   cfe4     movff	0xfe4, 0xf         	MOVFF	PREINC1, r0x0f
+000b38   f00f
+000b3a   cfe4     movff	0xfe4, 0xe         	MOVFF	PREINC1, r0x0e
+000b3c   f00e
+000b3e   cfe4     movff	0xfe4, 0xd         	MOVFF	PREINC1, r0x0d
+000b40   f00d
+000b42   cfe4     movff	0xfe4, 0xc         	MOVFF	PREINC1, r0x0c
+000b44   f00c
+000b46   cfe4     movff	0xfe4, 0xb         	MOVFF	PREINC1, r0x0b
+000b48   f00b
+000b4a   cfe4     movff	0xfe4, 0xa         	MOVFF	PREINC1, r0x0a
+000b4c   f00a
+000b4e   cfe4     movff	0xfe4, 0x9         	MOVFF	PREINC1, r0x09
+000b50   f009
+000b52   cfe4     movff	0xfe4, 0x8         	MOVFF	PREINC1, r0x08
+000b54   f008
+000b56   cfe4     movff	0xfe4, 0x7         	MOVFF	PREINC1, r0x07
+000b58   f007
+000b5a   cfe4     movff	0xfe4, 0x6         	MOVFF	PREINC1, r0x06
+000b5c   f006
+000b5e   cfe4     movff	0xfe4, 0x5         	MOVFF	PREINC1, r0x05
+000b60   f005
+000b62   cfe4     movff	0xfe4, 0x4         	MOVFF	PREINC1, r0x04
+000b64   f004
+000b66   cfe4     movff	0xfe4, 0x3         	MOVFF	PREINC1, r0x03
+000b68   f003
+000b6a   cfe4     movff	0xfe4, 0x2         	MOVFF	PREINC1, r0x02
+000b6c   f002
+000b6e   cfe4     movff	0xfe4, 0x1         	MOVFF	PREINC1, r0x01
+000b70   f001
+000b72   cfe4     movff	0xfe4, 0           	MOVFF	PREINC1, r0x00
+000b74   f000
+000b76   cfe4     movff	0xfe4, 0xfd9       	MOVFF	PREINC1, FSR2L
+000b78   ffd9
+000b7a   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__top	code
+                                           _top:
+                                           ;	.line	47; main.c	void top(int _channel)
+001d30   cfd9     movff	0xfd9, 0xfe5       	MOVFF	FSR2L, POSTDEC1
+001d32   ffe5
+001d34   cfe1     movff	0xfe1, 0xfd9       	MOVFF	FSR1L, FSR2L
+001d36   ffd9
+001d38   c000     movff	0, 0xfe5           	MOVFF	r0x00, POSTDEC1
+001d3a   ffe5
+001d3c   c001     movff	0x1, 0xfe5         	MOVFF	r0x01, POSTDEC1
+001d3e   ffe5
+001d40   c002     movff	0x2, 0xfe5         	MOVFF	r0x02, POSTDEC1
+001d42   ffe5
+001d44   c003     movff	0x3, 0xfe5         	MOVFF	r0x03, POSTDEC1
+001d46   ffe5
+001d48   c004     movff	0x4, 0xfe5         	MOVFF	r0x04, POSTDEC1
+001d4a   ffe5
+001d4c   c005     movff	0x5, 0xfe5         	MOVFF	r0x05, POSTDEC1
+001d4e   ffe5
+001d50   c006     movff	0x6, 0xfe5         	MOVFF	r0x06, POSTDEC1
+001d52   ffe5
+001d54   c007     movff	0x7, 0xfe5         	MOVFF	r0x07, POSTDEC1
+001d56   ffe5
+001d58   c008     movff	0x8, 0xfe5         	MOVFF	r0x08, POSTDEC1
+001d5a   ffe5
+001d5c   c009     movff	0x9, 0xfe5         	MOVFF	r0x09, POSTDEC1
+001d5e   ffe5
+001d60   c00a     movff	0xa, 0xfe5         	MOVFF	r0x0a, POSTDEC1
+001d62   ffe5
+001d64   c00b     movff	0xb, 0xfe5         	MOVFF	r0x0b, POSTDEC1
+001d66   ffe5
+001d68   0e02     movlw	0x2                	MOVLW	0x02
+001d6a   cfdb     movff	0xfdb, 0           	MOVFF	PLUSW2, r0x00
+001d6c   f000
+001d6e   0e03     movlw	0x3                	MOVLW	0x03
+001d70   cfdb     movff	0xfdb, 0x1         	MOVFF	PLUSW2, r0x01
+001d72   f001
+                                           ;	.line	50; main.c	NPeriodosPassadosNoCanal[_channel] = (long)(channel[_channel].currTime / (channel[_channel].T / 2));
+001d74   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+001d76   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001d78   5000     movf	0, 0, 0             	MOVF	r0x00, W
+001d7a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001d7c   0e00     movlw	0                  	MOVLW	0x00
+001d7e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001d80   0e02     movlw	0x2                	MOVLW	0x02
+001d82   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001d84   ec71     call	0x2ae2, 0           	CALL	__mulint
+001d86   f015
+001d88   6e02     movwf	0x2, 0             	MOVWF	r0x02
+001d8a   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+001d8c   f003
+001d8e   0e04     movlw	0x4                	MOVLW	0x04
+001d90   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001d92   0ef8     movlw	0xf8               	MOVLW	LOW(_NPeriodosPassadosNoCanal)
+001d94   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+001d96   0e00     movlw	0                  	MOVLW	HIGH(_NPeriodosPassadosNoCanal)
+001d98   2203     addwfc	0x3, 0x1, 0       	ADDWFC	r0x03, F
+001d9a   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+001d9c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001d9e   5000     movf	0, 0, 0             	MOVF	r0x00, W
+001da0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001da2   0e00     movlw	0                  	MOVLW	0x00
+001da4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001da6   0e1e     movlw	0x1e               	MOVLW	0x1e
+001da8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001daa   ec71     call	0x2ae2, 0           	CALL	__mulint
+001dac   f015
+001dae   6e04     movwf	0x4, 0             	MOVWF	r0x04
+001db0   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+001db2   f005
+001db4   0e04     movlw	0x4                	MOVLW	0x04
+001db6   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001db8   0e80     movlw	0x80               	MOVLW	LOW(_channel)
+001dba   2604     addwf	0x4, 0x1, 0        	ADDWF	r0x04, F
+001dbc   0e00     movlw	0                  	MOVLW	HIGH(_channel)
+001dbe   2205     addwfc	0x5, 0x1, 0       	ADDWFC	r0x05, F
+001dc0   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001dc2   0f18     addlw	0x18               	ADDLW	0x18
+001dc4   6e06     movwf	0x6, 0             	MOVWF	r0x06
+001dc6   0e00     movlw	0                  	MOVLW	0x00
+001dc8   2005     addwfc	0x5, 0, 0         	ADDWFC	r0x05, W
+001dca   6e07     movwf	0x7, 0             	MOVWF	r0x07
+001dcc   c006     movff	0x6, 0xfe9         	MOVFF	r0x06, FSR0L
+001dce   ffe9
+001dd0   c007     movff	0x7, 0xfea         	MOVFF	r0x07, FSR0H
+001dd2   ffea
+001dd4   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+001dd6   f006
+001dd8   cfee     movff	0xfee, 0x7         	MOVFF	POSTINC0, r0x07
+001dda   f007
+001ddc   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+001dde   f008
+001de0   cfef     movff	0xfef, 0x9         	MOVFF	INDF0, r0x09
+001de2   f009
+001de4   0e10     movlw	0x10               	MOVLW	0x10
+001de6   2604     addwf	0x4, 0x1, 0        	ADDWF	r0x04, F
+001de8   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+001dea   2a05     incf	0x5, 0x1, 0         	INCF	r0x05, F
+001dec   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+001dee   ffe9
+001df0   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+001df2   ffea
+001df4   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+001df6   f004
+001df8   cfee     movff	0xfee, 0x5         	MOVFF	POSTINC0, r0x05
+001dfa   f005
+001dfc   cfee     movff	0xfee, 0xa         	MOVFF	POSTINC0, r0x0a
+001dfe   f00a
+001e00   cfef     movff	0xfef, 0xb         	MOVFF	INDF0, r0x0b
+001e02   f00b
+001e04   0e00     movlw	0                  	MOVLW	0x00
+001e06   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e08   0e00     movlw	0                  	MOVLW	0x00
+001e0a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e0c   0e00     movlw	0                  	MOVLW	0x00
+001e0e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e10   0e02     movlw	0x2                	MOVLW	0x02
+001e12   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e14   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+001e16   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e18   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+001e1a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e1c   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+001e1e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e20   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001e22   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e24   eccc     call	0x2198, 0           	CALL	__divslong
+001e26   f010
+001e28   6e04     movwf	0x4, 0             	MOVWF	r0x04
+001e2a   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+001e2c   f005
+001e2e   cff4     movff	0xff4, 0xa         	MOVFF	PRODH, r0x0a
+001e30   f00a
+001e32   cfe9     movff	0xfe9, 0xb         	MOVFF	FSR0L, r0x0b
+001e34   f00b
+001e36   0e08     movlw	0x8                	MOVLW	0x08
+001e38   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001e3a   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+001e3c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e3e   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+001e40   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e42   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+001e44   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e46   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001e48   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e4a   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+001e4c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e4e   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+001e50   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e52   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+001e54   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e56   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+001e58   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e5a   eccc     call	0x2198, 0           	CALL	__divslong
+001e5c   f010
+001e5e   6e04     movwf	0x4, 0             	MOVWF	r0x04
+001e60   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+001e62   f005
+001e64   cff4     movff	0xff4, 0x6         	MOVFF	PRODH, r0x06
+001e66   f006
+001e68   cfe9     movff	0xfe9, 0x7         	MOVFF	FSR0L, r0x07
+001e6a   f007
+001e6c   0e08     movlw	0x8                	MOVLW	0x08
+001e6e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001e70   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+001e72   ffe9
+001e74   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+001e76   ffea
+001e78   c004     movff	0x4, 0xfee         	MOVFF	r0x04, POSTINC0
+001e7a   ffee
+001e7c   c005     movff	0x5, 0xfef         	MOVFF	r0x05, INDF0
+001e7e   ffef
+                                           ;	.line	53; main.c	if (NPeriodosPassadosNoCanal[_channel]%2) /// Se o tempo que passou dentro do período for menor q a metade do tempo que é pra ficar on
+001e80   0e00     movlw	0                  	MOVLW	0x00
+001e82   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e84   0e02     movlw	0x2                	MOVLW	0x02
+001e86   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e88   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+001e8a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e8c   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+001e8e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+001e90   eca3     call	0x2946, 0           	CALL	__modsint
+001e92   f014
+001e94   6e02     movwf	0x2, 0             	MOVWF	r0x02
+001e96   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+001e98   f003
+001e9a   0e04     movlw	0x4                	MOVLW	0x04
+001e9c   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+001e9e   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+001ea0   1003     iorwf	0x3, 0, 0          	IORWF	r0x03, W
+001ea2   e02c     bz	0x1efc                	BZ	_00116_DS_
+                                           ;	.line	55; main.c	c_c[_channel*2] = 0;
+001ea4   5000     movf	0, 0, 0             	MOVF	r0x00, W
+001ea6   6e02     movwf	0x2, 0             	MOVWF	r0x02
+                                           ; ;multiply lit val:0x02 by variable r0x02 and store in r0x02
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001ea8   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001eaa   3602     rlcf	0x2, 0x1, 0         	RLCF	r0x02, F
+                                           ; ;multiply lit val:0x02 by variable r0x02 and store in r0x03
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001eac   0e00     movlw	0                  	MOVLW	0x00
+001eae   be02     btfsc	0x2, 0x7, 0        	BTFSC	r0x02, 7
+001eb0   0eff     movlw	0xff               	MOVLW	0xff
+001eb2   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001eb4   3402     rlcf	0x2, 0, 0           	RLCF	r0x02, W
+001eb6   6e03     movwf	0x3, 0             	MOVWF	r0x03
+001eb8   6a04     clrf	0x4, 0              	CLRF	r0x04
+001eba   be03     btfsc	0x3, 0x7, 0        	BTFSC	r0x03, 7
+001ebc   6804     setf	0x4, 0              	SETF	r0x04
+001ebe   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+001ec0   2603     addwf	0x3, 0x1, 0        	ADDWF	r0x03, F
+001ec2   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+001ec4   2204     addwfc	0x4, 0x1, 0       	ADDWFC	r0x04, F
+001ec6   c003     movff	0x3, 0xfe9         	MOVFF	r0x03, FSR0L
+001ec8   ffe9
+001eca   c004     movff	0x4, 0xfea         	MOVFF	r0x04, FSR0H
+001ecc   ffea
+001ece   0e00     movlw	0                  	MOVLW	0x00
+001ed0   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+001ed2   0e00     movlw	0                  	MOVLW	0x00
+001ed4   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	56; main.c	c_c[_channel*2+1] = 1;
+001ed6   2a02     incf	0x2, 0x1, 0         	INCF	r0x02, F
+                                           ; ;multiply lit val:0x02 by variable r0x02 and store in r0x02
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001ed8   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001eda   3602     rlcf	0x2, 0x1, 0         	RLCF	r0x02, F
+001edc   6a03     clrf	0x3, 0              	CLRF	r0x03
+001ede   be02     btfsc	0x2, 0x7, 0        	BTFSC	r0x02, 7
+001ee0   6803     setf	0x3, 0              	SETF	r0x03
+001ee2   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+001ee4   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+001ee6   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+001ee8   2203     addwfc	0x3, 0x1, 0       	ADDWFC	r0x03, F
+001eea   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+001eec   ffe9
+001eee   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+001ef0   ffea
+001ef2   0e01     movlw	0x1                	MOVLW	0x01
+001ef4   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+001ef6   0e00     movlw	0                  	MOVLW	0x00
+001ef8   6eef     movwf	0xef, 0            	MOVWF	INDF0
+001efa   d029     bra	0x1f4e               	BRA	_00118_DS_
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+                                           _00116_DS_:
+                                           ;	.line	60; main.c	c_c[_channel*2] = 1;
+001efc   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001efe   3600     rlcf	0, 0x1, 0           	RLCF	r0x00, F
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x01
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001f00   0e00     movlw	0                  	MOVLW	0x00
+001f02   be00     btfsc	0, 0x7, 0          	BTFSC	r0x00, 7
+001f04   0eff     movlw	0xff               	MOVLW	0xff
+001f06   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001f08   3400     rlcf	0, 0, 0             	RLCF	r0x00, W
+001f0a   6e01     movwf	0x1, 0             	MOVWF	r0x01
+001f0c   6a02     clrf	0x2, 0              	CLRF	r0x02
+001f0e   be01     btfsc	0x1, 0x7, 0        	BTFSC	r0x01, 7
+001f10   6802     setf	0x2, 0              	SETF	r0x02
+001f12   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+001f14   2601     addwf	0x1, 0x1, 0        	ADDWF	r0x01, F
+001f16   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+001f18   2202     addwfc	0x2, 0x1, 0       	ADDWFC	r0x02, F
+001f1a   c001     movff	0x1, 0xfe9         	MOVFF	r0x01, FSR0L
+001f1c   ffe9
+001f1e   c002     movff	0x2, 0xfea         	MOVFF	r0x02, FSR0H
+001f20   ffea
+001f22   0e01     movlw	0x1                	MOVLW	0x01
+001f24   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+001f26   0e00     movlw	0                  	MOVLW	0x00
+001f28   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	61; main.c	c_c[_channel*2+1] = 0;
+001f2a   2a00     incf	0, 0x1, 0           	INCF	r0x00, F
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+001f2c   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+001f2e   3600     rlcf	0, 0x1, 0           	RLCF	r0x00, F
+001f30   6a01     clrf	0x1, 0              	CLRF	r0x01
+001f32   be00     btfsc	0, 0x7, 0          	BTFSC	r0x00, 7
+001f34   6801     setf	0x1, 0              	SETF	r0x01
+001f36   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+001f38   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+001f3a   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+001f3c   2201     addwfc	0x1, 0x1, 0       	ADDWFC	r0x01, F
+001f3e   c000     movff	0, 0xfe9           	MOVFF	r0x00, FSR0L
+001f40   ffe9
+001f42   c001     movff	0x1, 0xfea         	MOVFF	r0x01, FSR0H
+001f44   ffea
+001f46   0e00     movlw	0                  	MOVLW	0x00
+001f48   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+001f4a   0e00     movlw	0                  	MOVLW	0x00
+001f4c   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           _00118_DS_:
+001f4e   cfe4     movff	0xfe4, 0xb         	MOVFF	PREINC1, r0x0b
+001f50   f00b
+001f52   cfe4     movff	0xfe4, 0xa         	MOVFF	PREINC1, r0x0a
+001f54   f00a
+001f56   cfe4     movff	0xfe4, 0x9         	MOVFF	PREINC1, r0x09
+001f58   f009
+001f5a   cfe4     movff	0xfe4, 0x8         	MOVFF	PREINC1, r0x08
+001f5c   f008
+001f5e   cfe4     movff	0xfe4, 0x7         	MOVFF	PREINC1, r0x07
+001f60   f007
+001f62   cfe4     movff	0xfe4, 0x6         	MOVFF	PREINC1, r0x06
+001f64   f006
+001f66   cfe4     movff	0xfe4, 0x5         	MOVFF	PREINC1, r0x05
+001f68   f005
+001f6a   cfe4     movff	0xfe4, 0x4         	MOVFF	PREINC1, r0x04
+001f6c   f004
+001f6e   cfe4     movff	0xfe4, 0x3         	MOVFF	PREINC1, r0x03
+001f70   f003
+001f72   cfe4     movff	0xfe4, 0x2         	MOVFF	PREINC1, r0x02
+001f74   f002
+001f76   cfe4     movff	0xfe4, 0x1         	MOVFF	PREINC1, r0x01
+001f78   f001
+001f7a   cfe4     movff	0xfe4, 0           	MOVFF	PREINC1, r0x00
+001f7c   f000
+001f7e   cfe4     movff	0xfe4, 0xfd9       	MOVFF	PREINC1, FSR2L
+001f80   ffd9
+001f82   0012     return	0                 	RETURN	
+                                           
+                                           ; ; Starting pCode block
+                                           S_main__up	code
+                                           _up:
+                                           ;	.line	30; main.c	void up(int _channel)
+000b7c   cfd9     movff	0xfd9, 0xfe5       	MOVFF	FSR2L, POSTDEC1
+000b7e   ffe5
+000b80   cfe1     movff	0xfe1, 0xfd9       	MOVFF	FSR1L, FSR2L
+000b82   ffd9
+000b84   c000     movff	0, 0xfe5           	MOVFF	r0x00, POSTDEC1
+000b86   ffe5
+000b88   c001     movff	0x1, 0xfe5         	MOVFF	r0x01, POSTDEC1
+000b8a   ffe5
+000b8c   c002     movff	0x2, 0xfe5         	MOVFF	r0x02, POSTDEC1
+000b8e   ffe5
+000b90   c003     movff	0x3, 0xfe5         	MOVFF	r0x03, POSTDEC1
+000b92   ffe5
+000b94   c004     movff	0x4, 0xfe5         	MOVFF	r0x04, POSTDEC1
+000b96   ffe5
+000b98   c005     movff	0x5, 0xfe5         	MOVFF	r0x05, POSTDEC1
+000b9a   ffe5
+000b9c   c006     movff	0x6, 0xfe5         	MOVFF	r0x06, POSTDEC1
+000b9e   ffe5
+000ba0   c007     movff	0x7, 0xfe5         	MOVFF	r0x07, POSTDEC1
+000ba2   ffe5
+000ba4   c008     movff	0x8, 0xfe5         	MOVFF	r0x08, POSTDEC1
+000ba6   ffe5
+000ba8   c009     movff	0x9, 0xfe5         	MOVFF	r0x09, POSTDEC1
+000baa   ffe5
+000bac   c00a     movff	0xa, 0xfe5         	MOVFF	r0x0a, POSTDEC1
+000bae   ffe5
+000bb0   c00b     movff	0xb, 0xfe5         	MOVFF	r0x0b, POSTDEC1
+000bb2   ffe5
+000bb4   c00c     movff	0xc, 0xfe5         	MOVFF	r0x0c, POSTDEC1
+000bb6   ffe5
+000bb8   c00d     movff	0xd, 0xfe5         	MOVFF	r0x0d, POSTDEC1
+000bba   ffe5
+000bbc   c00e     movff	0xe, 0xfe5         	MOVFF	r0x0e, POSTDEC1
+000bbe   ffe5
+000bc0   c00f     movff	0xf, 0xfe5         	MOVFF	r0x0f, POSTDEC1
+000bc2   ffe5
+000bc4   c010     movff	0x10, 0xfe5        	MOVFF	r0x10, POSTDEC1
+000bc6   ffe5
+000bc8   c011     movff	0x11, 0xfe5        	MOVFF	r0x11, POSTDEC1
+000bca   ffe5
+000bcc   0e02     movlw	0x2                	MOVLW	0x02
+000bce   cfdb     movff	0xfdb, 0           	MOVFF	PLUSW2, r0x00
+000bd0   f000
+000bd2   0e03     movlw	0x3                	MOVLW	0x03
+000bd4   cfdb     movff	0xfdb, 0x1         	MOVFF	PLUSW2, r0x01
+000bd6   f001
+                                           ;	.line	32; main.c	long timeInT = channel[_channel].currTime-(((int)(channel[_channel].currTime / channel[_channel].T))*channel[_channel].T);
+000bd8   5001     movf	0x1, 0, 0           	MOVF	r0x01, W
+000bda   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000bdc   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000bde   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000be0   0e00     movlw	0                  	MOVLW	0x00
+000be2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000be4   0e1e     movlw	0x1e               	MOVLW	0x1e
+000be6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000be8   ec71     call	0x2ae2, 0           	CALL	__mulint
+000bea   f015
+000bec   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000bee   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+000bf0   f003
+000bf2   0e04     movlw	0x4                	MOVLW	0x04
+000bf4   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000bf6   0e80     movlw	0x80               	MOVLW	LOW(_channel)
+000bf8   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+000bfa   0e00     movlw	0                  	MOVLW	HIGH(_channel)
+000bfc   2203     addwfc	0x3, 0x1, 0       	ADDWFC	r0x03, F
+000bfe   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000c00   0f18     addlw	0x18               	ADDLW	0x18
+000c02   6e04     movwf	0x4, 0             	MOVWF	r0x04
+000c04   0e00     movlw	0                  	MOVLW	0x00
+000c06   2003     addwfc	0x3, 0, 0         	ADDWFC	r0x03, W
+000c08   6e05     movwf	0x5, 0             	MOVWF	r0x05
+000c0a   c004     movff	0x4, 0xfe9         	MOVFF	r0x04, FSR0L
+000c0c   ffe9
+000c0e   c005     movff	0x5, 0xfea         	MOVFF	r0x05, FSR0H
+000c10   ffea
+000c12   cfee     movff	0xfee, 0x4         	MOVFF	POSTINC0, r0x04
+000c14   f004
+000c16   cfee     movff	0xfee, 0x5         	MOVFF	POSTINC0, r0x05
+000c18   f005
+000c1a   cfee     movff	0xfee, 0x6         	MOVFF	POSTINC0, r0x06
+000c1c   f006
+000c1e   cfef     movff	0xfef, 0x7         	MOVFF	INDF0, r0x07
+000c20   f007
+000c22   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000c24   0f10     addlw	0x10               	ADDLW	0x10
+000c26   6e08     movwf	0x8, 0             	MOVWF	r0x08
+000c28   0e00     movlw	0                  	MOVLW	0x00
+000c2a   2003     addwfc	0x3, 0, 0         	ADDWFC	r0x03, W
+000c2c   6e09     movwf	0x9, 0             	MOVWF	r0x09
+000c2e   c008     movff	0x8, 0xfe9         	MOVFF	r0x08, FSR0L
+000c30   ffe9
+000c32   c009     movff	0x9, 0xfea         	MOVFF	r0x09, FSR0H
+000c34   ffea
+000c36   cfee     movff	0xfee, 0x8         	MOVFF	POSTINC0, r0x08
+000c38   f008
+000c3a   cfee     movff	0xfee, 0x9         	MOVFF	POSTINC0, r0x09
+000c3c   f009
+000c3e   cfee     movff	0xfee, 0xa         	MOVFF	POSTINC0, r0x0a
+000c40   f00a
+000c42   cfef     movff	0xfef, 0xb         	MOVFF	INDF0, r0x0b
+000c44   f00b
+000c46   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000c48   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c4a   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000c4c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c4e   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000c50   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c52   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000c54   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c56   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000c58   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c5a   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000c5c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c5e   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000c60   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c62   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000c64   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c66   eccc     call	0x2198, 0           	CALL	__divslong
+000c68   f010
+000c6a   6e0c     movwf	0xc, 0             	MOVWF	r0x0c
+000c6c   cff3     movff	0xff3, 0xd         	MOVFF	PRODL, r0x0d
+000c6e   f00d
+000c70   cff4     movff	0xff4, 0xe         	MOVFF	PRODH, r0x0e
+000c72   f00e
+000c74   cfe9     movff	0xfe9, 0xf         	MOVFF	FSR0L, r0x0f
+000c76   f00f
+000c78   0e08     movlw	0x8                	MOVLW	0x08
+000c7a   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000c7c   6ae8     clrf	0xe8, 0             	CLRF	WREG
+000c7e   be0d     btfsc	0xd, 0x7, 0        	BTFSC	r0x0d, 7
+000c80   0eff     movlw	0xff               	MOVLW	0xff
+000c82   6e0e     movwf	0xe, 0             	MOVWF	r0x0e
+000c84   6e0f     movwf	0xf, 0             	MOVWF	r0x0f
+000c86   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000c88   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c8a   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000c8c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c8e   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000c90   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c92   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000c94   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c96   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+000c98   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c9a   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+000c9c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000c9e   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000ca0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ca2   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000ca4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ca6   ecc2     call	0x1f84, 0           	CALL	__mullong
+000ca8   f00f
+000caa   6e0c     movwf	0xc, 0             	MOVWF	r0x0c
+000cac   cff3     movff	0xff3, 0xd         	MOVFF	PRODL, r0x0d
+000cae   f00d
+000cb0   cff4     movff	0xff4, 0xe         	MOVFF	PRODH, r0x0e
+000cb2   f00e
+000cb4   cfe9     movff	0xfe9, 0xf         	MOVFF	FSR0L, r0x0f
+000cb6   f00f
+000cb8   0e08     movlw	0x8                	MOVLW	0x08
+000cba   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000cbc   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000cbe   5c04     subwf	0x4, 0, 0          	SUBWF	r0x04, W
+000cc0   6e0c     movwf	0xc, 0             	MOVWF	r0x0c
+000cc2   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000cc4   5805     subwfb	0x5, 0, 0         	SUBWFB	r0x05, W
+000cc6   6e0d     movwf	0xd, 0             	MOVWF	r0x0d
+000cc8   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+000cca   5806     subwfb	0x6, 0, 0         	SUBWFB	r0x06, W
+000ccc   6e0e     movwf	0xe, 0             	MOVWF	r0x0e
+000cce   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+000cd0   5807     subwfb	0x7, 0, 0         	SUBWFB	r0x07, W
+000cd2   6e0f     movwf	0xf, 0             	MOVWF	r0x0f
+                                           ;	.line	33; main.c	float perTimeUP = (float)channel[_channel].currTime/(float)channel[_channel].timeup;
+000cd4   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000cd6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000cd8   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000cda   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000cdc   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000cde   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ce0   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000ce2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ce4   ec28     call	0x2850, 0           	CALL	___slong2fs
+000ce6   f014
+000ce8   6e04     movwf	0x4, 0             	MOVWF	r0x04
+000cea   cff3     movff	0xff3, 0x5         	MOVFF	PRODL, r0x05
+000cec   f005
+000cee   cff4     movff	0xff4, 0x6         	MOVFF	PRODH, r0x06
+000cf0   f006
+000cf2   cfe9     movff	0xfe9, 0x7         	MOVFF	FSR0L, r0x07
+000cf4   f007
+000cf6   0e04     movlw	0x4                	MOVLW	0x04
+000cf8   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000cfa   0e0c     movlw	0xc                	MOVLW	0x0c
+000cfc   2602     addwf	0x2, 0x1, 0        	ADDWF	r0x02, F
+000cfe   b0d8     btfsc	0xd8, 0, 0         	BTFSC	STATUS, 0
+000d00   2a03     incf	0x3, 0x1, 0         	INCF	r0x03, F
+000d02   c002     movff	0x2, 0xfe9         	MOVFF	r0x02, FSR0L
+000d04   ffe9
+000d06   c003     movff	0x3, 0xfea         	MOVFF	r0x03, FSR0H
+000d08   ffea
+000d0a   cfee     movff	0xfee, 0x2         	MOVFF	POSTINC0, r0x02
+000d0c   f002
+000d0e   cfee     movff	0xfee, 0x3         	MOVFF	POSTINC0, r0x03
+000d10   f003
+000d12   cfee     movff	0xfee, 0x10        	MOVFF	POSTINC0, r0x10
+000d14   f010
+000d16   cfef     movff	0xfef, 0x11        	MOVFF	INDF0, r0x11
+000d18   f011
+000d1a   5011     movf	0x11, 0, 0          	MOVF	r0x11, W
+000d1c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d1e   5010     movf	0x10, 0, 0          	MOVF	r0x10, W
+000d20   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d22   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000d24   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d26   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000d28   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d2a   ec28     call	0x2850, 0           	CALL	___slong2fs
+000d2c   f014
+000d2e   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000d30   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+000d32   f003
+000d34   cff4     movff	0xff4, 0x10        	MOVFF	PRODH, r0x10
+000d36   f010
+000d38   cfe9     movff	0xfe9, 0x11        	MOVFF	FSR0L, r0x11
+000d3a   f011
+000d3c   0e04     movlw	0x4                	MOVLW	0x04
+000d3e   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000d40   5011     movf	0x11, 0, 0          	MOVF	r0x11, W
+000d42   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d44   5010     movf	0x10, 0, 0          	MOVF	r0x10, W
+000d46   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d48   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000d4a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d4c   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000d4e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d50   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000d52   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d54   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000d56   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d58   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000d5a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d5c   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000d5e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d60   ec9f     call	0x173e, 0           	CALL	___fsdiv
+000d62   f00b
+000d64   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000d66   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+000d68   f003
+000d6a   cff4     movff	0xff4, 0x4         	MOVFF	PRODH, r0x04
+000d6c   f004
+000d6e   cfe9     movff	0xfe9, 0x5         	MOVFF	FSR0L, r0x05
+000d70   f005
+000d72   0e08     movlw	0x8                	MOVLW	0x08
+000d74   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+                                           ;	.line	34; main.c	if (timeInT<=perTimeUP*channel[_channel].T/2) /// Se o tempo que passou dentro do período for menor q a metade do tempo que é pra ficar on
+000d76   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000d78   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d7a   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000d7c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d7e   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000d80   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d82   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000d84   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000d86   ec28     call	0x2850, 0           	CALL	___slong2fs
+000d88   f014
+000d8a   6e06     movwf	0x6, 0             	MOVWF	r0x06
+000d8c   cff3     movff	0xff3, 0x7         	MOVFF	PRODL, r0x07
+000d8e   f007
+000d90   cff4     movff	0xff4, 0x8         	MOVFF	PRODH, r0x08
+000d92   f008
+000d94   cfe9     movff	0xfe9, 0x9         	MOVFF	FSR0L, r0x09
+000d96   f009
+000d98   0e04     movlw	0x4                	MOVLW	0x04
+000d9a   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000d9c   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000d9e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000da0   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000da2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000da4   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000da6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000da8   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000daa   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000dac   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000dae   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000db0   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000db2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000db4   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000db6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000db8   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000dba   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000dbc   ecbb     call	0x1376, 0           	CALL	___fsmul
+000dbe   f009
+000dc0   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000dc2   cff3     movff	0xff3, 0x3         	MOVFF	PRODL, r0x03
+000dc4   f003
+000dc6   cff4     movff	0xff4, 0x4         	MOVFF	PRODH, r0x04
+000dc8   f004
+000dca   cfe9     movff	0xfe9, 0x5         	MOVFF	FSR0L, r0x05
+000dcc   f005
+000dce   0e08     movlw	0x8                	MOVLW	0x08
+000dd0   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000dd2   0e40     movlw	0x40               	MOVLW	0x40
+000dd4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000dd6   0e00     movlw	0                  	MOVLW	0x00
+000dd8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000dda   0e00     movlw	0                  	MOVLW	0x00
+000ddc   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000dde   0e00     movlw	0                  	MOVLW	0x00
+000de0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000de2   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000de4   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000de6   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000de8   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000dea   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000dec   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000dee   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000df0   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000df2   ec9f     call	0x173e, 0           	CALL	___fsdiv
+000df4   f00b
+000df6   6e06     movwf	0x6, 0             	MOVWF	r0x06
+000df8   cff3     movff	0xff3, 0x7         	MOVFF	PRODL, r0x07
+000dfa   f007
+000dfc   cff4     movff	0xff4, 0x8         	MOVFF	PRODH, r0x08
+000dfe   f008
+000e00   cfe9     movff	0xfe9, 0x9         	MOVFF	FSR0L, r0x09
+000e02   f009
+000e04   0e08     movlw	0x8                	MOVLW	0x08
+000e06   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000e08   500f     movf	0xf, 0, 0           	MOVF	r0x0f, W
+000e0a   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e0c   500e     movf	0xe, 0, 0           	MOVF	r0x0e, W
+000e0e   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e10   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000e12   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e14   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000e16   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e18   ec28     call	0x2850, 0           	CALL	___slong2fs
+000e1a   f014
+000e1c   6e0a     movwf	0xa, 0             	MOVWF	r0x0a
+000e1e   cff3     movff	0xff3, 0xb         	MOVFF	PRODL, r0x0b
+000e20   f00b
+000e22   cff4     movff	0xff4, 0xc         	MOVFF	PRODH, r0x0c
+000e24   f00c
+000e26   cfe9     movff	0xfe9, 0xd         	MOVFF	FSR0L, r0x0d
+000e28   f00d
+000e2a   0e04     movlw	0x4                	MOVLW	0x04
+000e2c   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000e2e   5009     movf	0x9, 0, 0           	MOVF	r0x09, W
+000e30   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e32   5008     movf	0x8, 0, 0           	MOVF	r0x08, W
+000e34   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e36   5007     movf	0x7, 0, 0           	MOVF	r0x07, W
+000e38   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e3a   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000e3c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e3e   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000e40   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e42   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000e44   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e46   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000e48   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e4a   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000e4c   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000e4e   ec0b     call	0x2616, 0           	CALL	___fsgt
+000e50   f013
+000e52   6e06     movwf	0x6, 0             	MOVWF	r0x06
+000e54   0e08     movlw	0x8                	MOVLW	0x08
+000e56   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000e58   5006     movf	0x6, 0, 0           	MOVF	r0x06, W
+000e5a   e12c     bnz	0xeb4                	BNZ	_00108_DS_
+                                           ;	.line	36; main.c	c_c[_channel*2] = 1;
+000e5c   5000     movf	0, 0, 0             	MOVF	r0x00, W
+000e5e   6e06     movwf	0x6, 0             	MOVWF	r0x06
+                                           ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000e60   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000e62   3606     rlcf	0x6, 0x1, 0         	RLCF	r0x06, F
+                                           ; ;multiply lit val:0x02 by variable r0x06 and store in r0x07
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000e64   0e00     movlw	0                  	MOVLW	0x00
+000e66   be06     btfsc	0x6, 0x7, 0        	BTFSC	r0x06, 7
+000e68   0eff     movlw	0xff               	MOVLW	0xff
+000e6a   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000e6c   3406     rlcf	0x6, 0, 0           	RLCF	r0x06, W
+000e6e   6e07     movwf	0x7, 0             	MOVWF	r0x07
+000e70   6a08     clrf	0x8, 0              	CLRF	r0x08
+000e72   be07     btfsc	0x7, 0x7, 0        	BTFSC	r0x07, 7
+000e74   6808     setf	0x8, 0              	SETF	r0x08
+000e76   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000e78   2607     addwf	0x7, 0x1, 0        	ADDWF	r0x07, F
+000e7a   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000e7c   2208     addwfc	0x8, 0x1, 0       	ADDWFC	r0x08, F
+000e7e   c007     movff	0x7, 0xfe9         	MOVFF	r0x07, FSR0L
+000e80   ffe9
+000e82   c008     movff	0x8, 0xfea         	MOVFF	r0x08, FSR0H
+000e84   ffea
+000e86   0e01     movlw	0x1                	MOVLW	0x01
+000e88   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000e8a   0e00     movlw	0                  	MOVLW	0x00
+000e8c   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	37; main.c	c_c[_channel*2+1] = 0;
+000e8e   2a06     incf	0x6, 0x1, 0         	INCF	r0x06, F
+                                           ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000e90   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000e92   3606     rlcf	0x6, 0x1, 0         	RLCF	r0x06, F
+000e94   6a07     clrf	0x7, 0              	CLRF	r0x07
+000e96   be06     btfsc	0x6, 0x7, 0        	BTFSC	r0x06, 7
+000e98   6807     setf	0x7, 0              	SETF	r0x07
+000e9a   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000e9c   2606     addwf	0x6, 0x1, 0        	ADDWF	r0x06, F
+000e9e   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000ea0   2207     addwfc	0x7, 0x1, 0       	ADDWFC	r0x07, F
+000ea2   c006     movff	0x6, 0xfe9         	MOVFF	r0x06, FSR0L
+000ea4   ffe9
+000ea6   c007     movff	0x7, 0xfea         	MOVFF	r0x07, FSR0H
+000ea8   ffea
+000eaa   0e00     movlw	0                  	MOVLW	0x00
+000eac   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000eae   0e00     movlw	0                  	MOVLW	0x00
+000eb0   6eef     movwf	0xef, 0            	MOVWF	INDF0
+000eb2   d040     bra	0xf34                	BRA	_00110_DS_
+                                           _00108_DS_:
+                                           ;	.line	39; main.c	else if (timeInT<=perTimeUP*channel[_channel].T) /// Se for a outra metade
+000eb4   5005     movf	0x5, 0, 0           	MOVF	r0x05, W
+000eb6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000eb8   5004     movf	0x4, 0, 0           	MOVF	r0x04, W
+000eba   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ebc   5003     movf	0x3, 0, 0           	MOVF	r0x03, W
+000ebe   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ec0   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000ec2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ec4   500d     movf	0xd, 0, 0           	MOVF	r0x0d, W
+000ec6   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ec8   500c     movf	0xc, 0, 0           	MOVF	r0x0c, W
+000eca   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ecc   500b     movf	0xb, 0, 0           	MOVF	r0x0b, W
+000ece   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ed0   500a     movf	0xa, 0, 0           	MOVF	r0x0a, W
+000ed2   6ee5     movwf	0xe5, 0            	MOVWF	POSTDEC1
+000ed4   ec0b     call	0x2616, 0           	CALL	___fsgt
+000ed6   f013
+000ed8   6e02     movwf	0x2, 0             	MOVWF	r0x02
+000eda   0e08     movlw	0x8                	MOVLW	0x08
+000edc   26e1     addwf	0xe1, 0x1, 0       	ADDWF	FSR1L, F
+000ede   5002     movf	0x2, 0, 0           	MOVF	r0x02, W
+000ee0   e129     bnz	0xf34                	BNZ	_00110_DS_
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+                                           ;	.line	41; main.c	c_c[_channel*2] = 0;
+000ee2   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000ee4   3600     rlcf	0, 0x1, 0           	RLCF	r0x00, F
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x01
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000ee6   0e00     movlw	0                  	MOVLW	0x00
+000ee8   be00     btfsc	0, 0x7, 0          	BTFSC	r0x00, 7
+000eea   0eff     movlw	0xff               	MOVLW	0xff
+000eec   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000eee   3400     rlcf	0, 0, 0             	RLCF	r0x00, W
+000ef0   6e01     movwf	0x1, 0             	MOVWF	r0x01
+000ef2   6a02     clrf	0x2, 0              	CLRF	r0x02
+000ef4   be01     btfsc	0x1, 0x7, 0        	BTFSC	r0x01, 7
+000ef6   6802     setf	0x2, 0              	SETF	r0x02
+000ef8   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000efa   2601     addwf	0x1, 0x1, 0        	ADDWF	r0x01, F
+000efc   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000efe   2202     addwfc	0x2, 0x1, 0       	ADDWFC	r0x02, F
+000f00   c001     movff	0x1, 0xfe9         	MOVFF	r0x01, FSR0L
+000f02   ffe9
+000f04   c002     movff	0x2, 0xfea         	MOVFF	r0x02, FSR0H
+000f06   ffea
+000f08   0e00     movlw	0                  	MOVLW	0x00
+000f0a   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000f0c   0e00     movlw	0                  	MOVLW	0x00
+000f0e   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           ;	.line	42; main.c	c_c[_channel*2+1] = 1;
+000f10   2a00     incf	0, 0x1, 0           	INCF	r0x00, F
+                                           ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+                                           ; ;Unrolled 8 X 8 multiplication
+                                           ; ;FIXME: the function does not support result==WREG
+000f12   90d8     bcf	0xd8, 0, 0           	BCF	STATUS, 0
+000f14   3600     rlcf	0, 0x1, 0           	RLCF	r0x00, F
+000f16   6a01     clrf	0x1, 0              	CLRF	r0x01
+000f18   be00     btfsc	0, 0x7, 0          	BTFSC	r0x00, 7
+000f1a   6801     setf	0x1, 0              	SETF	r0x01
+000f1c   0e00     movlw	0                  	MOVLW	LOW(_c_c)
+000f1e   2600     addwf	0, 0x1, 0          	ADDWF	r0x00, F
+000f20   0e02     movlw	0x2                	MOVLW	HIGH(_c_c)
+000f22   2201     addwfc	0x1, 0x1, 0       	ADDWFC	r0x01, F
+000f24   c000     movff	0, 0xfe9           	MOVFF	r0x00, FSR0L
+000f26   ffe9
+000f28   c001     movff	0x1, 0xfea         	MOVFF	r0x01, FSR0H
+000f2a   ffea
+000f2c   0e01     movlw	0x1                	MOVLW	0x01
+000f2e   6eee     movwf	0xee, 0            	MOVWF	POSTINC0
+000f30   0e00     movlw	0                  	MOVLW	0x00
+000f32   6eef     movwf	0xef, 0            	MOVWF	INDF0
+                                           _00110_DS_:
+000f34   cfe4     movff	0xfe4, 0x11        	MOVFF	PREINC1, r0x11
+000f36   f011
+000f38   cfe4     movff	0xfe4, 0x10        	MOVFF	PREINC1, r0x10
+000f3a   f010
+000f3c   cfe4     movff	0xfe4, 0xf         	MOVFF	PREINC1, r0x0f
+000f3e   f00f
+000f40   cfe4     movff	0xfe4, 0xe         	MOVFF	PREINC1, r0x0e
+000f42   f00e
+000f44   cfe4     movff	0xfe4, 0xd         	MOVFF	PREINC1, r0x0d
+000f46   f00d
+000f48   cfe4     movff	0xfe4, 0xc         	MOVFF	PREINC1, r0x0c
+000f4a   f00c
+000f4c   cfe4     movff	0xfe4, 0xb         	MOVFF	PREINC1, r0x0b
+000f4e   f00b
+000f50   cfe4     movff	0xfe4, 0xa         	MOVFF	PREINC1, r0x0a
+000f52   f00a
+000f54   cfe4     movff	0xfe4, 0x9         	MOVFF	PREINC1, r0x09
+000f56   f009
+000f58   cfe4     movff	0xfe4, 0x8         	MOVFF	PREINC1, r0x08
+000f5a   f008
+000f5c   cfe4     movff	0xfe4, 0x7         	MOVFF	PREINC1, r0x07
+000f5e   f007
+000f60   cfe4     movff	0xfe4, 0x6         	MOVFF	PREINC1, r0x06
+000f62   f006
+000f64   cfe4     movff	0xfe4, 0x5         	MOVFF	PREINC1, r0x05
+000f66   f005
+000f68   cfe4     movff	0xfe4, 0x4         	MOVFF	PREINC1, r0x04
+000f6a   f004
+000f6c   cfe4     movff	0xfe4, 0x3         	MOVFF	PREINC1, r0x03
+000f6e   f003
+000f70   cfe4     movff	0xfe4, 0x2         	MOVFF	PREINC1, r0x02
+000f72   f002
+000f74   cfe4     movff	0xfe4, 0x1         	MOVFF	PREINC1, r0x01
+000f76   f001
+000f78   cfe4     movff	0xfe4, 0           	MOVFF	PREINC1, r0x00
+000f7a   f000
+000f7c   cfe4     movff	0xfe4, 0xfd9       	MOVFF	PREINC1, FSR2L
+000f7e   ffd9
+000f80   0012     return	0                 	RETURN	
+                                           
+                                           
+                                           
+                                           ; Statistics:
+                                           ; code size:	 5172 (0x1434) bytes ( 3.95%)
+                                           ;           	 2586 (0x0a1a) words
+                                           ; udata size:	  148 (0x0094) bytes (11.56%)
+                                           ; access size:	   18 (0x0012) bytes
+                                           
+                                           
+                                           	end

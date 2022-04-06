@@ -1,0 +1,23 @@
+main
+	Send
+		memset
+		strncpy
+		strncat
+		UART1_Tx_Idle
+		UART1_Write_Text
+			UART1_Write
+	UART1_Data_Ready
+	memset
+	UART1_Read_Text
+		UART1_Data_Ready
+		UART1_Read
+	strcmp
+	protocol
+		strncpy
+		atoi
+			isdigit
+			Mul_16x16_U
+	strlen
+	strcpy
+	__CC2DW
+	UART1_Init

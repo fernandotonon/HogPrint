@@ -1,0 +1,51 @@
+21:04:52: Creating resource group General
+21:04:52: Creating resource group Internal
+21:04:52: Creating resource group Autodetect
+21:04:52: SceneManagerFactory for type 'DefaultSceneManager' registered.
+21:04:52: Registering ResourceManager for type Material
+21:04:52: Registering ResourceManager for type Mesh
+21:04:52: Registering ResourceManager for type Skeleton
+21:04:52: MovableObjectFactory for type 'ParticleSystem' registered.
+21:04:52: OverlayElementFactory for type Panel registered.
+21:04:52: OverlayElementFactory for type BorderPanel registered.
+21:04:52: OverlayElementFactory for type TextArea registered.
+21:04:52: Registering ResourceManager for type Font
+21:04:52: ArchiveFactory for archive type FileSystem registered.
+21:04:52: ArchiveFactory for archive type Zip registered.
+21:04:52: DDS codec registering
+21:04:52: FreeImage version: 3.13.1
+21:04:52: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+21:04:52: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
+21:04:52: Registering ResourceManager for type HighLevelGpuProgram
+21:04:52: Registering ResourceManager for type Compositor
+21:04:52: MovableObjectFactory for type 'Entity' registered.
+21:04:52: MovableObjectFactory for type 'Light' registered.
+21:04:52: MovableObjectFactory for type 'BillboardSet' registered.
+21:04:52: MovableObjectFactory for type 'ManualObject' registered.
+21:04:52: MovableObjectFactory for type 'BillboardChain' registered.
+21:04:52: MovableObjectFactory for type 'RibbonTrail' registered.
+21:04:52: Loading library ./RenderSystem_GL.dll
+21:04:52: Installing plugin: GL RenderSystem
+21:04:52: OpenGL Rendering Subsystem created.
+21:04:52: Plugin successfully installed
+21:04:52: *-*-* OGRE Initialising
+21:04:52: *-*-* Version 1.7.2 (Cthugha)
+21:04:52: CPU Identifier & Features
+21:04:52: -------------------------
+21:04:52:  *   CPU ID: AuthenticAMD: AMD Athlon(tm) 64 Processor 3700+
+21:04:52:  *      SSE: yes
+21:04:52:  *     SSE2: yes
+21:04:52:  *     SSE3: yes
+21:04:52:  *      MMX: yes
+21:04:52:  *   MMXEXT: yes
+21:04:52:  *    3DNOW: yes
+21:04:52:  * 3DNOWEXT: yes
+21:04:52:  *     CMOV: yes
+21:04:52:  *      TSC: yes
+21:04:52:  *      FPU: yes
+21:04:52:  *      PRO: yes
+21:04:52:  *       HT: no
+21:04:52: -------------------------
+21:04:52: *** Starting Win32GL Subsystem ***
+21:04:52: Creating resource group Essential
+21:04:52: OGRE EXCEPTION(5:ItemIdentityException): Cannot find an archive factory to deal with archive of type DataFile in ArchiveManager::load at E:\ogre_src_v1-7-2\OgreMain\src\OgreArchiveManager.cpp (line 67)

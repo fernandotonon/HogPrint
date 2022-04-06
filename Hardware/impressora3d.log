@@ -1,0 +1,22 @@
+Line	MessageNo	File Name
+0	1	mikroCPIC1618.exe -MSF -DBG -pP18F452 -DL -O11111114 -fo20 -N"C:\DropBox\Dropbox\Outros\Impressora3D\Hardware\impressora3d.mcppi" -SP"C:\Program Files (x86)\Mikroelektronika\mikroC PRO for PIC\defs\" -SP"C:\Program Files (x86)\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -SP"C:\DropBox\Dropbox\Outros\Impressora3D\Hardware\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -SP"C:\Users\H3xaCod3\Desktop\Impressora3D\Hardware\" -SP"e:\mikroc\defs\" -SP"e:\mikroc\uses\P18\" -SP"C:\Users\alexandro\Documents\My Dropbox\Outros\Impressora3D\Hardware\" -SP"D:\mikroC PRO for PIC\defs\" -SP"D:\mikroC PRO for PIC\uses\P18\" -SP"C:\Users\H3xaCod3\Dropbox\Outros\Impressora3D\Hardware\" "impressora3d.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_CString.mcl" "__Lib_CStdlib.mcl" "__Lib_UART_c67.mcl"	 
+warning: 0	1501	Specified search path does not exist: 'C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\defs'	 
+warning: 0	1501	Specified search path does not exist: 'C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18'	 
+warning: 0	1501	Specified search path does not exist: 'C:\Users\H3xaCod3\Desktop\Impressora3D\Hardware'	 
+warning: 0	1501	Specified search path does not exist: 'e:\mikroc\defs'	 
+warning: 0	1501	Specified search path does not exist: 'e:\mikroc\uses\P18'	 
+warning: 0	1501	Specified search path does not exist: 'C:\Users\alexandro\Documents\My Dropbox\Outros\Impressora3D\Hardware'	 
+warning: 0	1501	Specified search path does not exist: 'D:\mikroC PRO for PIC\defs'	 
+warning: 0	1501	Specified search path does not exist: 'D:\mikroC PRO for PIC\uses\P18'	 
+warning: 0	1501	Specified search path does not exist: 'C:\Users\H3xaCod3\Dropbox\Outros\Impressora3D\Hardware'	 
+diagnostics: 0	125	All files Preprocessed in 31 ms	 
+diagnostics: 0	121	Compilation Started	impressora3d.c
+warning: 54	1509	Generated baud rate is 9615 bps (error = 0.16 percent)	impressora3d.c
+diagnostics: 110	122	Compiled Successfully	impressora3d.c
+diagnostics: 0	126	All files Compiled in 141 ms	 
+hint: 0	1140	Used RAM (bytes): 79 (5%)  Free RAM (bytes): 1436 (95%)	Used RAM (bytes): 79 (5%)  Free RAM (bytes): 1436 (95%)
+hint: 0	1140	Used ROM (bytes): 2298 (7%)  Free ROM (bytes): 30470 (93%)	Used ROM (bytes): 2298 (7%)  Free ROM (bytes): 30470 (93%)
+diagnostics: 0	124	Project Linked Successfully	impressora3d.mcppi
+diagnostics: 0	127	Linked in 436 ms	 
+diagnostics: 0	128	Project 'impressora3d.mcppi' completed: 764 ms	 
+diagnostics: 0	103	Finished successfully: 24 Sep 2011, 20:33:38	impressora3d.mcppi

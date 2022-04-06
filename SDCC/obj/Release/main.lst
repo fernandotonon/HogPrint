@@ -1,0 +1,3124 @@
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00001 ;--------------------------------------------------------
+               00002 ; File Created by SDCC : free open source ANSI-C Compiler
+               00003 ; Version 2.9.0 #5416 (Mar 22 2009) (MINGW32)
+               00004 ; This file was generated Fri Sep 09 12:42:44 2011
+               00005 ;--------------------------------------------------------
+               00006 ; PIC16 port for the Microchip 16-bit core micros
+               00007 ;--------------------------------------------------------
+               00008         list    p=18f452
+               00009 
+               00010         radix dec
+               00011 
+               00012 ;--------------------------------------------------------
+               00013 ; public variables in this module
+               00014 ;--------------------------------------------------------
+               00015         global _channel
+               00016         global _c_c
+               00017         global _c_total
+               00018         global _c
+               00019         global _NPeriodosPassadosNoCanal
+               00020         global _up
+               00021         global _top
+               00022         global _down
+               00023         global _control
+               00024         global _main
+               00025 
+               00026 ;--------------------------------------------------------
+               00027 ; extern variables in this module
+               00028 ;--------------------------------------------------------
+               00029         extern _PORTAbits
+               00030         extern _PORTBbits
+               00031         extern _PORTCbits
+               00032         extern _PORTDbits
+               00033         extern _PORTEbits
+               00034         extern _LATAbits
+               00035         extern _LATBbits
+               00036         extern _LATCbits
+               00037         extern _LATDbits
+               00038         extern _LATEbits
+               00039         extern _TRISAbits
+               00040         extern _TRISBbits
+               00041         extern _TRISCbits
+               00042         extern _TRISDbits
+               00043         extern _TRISEbits
+               00044         extern _PIE1bits
+               00045         extern _PIR1bits
+               00046         extern _IPR1bits
+               00047         extern _PIE2bits
+               00048         extern _PIR2bits
+               00049         extern _IPR2bits
+               00050         extern _EECON1bits
+               00051         extern _RCSTAbits
+               00052         extern _TXSTAbits
+               00053         extern _T3CONbits
+               00054         extern _CCP2CONbits
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00055         extern _CCP1CONbits
+               00056         extern _ADCON1bits
+               00057         extern _ADCON0bits
+               00058         extern _SSPCON2bits
+               00059         extern _SSPCON1bits
+               00060         extern _SSPSTATbits
+               00061         extern _T2CONbits
+               00062         extern _T1CONbits
+               00063         extern _RCONbits
+               00064         extern _WDTCONbits
+               00065         extern _LVDCONbits
+               00066         extern _OSCCONbits
+               00067         extern _T0CONbits
+               00068         extern _STATUSbits
+               00069         extern _INTCON3bits
+               00070         extern _INTCON2bits
+               00071         extern _INTCONbits
+               00072         extern _STKPTRbits
+               00073         extern _PORTA
+               00074         extern _PORTB
+               00075         extern _PORTC
+               00076         extern _PORTD
+               00077         extern _PORTE
+               00078         extern _LATA
+               00079         extern _LATB
+               00080         extern _LATC
+               00081         extern _LATD
+               00082         extern _LATE
+               00083         extern _TRISA
+               00084         extern _TRISB
+               00085         extern _TRISC
+               00086         extern _TRISD
+               00087         extern _TRISE
+               00088         extern _PIE1
+               00089         extern _PIR1
+               00090         extern _IPR1
+               00091         extern _PIE2
+               00092         extern _PIR2
+               00093         extern _IPR2
+               00094         extern _EECON1
+               00095         extern _EECON2
+               00096         extern _EEDATA
+               00097         extern _EEADR
+               00098         extern _RCSTA
+               00099         extern _TXSTA
+               00100         extern _TXREG
+               00101         extern _RCREG
+               00102         extern _SPBRG
+               00103         extern _T3CON
+               00104         extern _TMR3L
+               00105         extern _TMR3H
+               00106         extern _CCP2CON
+               00107         extern _CCPR2L
+               00108         extern _CCPR2H
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00109         extern _CCP1CON
+               00110         extern _CCPR1L
+               00111         extern _CCPR1H
+               00112         extern _ADCON1
+               00113         extern _ADCON0
+               00114         extern _ADRESL
+               00115         extern _ADRESH
+               00116         extern _SSPCON2
+               00117         extern _SSPCON1
+               00118         extern _SSPSTAT
+               00119         extern _SSPADD
+               00120         extern _SSPBUF
+               00121         extern _T2CON
+               00122         extern _PR2
+               00123         extern _TMR2
+               00124         extern _T1CON
+               00125         extern _TMR1L
+               00126         extern _TMR1H
+               00127         extern _RCON
+               00128         extern _WDTCON
+               00129         extern _LVDCON
+               00130         extern _OSCCON
+               00131         extern _T0CON
+               00132         extern _TMR0L
+               00133         extern _TMR0H
+               00134         extern _STATUS
+               00135         extern _FSR2L
+               00136         extern _FSR2H
+               00137         extern _PLUSW2
+               00138         extern _PREINC2
+               00139         extern _POSTDEC2
+               00140         extern _POSTINC2
+               00141         extern _INDF2
+               00142         extern _BSR
+               00143         extern _FSR1L
+               00144         extern _FSR1H
+               00145         extern _PLUSW1
+               00146         extern _PREINC1
+               00147         extern _POSTDEC1
+               00148         extern _POSTINC1
+               00149         extern _INDF1
+               00150         extern _WREG
+               00151         extern _FSR0L
+               00152         extern _FSR0H
+               00153         extern _PLUSW0
+               00154         extern _PREINC0
+               00155         extern _POSTDEC0
+               00156         extern _POSTINC0
+               00157         extern _INDF0
+               00158         extern _INTCON3
+               00159         extern _INTCON2
+               00160         extern _INTCON
+               00161         extern _PRODL
+               00162         extern _PRODH
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00163         extern _TABLAT
+               00164         extern _TBLPTRL
+               00165         extern _TBLPTRH
+               00166         extern _TBLPTRU
+               00167         extern _PCL
+               00168         extern _PCLATH
+               00169         extern _PCLATU
+               00170         extern _STKPTR
+               00171         extern _TOSL
+               00172         extern _TOSH
+               00173         extern _TOSU
+               00174         extern __mulint
+               00175         extern __divslong
+               00176         extern __mullong
+               00177         extern ___slong2fs
+               00178         extern ___fsdiv
+               00179         extern ___fsmul
+               00180         extern ___fsgt
+               00181         extern __modsint
+               00182         extern ___fssub
+               00183 ;--------------------------------------------------------
+               00184 ;       Equates to used internal registers
+               00185 ;--------------------------------------------------------
+  00000FD8     00186 STATUS  equ     0xfd8
+  00000FE8     00187 WREG    equ     0xfe8
+  00000FE9     00188 FSR0L   equ     0xfe9
+  00000FEA     00189 FSR0H   equ     0xfea
+  00000FE1     00190 FSR1L   equ     0xfe1
+  00000FD9     00191 FSR2L   equ     0xfd9
+  00000FEF     00192 INDF0   equ     0xfef
+  00000FEE     00193 POSTINC0        equ     0xfee
+  00000FE5     00194 POSTDEC1        equ     0xfe5
+  00000FE4     00195 PREINC1 equ     0xfe4
+  00000FDB     00196 PLUSW2  equ     0xfdb
+  00000FF3     00197 PRODL   equ     0xff3
+  00000FF4     00198 PRODH   equ     0xff4
+               00199 
+               00200 
+               00201 ; Internal registers
+               00202 .registers      udata_ovr       0x0000
+               00203 r0x00   res     1
+               00204 r0x01   res     1
+               00205 r0x02   res     1
+               00206 r0x03   res     1
+               00207 r0x04   res     1
+               00208 r0x05   res     1
+               00209 r0x06   res     1
+               00210 r0x07   res     1
+               00211 r0x08   res     1
+               00212 r0x09   res     1
+               00213 r0x0a   res     1
+               00214 r0x0b   res     1
+               00215 r0x0c   res     1
+               00216 r0x0d   res     1
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00217 r0x0e   res     1
+               00218 r0x0f   res     1
+               00219 r0x10   res     1
+               00220 r0x11   res     1
+               00221 
+               00222 udata_main_0    udata
+               00223 _channel        res     120
+               00224 
+               00225 udata_main_1    udata
+               00226 _c_c    res     16
+               00227 
+               00228 udata_main_2    udata
+               00229 _NPeriodosPassadosNoCanal       res     8
+               00230 
+               00231 udata_main_3    udata
+               00232 _c      res     2
+               00233 
+               00234 udata_main_4    udata
+               00235 _c_total        res     2
+               00236 
+               00237 ;--------------------------------------------------------
+               00238 ; interrupt vector 
+               00239 ;--------------------------------------------------------
+               00240 
+               00241 ;--------------------------------------------------------
+               00242 ; global & static initialisations
+               00243 ;--------------------------------------------------------
+               00244 ; I code from now on!
+               00245 ; ; Starting pCode block
+               00246 S_main__main    code
+0000 00247 _main:
+               00248 ;       .line   116; main.c     TRISC = 0;
+0000 6A00      00249         CLRF    _TRISC
+               00250 ;       .line   119; main.c     PORTC = 0;
+0002 6A00      00251         CLRF    _PORTC
+               00252 ;       .line   122; main.c     channel[0].T = 10;
+0004 0E0A      00253         MOVLW   0x0a
+0006 0000      00254         BANKSEL (_channel + 16)
+0008 6F00      00255         MOVWF   (_channel + 16), B
+000A 0000      00256         BANKSEL (_channel + 17)
+000C 6B00      00257         CLRF    (_channel + 17), B
+000E 0000      00258         BANKSEL (_channel + 18)
+0010 6B00      00259         CLRF    (_channel + 18), B
+0012 0000      00260         BANKSEL (_channel + 19)
+0014 6B00      00261         CLRF    (_channel + 19), B
+               00262 ;       .line   123; main.c     channel[1].T = 10;
+0016 0E0A      00263         MOVLW   0x0a
+0018 0000      00264         BANKSEL (_channel + 46)
+001A 6F00      00265         MOVWF   (_channel + 46), B
+001C 0000      00266         BANKSEL (_channel + 47)
+001E 6B00      00267         CLRF    (_channel + 47), B
+0020 0000      00268         BANKSEL (_channel + 48)
+0022 6B00      00269         CLRF    (_channel + 48), B
+0024 0000      00270         BANKSEL (_channel + 49)
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0026 6B00      00271         CLRF    (_channel + 49), B
+               00272 ;       .line   124; main.c     channel[2].T = 14;
+0028 0E0E      00273         MOVLW   0x0e
+002A 0000      00274         BANKSEL (_channel + 76)
+002C 6F00      00275         MOVWF   (_channel + 76), B
+002E 0000      00276         BANKSEL (_channel + 77)
+0030 6B00      00277         CLRF    (_channel + 77), B
+0032 0000      00278         BANKSEL (_channel + 78)
+0034 6B00      00279         CLRF    (_channel + 78), B
+0036 0000      00280         BANKSEL (_channel + 79)
+0038 6B00      00281         CLRF    (_channel + 79), B
+               00282 ;       .line   125; main.c     channel[3].T = 50;
+003A 0E32      00283         MOVLW   0x32
+003C 0000      00284         BANKSEL (_channel + 106)
+003E 6F00      00285         MOVWF   (_channel + 106), B
+0040 0000      00286         BANKSEL (_channel + 107)
+0042 6B00      00287         CLRF    (_channel + 107), B
+0044 0000      00288         BANKSEL (_channel + 108)
+0046 6B00      00289         CLRF    (_channel + 108), B
+0048 0000      00290         BANKSEL (_channel + 109)
+004A 6B00      00291         CLRF    (_channel + 109), B
+               00292 ;       .line   128; main.c     channel[0].pulse_interval = 100;
+004C 0E64      00293         MOVLW   0x64
+004E 0000      00294         BANKSEL _channel
+0050 6F00      00295         MOVWF   _channel, B
+0052 0000      00296         BANKSEL (_channel + 1)
+0054 6B00      00297         CLRF    (_channel + 1), B
+0056 0000      00298         BANKSEL (_channel + 2)
+0058 6B00      00299         CLRF    (_channel + 2), B
+005A 0000      00300         BANKSEL (_channel + 3)
+005C 6B00      00301         CLRF    (_channel + 3), B
+               00302 ;       .line   129; main.c     channel[1].pulse_interval = 100;
+005E 0E64      00303         MOVLW   0x64
+0060 0000      00304         BANKSEL (_channel + 30)
+0062 6F00      00305         MOVWF   (_channel + 30), B
+0064 0000      00306         BANKSEL (_channel + 31)
+0066 6B00      00307         CLRF    (_channel + 31), B
+0068 0000      00308         BANKSEL (_channel + 32)
+006A 6B00      00309         CLRF    (_channel + 32), B
+006C 0000      00310         BANKSEL (_channel + 33)
+006E 6B00      00311         CLRF    (_channel + 33), B
+               00312 ;       .line   130; main.c     channel[2].pulse_interval = 100;
+0070 0E64      00313         MOVLW   0x64
+0072 0000      00314         BANKSEL (_channel + 60)
+0074 6F00      00315         MOVWF   (_channel + 60), B
+0076 0000      00316         BANKSEL (_channel + 61)
+0078 6B00      00317         CLRF    (_channel + 61), B
+007A 0000      00318         BANKSEL (_channel + 62)
+007C 6B00      00319         CLRF    (_channel + 62), B
+007E 0000      00320         BANKSEL (_channel + 63)
+0080 6B00      00321         CLRF    (_channel + 63), B
+               00322 ;       .line   131; main.c     channel[3].pulse_interval = 110;
+0082 0E6E      00323         MOVLW   0x6e
+0084 0000      00324         BANKSEL (_channel + 90)
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0086 6F00      00325         MOVWF   (_channel + 90), B
+0088 0000      00326         BANKSEL (_channel + 91)
+008A 6B00      00327         CLRF    (_channel + 91), B
+008C 0000      00328         BANKSEL (_channel + 92)
+008E 6B00      00329         CLRF    (_channel + 92), B
+0090 0000      00330         BANKSEL (_channel + 93)
+0092 6B00      00331         CLRF    (_channel + 93), B
+0094 0000      00332         BANKSEL (_channel + 4)
+               00333 ;       .line   134; main.c     channel[0].initial = 0;
+0096 6B00      00334         CLRF    (_channel + 4), B
+0098 0000      00335         BANKSEL (_channel + 5)
+009A 6B00      00336         CLRF    (_channel + 5), B
+009C 0000      00337         BANKSEL (_channel + 6)
+009E 6B00      00338         CLRF    (_channel + 6), B
+00A0 0000      00339         BANKSEL (_channel + 7)
+00A2 6B00      00340         CLRF    (_channel + 7), B
+               00341 ;       .line   135; main.c     channel[1].initial = 100;
+00A4 0E64      00342         MOVLW   0x64
+00A6 0000      00343         BANKSEL (_channel + 34)
+00A8 6F00      00344         MOVWF   (_channel + 34), B
+00AA 0000      00345         BANKSEL (_channel + 35)
+00AC 6B00      00346         CLRF    (_channel + 35), B
+00AE 0000      00347         BANKSEL (_channel + 36)
+00B0 6B00      00348         CLRF    (_channel + 36), B
+00B2 0000      00349         BANKSEL (_channel + 37)
+00B4 6B00      00350         CLRF    (_channel + 37), B
+               00351 ;       .line   136; main.c     channel[2].initial = 200;
+00B6 0EC8      00352         MOVLW   0xc8
+00B8 0000      00353         BANKSEL (_channel + 64)
+00BA 6F00      00354         MOVWF   (_channel + 64), B
+00BC 0000      00355         BANKSEL (_channel + 65)
+00BE 6B00      00356         CLRF    (_channel + 65), B
+00C0 0000      00357         BANKSEL (_channel + 66)
+00C2 6B00      00358         CLRF    (_channel + 66), B
+00C4 0000      00359         BANKSEL (_channel + 67)
+00C6 6B00      00360         CLRF    (_channel + 67), B
+               00361 ;       .line   137; main.c     channel[3].initial = 300;
+00C8 0E2C      00362         MOVLW   0x2c
+00CA 0000      00363         BANKSEL (_channel + 94)
+00CC 6F00      00364         MOVWF   (_channel + 94), B
+00CE 0E01      00365         MOVLW   0x01
+00D0 0000      00366         BANKSEL (_channel + 95)
+00D2 6F00      00367         MOVWF   (_channel + 95), B
+00D4 0000      00368         BANKSEL (_channel + 96)
+00D6 6B00      00369         CLRF    (_channel + 96), B
+00D8 0000      00370         BANKSEL (_channel + 97)
+00DA 6B00      00371         CLRF    (_channel + 97), B
+               00372 ;       .line   140; main.c     channel[0].time = 1000;
+00DC 0EE8      00373         MOVLW   0xe8
+00DE 0000      00374         BANKSEL (_channel + 8)
+00E0 6F00      00375         MOVWF   (_channel + 8), B
+00E2 0E03      00376         MOVLW   0x03
+00E4 0000      00377         BANKSEL (_channel + 9)
+00E6 6F00      00378         MOVWF   (_channel + 9), B
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+00E8 0000      00379         BANKSEL (_channel + 10)
+00EA 6B00      00380         CLRF    (_channel + 10), B
+00EC 0000      00381         BANKSEL (_channel + 11)
+00EE 6B00      00382         CLRF    (_channel + 11), B
+               00383 ;       .line   141; main.c     channel[1].time = 1000;
+00F0 0EE8      00384         MOVLW   0xe8
+00F2 0000      00385         BANKSEL (_channel + 38)
+00F4 6F00      00386         MOVWF   (_channel + 38), B
+00F6 0E03      00387         MOVLW   0x03
+00F8 0000      00388         BANKSEL (_channel + 39)
+00FA 6F00      00389         MOVWF   (_channel + 39), B
+00FC 0000      00390         BANKSEL (_channel + 40)
+00FE 6B00      00391         CLRF    (_channel + 40), B
+0100 0000      00392         BANKSEL (_channel + 41)
+0102 6B00      00393         CLRF    (_channel + 41), B
+               00394 ;       .line   142; main.c     channel[2].time = 2000;
+0104 0ED0      00395         MOVLW   0xd0
+0106 0000      00396         BANKSEL (_channel + 68)
+0108 6F00      00397         MOVWF   (_channel + 68), B
+010A 0E07      00398         MOVLW   0x07
+010C 0000      00399         BANKSEL (_channel + 69)
+010E 6F00      00400         MOVWF   (_channel + 69), B
+0110 0000      00401         BANKSEL (_channel + 70)
+0112 6B00      00402         CLRF    (_channel + 70), B
+0114 0000      00403         BANKSEL (_channel + 71)
+0116 6B00      00404         CLRF    (_channel + 71), B
+               00405 ;       .line   143; main.c     channel[3].time = 1500;
+0118 0EDC      00406         MOVLW   0xdc
+011A 0000      00407         BANKSEL (_channel + 98)
+011C 6F00      00408         MOVWF   (_channel + 98), B
+011E 0E05      00409         MOVLW   0x05
+0120 0000      00410         BANKSEL (_channel + 99)
+0122 6F00      00411         MOVWF   (_channel + 99), B
+0124 0000      00412         BANKSEL (_channel + 100)
+0126 6B00      00413         CLRF    (_channel + 100), B
+0128 0000      00414         BANKSEL (_channel + 101)
+012A 6B00      00415         CLRF    (_channel + 101), B
+               00416 ;       .line   146; main.c     channel[0].timeup = 100;
+012C 0E64      00417         MOVLW   0x64
+012E 0000      00418         BANKSEL (_channel + 12)
+0130 6F00      00419         MOVWF   (_channel + 12), B
+0132 0000      00420         BANKSEL (_channel + 13)
+0134 6B00      00421         CLRF    (_channel + 13), B
+0136 0000      00422         BANKSEL (_channel + 14)
+0138 6B00      00423         CLRF    (_channel + 14), B
+013A 0000      00424         BANKSEL (_channel + 15)
+013C 6B00      00425         CLRF    (_channel + 15), B
+               00426 ;       .line   147; main.c     channel[1].timeup = 100;
+013E 0E64      00427         MOVLW   0x64
+0140 0000      00428         BANKSEL (_channel + 42)
+0142 6F00      00429         MOVWF   (_channel + 42), B
+0144 0000      00430         BANKSEL (_channel + 43)
+0146 6B00      00431         CLRF    (_channel + 43), B
+0148 0000      00432         BANKSEL (_channel + 44)
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+014A 6B00      00433         CLRF    (_channel + 44), B
+014C 0000      00434         BANKSEL (_channel + 45)
+014E 6B00      00435         CLRF    (_channel + 45), B
+               00436 ;       .line   148; main.c     channel[2].timeup = 500;
+0150 0EF4      00437         MOVLW   0xf4
+0152 0000      00438         BANKSEL (_channel + 72)
+0154 6F00      00439         MOVWF   (_channel + 72), B
+0156 0E01      00440         MOVLW   0x01
+0158 0000      00441         BANKSEL (_channel + 73)
+015A 6F00      00442         MOVWF   (_channel + 73), B
+015C 0000      00443         BANKSEL (_channel + 74)
+015E 6B00      00444         CLRF    (_channel + 74), B
+0160 0000      00445         BANKSEL (_channel + 75)
+0162 6B00      00446         CLRF    (_channel + 75), B
+               00447 ;       .line   149; main.c     channel[3].timeup = 600;
+0164 0E58      00448         MOVLW   0x58
+0166 0000      00449         BANKSEL (_channel + 102)
+0168 6F00      00450         MOVWF   (_channel + 102), B
+016A 0E02      00451         MOVLW   0x02
+016C 0000      00452         BANKSEL (_channel + 103)
+016E 6F00      00453         MOVWF   (_channel + 103), B
+0170 0000      00454         BANKSEL (_channel + 104)
+0172 6B00      00455         CLRF    (_channel + 104), B
+0174 0000      00456         BANKSEL (_channel + 105)
+0176 6B00      00457         CLRF    (_channel + 105), B
+0178 0000      00458         BANKSEL _c
+               00459 ;       .line   152; main.c     for (c=0;c<4;c++)
+017A 6B00      00460         CLRF    _c, B
+017C 0000      00461         BANKSEL (_c + 1)
+017E 6B00      00462         CLRF    (_c + 1), B
+0180 00463 _00176_DS_:
+0180 0000      00464         BANKSEL (_c + 1)
+0182 5100      00465         MOVF    (_c + 1), W, B
+0184 0F80      00466         ADDLW   0x80
+0186 0F80      00467         ADDLW   0x80
+0188 E100      00468         BNZ     _00205_DS_
+018A 0E04      00469         MOVLW   0x04
+018C 0000      00470         BANKSEL _c
+018E 5D00      00471         SUBWF   _c, W, B
+0190 00472 _00205_DS_:
+0190 B0D8      00473         BTFSC   STATUS, 0
+0192 D000      00474         BRA     _00174_DS_
+0194 0000      00475         BANKSEL (_c + 1)
+               00476 ;       .line   154; main.c     channel[c].timetotal = channel[c].timeup *2 + channel[c].time + channel[c].pulse_interval;
+0196 5100      00477         MOVF    (_c + 1), W, B
+0198 6EE5      00478         MOVWF   POSTDEC1
+019A 0000      00479         BANKSEL _c
+019C 5100      00480         MOVF    _c, W, B
+019E 6EE5      00481         MOVWF   POSTDEC1
+01A0 0E00      00482         MOVLW   0x00
+01A2 6EE5      00483         MOVWF   POSTDEC1
+01A4 0E1E      00484         MOVLW   0x1e
+01A6 6EE5      00485         MOVWF   POSTDEC1
+01A8 EC00 F000 00486         CALL    __mulint
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+01AC 6E00      00487         MOVWF   r0x00
+01AE CFF3 F000 00488         MOVFF   PRODL, r0x01
+01B2 0E04      00489         MOVLW   0x04
+01B4 26E1      00490         ADDWF   FSR1L, F
+01B6 0E00      00491         MOVLW   LOW(_channel)
+01B8 2600      00492         ADDWF   r0x00, F
+01BA 0E00      00493         MOVLW   HIGH(_channel)
+01BC 2200      00494         ADDWFC  r0x01, F
+01BE 5000      00495         MOVF    r0x00, W
+01C0 0F14      00496         ADDLW   0x14
+01C2 6E00      00497         MOVWF   r0x02
+01C4 0E00      00498         MOVLW   0x00
+01C6 2000      00499         ADDWFC  r0x01, W
+01C8 6E00      00500         MOVWF   r0x03
+01CA 5000      00501         MOVF    r0x00, W
+01CC 0F0C      00502         ADDLW   0x0c
+01CE 6E00      00503         MOVWF   r0x04
+01D0 0E00      00504         MOVLW   0x00
+01D2 2000      00505         ADDWFC  r0x01, W
+01D4 6E00      00506         MOVWF   r0x05
+01D6 C000 FFE9 00507         MOVFF   r0x04, FSR0L
+01DA C000 FFEA 00508         MOVFF   r0x05, FSR0H
+01DE CFEE F000 00509         MOVFF   POSTINC0, r0x04
+01E2 CFEE F000 00510         MOVFF   POSTINC0, r0x05
+01E6 CFEE F000 00511         MOVFF   POSTINC0, r0x06
+01EA CFEF F000 00512         MOVFF   INDF0, r0x07
+01EE 5000      00513         MOVF    r0x07, W
+01F0 6EE5      00514         MOVWF   POSTDEC1
+01F2 5000      00515         MOVF    r0x06, W
+01F4 6EE5      00516         MOVWF   POSTDEC1
+01F6 5000      00517         MOVF    r0x05, W
+01F8 6EE5      00518         MOVWF   POSTDEC1
+01FA 5000      00519         MOVF    r0x04, W
+01FC 6EE5      00520         MOVWF   POSTDEC1
+01FE 0E00      00521         MOVLW   0x00
+0200 6EE5      00522         MOVWF   POSTDEC1
+0202 0E00      00523         MOVLW   0x00
+0204 6EE5      00524         MOVWF   POSTDEC1
+0206 0E00      00525         MOVLW   0x00
+0208 6EE5      00526         MOVWF   POSTDEC1
+020A 0E02      00527         MOVLW   0x02
+020C 6EE5      00528         MOVWF   POSTDEC1
+020E EC00 F000 00529         CALL    __mullong
+0212 6E00      00530         MOVWF   r0x04
+0214 CFF3 F000 00531         MOVFF   PRODL, r0x05
+0218 CFF4 F000 00532         MOVFF   PRODH, r0x06
+021C CFE9 F000 00533         MOVFF   FSR0L, r0x07
+0220 0E08      00534         MOVLW   0x08
+0222 26E1      00535         ADDWF   FSR1L, F
+0224 5000      00536         MOVF    r0x00, W
+0226 0F08      00537         ADDLW   0x08
+0228 6E00      00538         MOVWF   r0x08
+022A 0E00      00539         MOVLW   0x00
+022C 2000      00540         ADDWFC  r0x01, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+022E 6E00      00541         MOVWF   r0x09
+0230 C000 FFE9 00542         MOVFF   r0x08, FSR0L
+0234 C000 FFEA 00543         MOVFF   r0x09, FSR0H
+0238 CFEE F000 00544         MOVFF   POSTINC0, r0x08
+023C CFEE F000 00545         MOVFF   POSTINC0, r0x09
+0240 CFEE F000 00546         MOVFF   POSTINC0, r0x0a
+0244 CFEF F000 00547         MOVFF   INDF0, r0x0b
+0248 5000      00548         MOVF    r0x08, W
+024A 2600      00549         ADDWF   r0x04, F
+024C 5000      00550         MOVF    r0x09, W
+024E 2200      00551         ADDWFC  r0x05, F
+0250 5000      00552         MOVF    r0x0a, W
+0252 2200      00553         ADDWFC  r0x06, F
+0254 5000      00554         MOVF    r0x0b, W
+0256 2200      00555         ADDWFC  r0x07, F
+0258 C000 FFE9 00556         MOVFF   r0x00, FSR0L
+025C C000 FFEA 00557         MOVFF   r0x01, FSR0H
+0260 CFEE F000 00558         MOVFF   POSTINC0, r0x08
+0264 CFEE F000 00559         MOVFF   POSTINC0, r0x09
+0268 CFEE F000 00560         MOVFF   POSTINC0, r0x0a
+026C CFEF F000 00561         MOVFF   INDF0, r0x0b
+0270 5000      00562         MOVF    r0x08, W
+0272 2600      00563         ADDWF   r0x04, F
+0274 5000      00564         MOVF    r0x09, W
+0276 2200      00565         ADDWFC  r0x05, F
+0278 5000      00566         MOVF    r0x0a, W
+027A 2200      00567         ADDWFC  r0x06, F
+027C 5000      00568         MOVF    r0x0b, W
+027E 2200      00569         ADDWFC  r0x07, F
+0280 C000 FFE9 00570         MOVFF   r0x02, FSR0L
+0284 C000 FFEA 00571         MOVFF   r0x03, FSR0H
+0288 C000 FFEE 00572         MOVFF   r0x04, POSTINC0
+028C C000 FFEE 00573         MOVFF   r0x05, POSTINC0
+0290 C000 FFEE 00574         MOVFF   r0x06, POSTINC0
+0294 C000 FFEF 00575         MOVFF   r0x07, INDF0
+               00576 ;       .line   155; main.c     channel[c].started = 0;
+0298 5000      00577         MOVF    r0x00, W
+029A 0F1C      00578         ADDLW   0x1c
+029C 6E00      00579         MOVWF   r0x02
+029E 0E00      00580         MOVLW   0x00
+02A0 2000      00581         ADDWFC  r0x01, W
+02A2 6E00      00582         MOVWF   r0x03
+02A4 C000 FFE9 00583         MOVFF   r0x02, FSR0L
+02A8 C000 FFEA 00584         MOVFF   r0x03, FSR0H
+02AC 0E00      00585         MOVLW   0x00
+02AE 6EEE      00586         MOVWF   POSTINC0
+02B0 0E00      00587         MOVLW   0x00
+02B2 6EEF      00588         MOVWF   INDF0
+               00589 ;       .line   156; main.c     channel[c].currTime = 0;
+02B4 0E18      00590         MOVLW   0x18
+02B6 2600      00591         ADDWF   r0x00, F
+02B8 B0D8      00592         BTFSC   STATUS, 0
+02BA 2A00      00593         INCF    r0x01, F
+02BC C000 FFE9 00594         MOVFF   r0x00, FSR0L
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+02C0 C000 FFEA 00595         MOVFF   r0x01, FSR0H
+02C4 0E00      00596         MOVLW   0x00
+02C6 6EEE      00597         MOVWF   POSTINC0
+02C8 0E00      00598         MOVLW   0x00
+02CA 6EEE      00599         MOVWF   POSTINC0
+02CC 0E00      00600         MOVLW   0x00
+02CE 6EEE      00601         MOVWF   POSTINC0
+02D0 0E00      00602         MOVLW   0x00
+02D2 6EEF      00603         MOVWF   INDF0
+02D4 0000      00604         BANKSEL _c
+               00605 ;       .line   152; main.c     for (c=0;c<4;c++)
+02D6 2B00      00606         INCF    _c, F, B
+02D8 E300      00607         BNC     _10166_DS_
+02DA 0000      00608         BANKSEL (_c + 1)
+02DC 2B00      00609         INCF    (_c + 1), F, B
+02DE 00610 _10166_DS_:
+02DE D000      00611         BRA     _00176_DS_
+02E0 00612 _00174_DS_:
+02E0 0000      00613         BANKSEL _c
+               00614 ;       .line   165; main.c     for (c=0;c<8;c++)
+02E2 6B00      00615         CLRF    _c, B
+02E4 0000      00616         BANKSEL (_c + 1)
+02E6 6B00      00617         CLRF    (_c + 1), B
+02E8 00618 _00180_DS_:
+02E8 0000      00619         BANKSEL (_c + 1)
+02EA 5100      00620         MOVF    (_c + 1), W, B
+02EC 0F80      00621         ADDLW   0x80
+02EE 0F80      00622         ADDLW   0x80
+02F0 E100      00623         BNZ     _00206_DS_
+02F2 0E08      00624         MOVLW   0x08
+02F4 0000      00625         BANKSEL _c
+02F6 5D00      00626         SUBWF   _c, W, B
+02F8 00627 _00206_DS_:
+02F8 E200      00628         BC      _00183_DS_
+02FA 0000      00629         BANKSEL (_c + 1)
+               00630 ;       .line   166; main.c     c_c[c] = 0;
+02FC 5100      00631         MOVF    (_c + 1), W, B
+02FE 6EE5      00632         MOVWF   POSTDEC1
+0300 0000      00633         BANKSEL _c
+0302 5100      00634         MOVF    _c, W, B
+0304 6EE5      00635         MOVWF   POSTDEC1
+0306 0E00      00636         MOVLW   0x00
+0308 6EE5      00637         MOVWF   POSTDEC1
+030A 0E02      00638         MOVLW   0x02
+030C 6EE5      00639         MOVWF   POSTDEC1
+030E EC00 F000 00640         CALL    __mulint
+0312 6E00      00641         MOVWF   r0x00
+0314 CFF3 F000 00642         MOVFF   PRODL, r0x01
+0318 0E04      00643         MOVLW   0x04
+031A 26E1      00644         ADDWF   FSR1L, F
+031C 0E00      00645         MOVLW   LOW(_c_c)
+031E 2600      00646         ADDWF   r0x00, F
+0320 0E00      00647         MOVLW   HIGH(_c_c)
+0322 2200      00648         ADDWFC  r0x01, F
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0324 C000 FFE9 00649         MOVFF   r0x00, FSR0L
+0328 C000 FFEA 00650         MOVFF   r0x01, FSR0H
+032C 0E00      00651         MOVLW   0x00
+032E 6EEE      00652         MOVWF   POSTINC0
+0330 0E00      00653         MOVLW   0x00
+0332 6EEF      00654         MOVWF   INDF0
+0334 0000      00655         BANKSEL _c
+               00656 ;       .line   165; main.c     for (c=0;c<8;c++)
+0336 2B00      00657         INCF    _c, F, B
+0338 E300      00658         BNC     _20167_DS_
+033A 0000      00659         BANKSEL (_c + 1)
+033C 2B00      00660         INCF    (_c + 1), F, B
+033E 00661 _20167_DS_:
+033E D000      00662         BRA     _00180_DS_
+0340 00663 _00183_DS_:
+0340 0000      00664         BANKSEL _c_total
+               00665 ;       .line   168; main.c     c_total = 0;
+0342 6B00      00666         CLRF    _c_total, B
+0344 0000      00667         BANKSEL (_c_total + 1)
+0346 6B00      00668         CLRF    (_c_total + 1), B
+               00669 ;       .line   170; main.c     control();
+0348 EC00 F000 00670         CALL    _control
+               00671 ;       .line   172; main.c     c_total = c_c[0];
+034C C000 F000 00672         MOVFF   _c_c, _c_total
+0350 C000 F000 00673         MOVFF   (_c_c + 1), (_c_total + 1)
+0354 0000      00674         BANKSEL (_c_c + 3)
+               00675 ;       .line   173; main.c     c_total += c_c[1]*2;
+0356 5100      00676         MOVF    (_c_c + 3), W, B
+0358 6EE5      00677         MOVWF   POSTDEC1
+035A 0000      00678         BANKSEL (_c_c + 2)
+035C 5100      00679         MOVF    (_c_c + 2), W, B
+035E 6EE5      00680         MOVWF   POSTDEC1
+0360 0E00      00681         MOVLW   0x00
+0362 6EE5      00682         MOVWF   POSTDEC1
+0364 0E02      00683         MOVLW   0x02
+0366 6EE5      00684         MOVWF   POSTDEC1
+0368 EC00 F000 00685         CALL    __mulint
+036C 6E00      00686         MOVWF   r0x00
+036E CFF3 F000 00687         MOVFF   PRODL, r0x01
+0372 0E04      00688         MOVLW   0x04
+0374 26E1      00689         ADDWF   FSR1L, F
+0376 5000      00690         MOVF    r0x00, W
+0378 0000      00691         BANKSEL _c_total
+037A 2700      00692         ADDWF   _c_total, F, B
+037C 5000      00693         MOVF    r0x01, W
+037E 0000      00694         BANKSEL (_c_total + 1)
+0380 2300      00695         ADDWFC  (_c_total + 1), F, B
+0382 0000      00696         BANKSEL (_c_c + 5)
+               00697 ;       .line   174; main.c     c_total += c_c[2]*4;
+0384 5100      00698         MOVF    (_c_c + 5), W, B
+0386 6EE5      00699         MOVWF   POSTDEC1
+0388 0000      00700         BANKSEL (_c_c + 4)
+038A 5100      00701         MOVF    (_c_c + 4), W, B
+038C 6EE5      00702         MOVWF   POSTDEC1
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+038E 0E00      00703         MOVLW   0x00
+0390 6EE5      00704         MOVWF   POSTDEC1
+0392 0E04      00705         MOVLW   0x04
+0394 6EE5      00706         MOVWF   POSTDEC1
+0396 EC00 F000 00707         CALL    __mulint
+039A 6E00      00708         MOVWF   r0x00
+039C CFF3 F000 00709         MOVFF   PRODL, r0x01
+03A0 0E04      00710         MOVLW   0x04
+03A2 26E1      00711         ADDWF   FSR1L, F
+03A4 5000      00712         MOVF    r0x00, W
+03A6 0000      00713         BANKSEL _c_total
+03A8 2700      00714         ADDWF   _c_total, F, B
+03AA 5000      00715         MOVF    r0x01, W
+03AC 0000      00716         BANKSEL (_c_total + 1)
+03AE 2300      00717         ADDWFC  (_c_total + 1), F, B
+03B0 0000      00718         BANKSEL (_c_c + 7)
+               00719 ;       .line   175; main.c     c_total += c_c[3]*8;
+03B2 5100      00720         MOVF    (_c_c + 7), W, B
+03B4 6EE5      00721         MOVWF   POSTDEC1
+03B6 0000      00722         BANKSEL (_c_c + 6)
+03B8 5100      00723         MOVF    (_c_c + 6), W, B
+03BA 6EE5      00724         MOVWF   POSTDEC1
+03BC 0E00      00725         MOVLW   0x00
+03BE 6EE5      00726         MOVWF   POSTDEC1
+03C0 0E08      00727         MOVLW   0x08
+03C2 6EE5      00728         MOVWF   POSTDEC1
+03C4 EC00 F000 00729         CALL    __mulint
+03C8 6E00      00730         MOVWF   r0x00
+03CA CFF3 F000 00731         MOVFF   PRODL, r0x01
+03CE 0E04      00732         MOVLW   0x04
+03D0 26E1      00733         ADDWF   FSR1L, F
+03D2 5000      00734         MOVF    r0x00, W
+03D4 0000      00735         BANKSEL _c_total
+03D6 2700      00736         ADDWF   _c_total, F, B
+03D8 5000      00737         MOVF    r0x01, W
+03DA 0000      00738         BANKSEL (_c_total + 1)
+03DC 2300      00739         ADDWFC  (_c_total + 1), F, B
+03DE 0000      00740         BANKSEL (_c_c + 9)
+               00741 ;       .line   176; main.c     c_total += c_c[4]*16;
+03E0 5100      00742         MOVF    (_c_c + 9), W, B
+03E2 6EE5      00743         MOVWF   POSTDEC1
+03E4 0000      00744         BANKSEL (_c_c + 8)
+03E6 5100      00745         MOVF    (_c_c + 8), W, B
+03E8 6EE5      00746         MOVWF   POSTDEC1
+03EA 0E00      00747         MOVLW   0x00
+03EC 6EE5      00748         MOVWF   POSTDEC1
+03EE 0E10      00749         MOVLW   0x10
+03F0 6EE5      00750         MOVWF   POSTDEC1
+03F2 EC00 F000 00751         CALL    __mulint
+03F6 6E00      00752         MOVWF   r0x00
+03F8 CFF3 F000 00753         MOVFF   PRODL, r0x01
+03FC 0E04      00754         MOVLW   0x04
+03FE 26E1      00755         ADDWF   FSR1L, F
+0400 5000      00756         MOVF    r0x00, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0402 0000      00757         BANKSEL _c_total
+0404 2700      00758         ADDWF   _c_total, F, B
+0406 5000      00759         MOVF    r0x01, W
+0408 0000      00760         BANKSEL (_c_total + 1)
+040A 2300      00761         ADDWFC  (_c_total + 1), F, B
+040C 0000      00762         BANKSEL (_c_c + 11)
+               00763 ;       .line   177; main.c     c_total += c_c[5]*32;
+040E 5100      00764         MOVF    (_c_c + 11), W, B
+0410 6EE5      00765         MOVWF   POSTDEC1
+0412 0000      00766         BANKSEL (_c_c + 10)
+0414 5100      00767         MOVF    (_c_c + 10), W, B
+0416 6EE5      00768         MOVWF   POSTDEC1
+0418 0E00      00769         MOVLW   0x00
+041A 6EE5      00770         MOVWF   POSTDEC1
+041C 0E20      00771         MOVLW   0x20
+041E 6EE5      00772         MOVWF   POSTDEC1
+0420 EC00 F000 00773         CALL    __mulint
+0424 6E00      00774         MOVWF   r0x00
+0426 CFF3 F000 00775         MOVFF   PRODL, r0x01
+042A 0E04      00776         MOVLW   0x04
+042C 26E1      00777         ADDWF   FSR1L, F
+042E 5000      00778         MOVF    r0x00, W
+0430 0000      00779         BANKSEL _c_total
+0432 2700      00780         ADDWF   _c_total, F, B
+0434 5000      00781         MOVF    r0x01, W
+0436 0000      00782         BANKSEL (_c_total + 1)
+0438 2300      00783         ADDWFC  (_c_total + 1), F, B
+043A 0000      00784         BANKSEL (_c_c + 13)
+               00785 ;       .line   178; main.c     c_total += c_c[6]*64;
+043C 5100      00786         MOVF    (_c_c + 13), W, B
+043E 6EE5      00787         MOVWF   POSTDEC1
+0440 0000      00788         BANKSEL (_c_c + 12)
+0442 5100      00789         MOVF    (_c_c + 12), W, B
+0444 6EE5      00790         MOVWF   POSTDEC1
+0446 0E00      00791         MOVLW   0x00
+0448 6EE5      00792         MOVWF   POSTDEC1
+044A 0E40      00793         MOVLW   0x40
+044C 6EE5      00794         MOVWF   POSTDEC1
+044E EC00 F000 00795         CALL    __mulint
+0452 6E00      00796         MOVWF   r0x00
+0454 CFF3 F000 00797         MOVFF   PRODL, r0x01
+0458 0E04      00798         MOVLW   0x04
+045A 26E1      00799         ADDWF   FSR1L, F
+045C 5000      00800         MOVF    r0x00, W
+045E 0000      00801         BANKSEL _c_total
+0460 2700      00802         ADDWF   _c_total, F, B
+0462 5000      00803         MOVF    r0x01, W
+0464 0000      00804         BANKSEL (_c_total + 1)
+0466 2300      00805         ADDWFC  (_c_total + 1), F, B
+0468 0000      00806         BANKSEL (_c_c + 15)
+               00807 ;       .line   179; main.c     c_total += c_c[7]*128;
+046A 5100      00808         MOVF    (_c_c + 15), W, B
+046C 6EE5      00809         MOVWF   POSTDEC1
+046E 0000      00810         BANKSEL (_c_c + 14)
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0470 5100      00811         MOVF    (_c_c + 14), W, B
+0472 6EE5      00812         MOVWF   POSTDEC1
+0474 0E00      00813         MOVLW   0x00
+0476 6EE5      00814         MOVWF   POSTDEC1
+0478 0E80      00815         MOVLW   0x80
+047A 6EE5      00816         MOVWF   POSTDEC1
+047C EC00 F000 00817         CALL    __mulint
+0480 6E00      00818         MOVWF   r0x00
+0482 CFF3 F000 00819         MOVFF   PRODL, r0x01
+0486 0E04      00820         MOVLW   0x04
+0488 26E1      00821         ADDWF   FSR1L, F
+048A 5000      00822         MOVF    r0x00, W
+048C 0000      00823         BANKSEL _c_total
+048E 2700      00824         ADDWF   _c_total, F, B
+0490 5000      00825         MOVF    r0x01, W
+0492 0000      00826         BANKSEL (_c_total + 1)
+0494 2300      00827         ADDWFC  (_c_total + 1), F, B
+0496 0000      00828         BANKSEL _c_total
+               00829 ;       .line   181; main.c     PORTC = c_total;
+0498 5100      00830         MOVF    _c_total, W, B
+049A 6E00      00831         MOVWF   _PORTC
+               00832 ;       .line   185; main.c     for (c=0;c<4;c++)
+049C 0E04      00833         MOVLW   0x04
+049E 0000      00834         BANKSEL _c
+04A0 6F00      00835         MOVWF   _c, B
+04A2 0000      00836         BANKSEL (_c + 1)
+04A4 6B00      00837         CLRF    (_c + 1), B
+04A6 00838 _00186_DS_:
+04A6 0000      00839         BANKSEL _c
+               00840 ;       .line   186; main.c     channel[c].currTime++;
+04A8 5100      00841         MOVF    _c, W, B
+04AA 0FFF      00842         ADDLW   0xff
+04AC 6E00      00843         MOVWF   r0x00
+04AE 0EFF      00844         MOVLW   0xff
+04B0 0000      00845         BANKSEL (_c + 1)
+04B2 2100      00846         ADDWFC  (_c + 1), W, B
+04B4 6E00      00847         MOVWF   r0x01
+04B6 5000      00848         MOVF    r0x01, W
+04B8 6EE5      00849         MOVWF   POSTDEC1
+04BA 5000      00850         MOVF    r0x00, W
+04BC 6EE5      00851         MOVWF   POSTDEC1
+04BE 0E00      00852         MOVLW   0x00
+04C0 6EE5      00853         MOVWF   POSTDEC1
+04C2 0E1E      00854         MOVLW   0x1e
+04C4 6EE5      00855         MOVWF   POSTDEC1
+04C6 EC00 F000 00856         CALL    __mulint
+04CA 6E00      00857         MOVWF   r0x02
+04CC CFF3 F000 00858         MOVFF   PRODL, r0x03
+04D0 0E04      00859         MOVLW   0x04
+04D2 26E1      00860         ADDWF   FSR1L, F
+04D4 0E00      00861         MOVLW   LOW(_channel)
+04D6 2600      00862         ADDWF   r0x02, F
+04D8 0E00      00863         MOVLW   HIGH(_channel)
+04DA 2200      00864         ADDWFC  r0x03, F
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+04DC 0E18      00865         MOVLW   0x18
+04DE 2600      00866         ADDWF   r0x02, F
+04E0 B0D8      00867         BTFSC   STATUS, 0
+04E2 2A00      00868         INCF    r0x03, F
+04E4 C000 FFE9 00869         MOVFF   r0x02, FSR0L
+04E8 C000 FFEA 00870         MOVFF   r0x03, FSR0H
+04EC CFEE F000 00871         MOVFF   POSTINC0, r0x04
+04F0 CFEE F000 00872         MOVFF   POSTINC0, r0x05
+04F4 CFEE F000 00873         MOVFF   POSTINC0, r0x06
+04F8 CFEF F000 00874         MOVFF   INDF0, r0x07
+04FC 2A00      00875         INCF    r0x04, F
+04FE B0D8      00876         BTFSC   STATUS, 0
+0500 2A00      00877         INCF    r0x05, F
+0502 B0D8      00878         BTFSC   STATUS, 0
+0504 2A00      00879         INCF    r0x06, F
+0506 B0D8      00880         BTFSC   STATUS, 0
+0508 2A00      00881         INCF    r0x07, F
+050A C000 FFE9 00882         MOVFF   r0x02, FSR0L
+050E C000 FFEA 00883         MOVFF   r0x03, FSR0H
+0512 C000 FFEE 00884         MOVFF   r0x04, POSTINC0
+0516 C000 FFEE 00885         MOVFF   r0x05, POSTINC0
+051A C000 FFEE 00886         MOVFF   r0x06, POSTINC0
+051E C000 FFEF 00887         MOVFF   r0x07, INDF0
+0522 C000 F000 00888         MOVFF   r0x00, _c
+0526 C000 F000 00889         MOVFF   r0x01, (_c + 1)
+052A 0000      00890         BANKSEL _c
+               00891 ;       .line   185; main.c     for (c=0;c<4;c++)
+052C 5100      00892         MOVF    _c, W, B
+052E 0000      00893         BANKSEL (_c + 1)
+0530 1100      00894         IORWF   (_c + 1), W, B
+0532 A4D8      00895         BTFSS   STATUS, 2
+0534 D000      00896         BRA     _00186_DS_
+0536 0000      00897         BANKSEL _c
+               00898 ;       .line   190; main.c     for (c=0;c<4;c++)
+0538 6B00      00899         CLRF    _c, B
+053A 0000      00900         BANKSEL (_c + 1)
+053C 6B00      00901         CLRF    (_c + 1), B
+053E 00902 _00187_DS_:
+053E 0000      00903         BANKSEL (_c + 1)
+0540 5100      00904         MOVF    (_c + 1), W, B
+0542 0F80      00905         ADDLW   0x80
+0544 0F80      00906         ADDLW   0x80
+0546 E100      00907         BNZ     _00207_DS_
+0548 0E04      00908         MOVLW   0x04
+054A 0000      00909         BANKSEL _c
+054C 5D00      00910         SUBWF   _c, W, B
+054E 00911 _00207_DS_:
+054E B0D8      00912         BTFSC   STATUS, 0
+0550 D000      00913         BRA     _00174_DS_
+0552 0000      00914         BANKSEL (_c + 1)
+               00915 ;       .line   192; main.c     if(channel[c].started==0)
+0554 5100      00916         MOVF    (_c + 1), W, B
+0556 6EE5      00917         MOVWF   POSTDEC1
+0558 0000      00918         BANKSEL _c
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+055A 5100      00919         MOVF    _c, W, B
+055C 6EE5      00920         MOVWF   POSTDEC1
+055E 0E00      00921         MOVLW   0x00
+0560 6EE5      00922         MOVWF   POSTDEC1
+0562 0E1E      00923         MOVLW   0x1e
+0564 6EE5      00924         MOVWF   POSTDEC1
+0566 EC00 F000 00925         CALL    __mulint
+056A 6E00      00926         MOVWF   r0x00
+056C CFF3 F000 00927         MOVFF   PRODL, r0x01
+0570 0E04      00928         MOVLW   0x04
+0572 26E1      00929         ADDWF   FSR1L, F
+0574 0E00      00930         MOVLW   LOW(_channel)
+0576 2600      00931         ADDWF   r0x00, F
+0578 0E00      00932         MOVLW   HIGH(_channel)
+057A 2200      00933         ADDWFC  r0x01, F
+057C 5000      00934         MOVF    r0x00, W
+057E 0F1C      00935         ADDLW   0x1c
+0580 6E00      00936         MOVWF   r0x02
+0582 0E00      00937         MOVLW   0x00
+0584 2000      00938         ADDWFC  r0x01, W
+0586 6E00      00939         MOVWF   r0x03
+0588 C000 FFE9 00940         MOVFF   r0x02, FSR0L
+058C C000 FFEA 00941         MOVFF   r0x03, FSR0H
+0590 CFEE F000 00942         MOVFF   POSTINC0, r0x04
+0594 CFEF F000 00943         MOVFF   INDF0, r0x05
+0598 5000      00944         MOVF    r0x04, W
+059A 1000      00945         IORWF   r0x05, W
+059C A4D8      00946         BTFSS   STATUS, 2
+059E D000      00947         BRA     _00171_DS_
+               00948 ;       .line   194; main.c     if(channel[c].currTime>channel[c].initial)
+05A0 5000      00949         MOVF    r0x00, W
+05A2 0F18      00950         ADDLW   0x18
+05A4 6E00      00951         MOVWF   r0x04
+05A6 0E00      00952         MOVLW   0x00
+05A8 2000      00953         ADDWFC  r0x01, W
+05AA 6E00      00954         MOVWF   r0x05
+05AC C000 FFE9 00955         MOVFF   r0x04, FSR0L
+05B0 C000 FFEA 00956         MOVFF   r0x05, FSR0H
+05B4 CFEE F000 00957         MOVFF   POSTINC0, r0x06
+05B8 CFEE F000 00958         MOVFF   POSTINC0, r0x07
+05BC CFEE F000 00959         MOVFF   POSTINC0, r0x08
+05C0 CFEF F000 00960         MOVFF   INDF0, r0x09
+05C4 5000      00961         MOVF    r0x00, W
+05C6 0F04      00962         ADDLW   0x04
+05C8 6E00      00963         MOVWF   r0x0a
+05CA 0E00      00964         MOVLW   0x00
+05CC 2000      00965         ADDWFC  r0x01, W
+05CE 6E00      00966         MOVWF   r0x0b
+05D0 C000 FFE9 00967         MOVFF   r0x0a, FSR0L
+05D4 C000 FFEA 00968         MOVFF   r0x0b, FSR0H
+05D8 CFEE F000 00969         MOVFF   POSTINC0, r0x0a
+05DC CFEE F000 00970         MOVFF   POSTINC0, r0x0b
+05E0 CFEE F000 00971         MOVFF   POSTINC0, r0x0c
+05E4 CFEF F000 00972         MOVFF   INDF0, r0x0d
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+05E8 5000      00973         MOVF    r0x0d, W
+05EA 0F80      00974         ADDLW   0x80
+05EC 6EF3      00975         MOVWF   PRODL
+05EE 5000      00976         MOVF    r0x09, W
+05F0 0F80      00977         ADDLW   0x80
+05F2 5CF3      00978         SUBWF   PRODL, W
+05F4 E100      00979         BNZ     _00208_DS_
+05F6 5000      00980         MOVF    r0x08, W
+05F8 5C00      00981         SUBWF   r0x0c, W
+05FA E100      00982         BNZ     _00208_DS_
+05FC 5000      00983         MOVF    r0x07, W
+05FE 5C00      00984         SUBWF   r0x0b, W
+0600 E100      00985         BNZ     _00208_DS_
+0602 5000      00986         MOVF    r0x06, W
+0604 5C00      00987         SUBWF   r0x0a, W
+0606 00988 _00208_DS_:
+0606 B0D8      00989         BTFSC   STATUS, 0
+0608 D000      00990         BRA     _00189_DS_
+               00991 ;       .line   196; main.c     channel[c].started = 1;
+060A C000 FFE9 00992         MOVFF   r0x02, FSR0L
+060E C000 FFEA 00993         MOVFF   r0x03, FSR0H
+0612 0E01      00994         MOVLW   0x01
+0614 6EEE      00995         MOVWF   POSTINC0
+0616 0E00      00996         MOVLW   0x00
+0618 6EEF      00997         MOVWF   INDF0
+               00998 ;       .line   197; main.c     channel[c].currTime-=channel[c].started;
+061A C000 FFE9 00999         MOVFF   r0x02, FSR0L
+061E C000 FFEA 01000         MOVFF   r0x03, FSR0H
+0622 CFEE F000 01001         MOVFF   POSTINC0, r0x02
+0626 CFEF F000 01002         MOVFF   INDF0, r0x03
+062A 6AE8      01003         CLRF    WREG
+062C BE00      01004         BTFSC   r0x03, 7
+062E 0EFF      01005         MOVLW   0xff
+0630 6E00      01006         MOVWF   r0x0a
+0632 6E00      01007         MOVWF   r0x0b
+0634 5000      01008         MOVF    r0x02, W
+0636 5E00      01009         SUBWF   r0x06, F
+0638 5000      01010         MOVF    r0x03, W
+063A 5A00      01011         SUBWFB  r0x07, F
+063C 5000      01012         MOVF    r0x0a, W
+063E 5A00      01013         SUBWFB  r0x08, F
+0640 5000      01014         MOVF    r0x0b, W
+0642 5A00      01015         SUBWFB  r0x09, F
+0644 C000 FFE9 01016         MOVFF   r0x04, FSR0L
+0648 C000 FFEA 01017         MOVFF   r0x05, FSR0H
+064C C000 FFEE 01018         MOVFF   r0x06, POSTINC0
+0650 C000 FFEE 01019         MOVFF   r0x07, POSTINC0
+0654 C000 FFEE 01020         MOVFF   r0x08, POSTINC0
+0658 C000 FFEF 01021         MOVFF   r0x09, INDF0
+065C D000      01022         BRA     _00189_DS_
+065E 01023 _00171_DS_:
+               01024 ;       .line   200; main.c     else if(channel[c].currTime>channel[c].timetotal)
+065E 5000      01025         MOVF    r0x00, W
+0660 0F18      01026         ADDLW   0x18
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0662 6E00      01027         MOVWF   r0x02
+0664 0E00      01028         MOVLW   0x00
+0666 2000      01029         ADDWFC  r0x01, W
+0668 6E00      01030         MOVWF   r0x03
+066A C000 FFE9 01031         MOVFF   r0x02, FSR0L
+066E C000 FFEA 01032         MOVFF   r0x03, FSR0H
+0672 CFEE F000 01033         MOVFF   POSTINC0, r0x04
+0676 CFEE F000 01034         MOVFF   POSTINC0, r0x05
+067A CFEE F000 01035         MOVFF   POSTINC0, r0x06
+067E CFEF F000 01036         MOVFF   INDF0, r0x07
+0682 0E14      01037         MOVLW   0x14
+0684 2600      01038         ADDWF   r0x00, F
+0686 B0D8      01039         BTFSC   STATUS, 0
+0688 2A00      01040         INCF    r0x01, F
+068A C000 FFE9 01041         MOVFF   r0x00, FSR0L
+068E C000 FFEA 01042         MOVFF   r0x01, FSR0H
+0692 CFEE F000 01043         MOVFF   POSTINC0, r0x00
+0696 CFEE F000 01044         MOVFF   POSTINC0, r0x01
+069A CFEE F000 01045         MOVFF   POSTINC0, r0x08
+069E CFEF F000 01046         MOVFF   INDF0, r0x09
+06A2 5000      01047         MOVF    r0x09, W
+06A4 0F80      01048         ADDLW   0x80
+06A6 6EF3      01049         MOVWF   PRODL
+06A8 5000      01050         MOVF    r0x07, W
+06AA 0F80      01051         ADDLW   0x80
+06AC 5CF3      01052         SUBWF   PRODL, W
+06AE E100      01053         BNZ     _00209_DS_
+06B0 5000      01054         MOVF    r0x06, W
+06B2 5C00      01055         SUBWF   r0x08, W
+06B4 E100      01056         BNZ     _00209_DS_
+06B6 5000      01057         MOVF    r0x05, W
+06B8 5C00      01058         SUBWF   r0x01, W
+06BA E100      01059         BNZ     _00209_DS_
+06BC 5000      01060         MOVF    r0x04, W
+06BE 5C00      01061         SUBWF   r0x00, W
+06C0 01062 _00209_DS_:
+06C0 E200      01063         BC      _00189_DS_
+               01064 ;       .line   202; main.c     channel[c].currTime-=channel[c].timetotal;
+06C2 5000      01065         MOVF    r0x00, W
+06C4 5E00      01066         SUBWF   r0x04, F
+06C6 5000      01067         MOVF    r0x01, W
+06C8 5A00      01068         SUBWFB  r0x05, F
+06CA 5000      01069         MOVF    r0x08, W
+06CC 5A00      01070         SUBWFB  r0x06, F
+06CE 5000      01071         MOVF    r0x09, W
+06D0 5A00      01072         SUBWFB  r0x07, F
+06D2 C000 FFE9 01073         MOVFF   r0x02, FSR0L
+06D6 C000 FFEA 01074         MOVFF   r0x03, FSR0H
+06DA C000 FFEE 01075         MOVFF   r0x04, POSTINC0
+06DE C000 FFEE 01076         MOVFF   r0x05, POSTINC0
+06E2 C000 FFEE 01077         MOVFF   r0x06, POSTINC0
+06E6 C000 FFEF 01078         MOVFF   r0x07, INDF0
+06EA 01079 _00189_DS_:
+06EA 0000      01080         BANKSEL _c
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 21
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               01081 ;       .line   190; main.c     for (c=0;c<4;c++)
+06EC 2B00      01082         INCF    _c, F, B
+06EE E300      01083         BNC     _30168_DS_
+06F0 0000      01084         BANKSEL (_c + 1)
+06F2 2B00      01085         INCF    (_c + 1), F, B
+06F4 01086 _30168_DS_:
+06F4 D000      01087         BRA     _00187_DS_
+06F6 0012      01088         RETURN  
+               01089 
+               01090 ; ; Starting pCode block
+               01091 S_main__control code
+0000 01092 _control:
+               01093 ;       .line   84; main.c      void control()
+0000 CFD9 FFE5 01094         MOVFF   FSR2L, POSTDEC1
+0004 CFE1 FFD9 01095         MOVFF   FSR1L, FSR2L
+0008 C000 FFE5 01096         MOVFF   r0x00, POSTDEC1
+000C C000 FFE5 01097         MOVFF   r0x01, POSTDEC1
+0010 C000 FFE5 01098         MOVFF   r0x02, POSTDEC1
+0014 C000 FFE5 01099         MOVFF   r0x03, POSTDEC1
+0018 C000 FFE5 01100         MOVFF   r0x04, POSTDEC1
+001C C000 FFE5 01101         MOVFF   r0x05, POSTDEC1
+0020 C000 FFE5 01102         MOVFF   r0x06, POSTDEC1
+0024 C000 FFE5 01103         MOVFF   r0x07, POSTDEC1
+0028 C000 FFE5 01104         MOVFF   r0x08, POSTDEC1
+002C C000 FFE5 01105         MOVFF   r0x09, POSTDEC1
+0030 C000 FFE5 01106         MOVFF   r0x0a, POSTDEC1
+0034 C000 FFE5 01107         MOVFF   r0x0b, POSTDEC1
+0038 C000 FFE5 01108         MOVFF   r0x0c, POSTDEC1
+003C C000 FFE5 01109         MOVFF   r0x0d, POSTDEC1
+0040 C000 FFE5 01110         MOVFF   r0x0e, POSTDEC1
+0044 C000 FFE5 01111         MOVFF   r0x0f, POSTDEC1
+               01112 ;       .line   87; main.c      for (control_c=0; control_c<4; control_c++)
+0048 6A00      01113         CLRF    r0x00
+004A 6A00      01114         CLRF    r0x01
+004C 6A00      01115         CLRF    r0x02
+004E 6A00      01116         CLRF    r0x03
+0050 01117 _00144_DS_:
+0050 5000      01118         MOVF    r0x01, W
+0052 0F80      01119         ADDLW   0x80
+0054 0F80      01120         ADDLW   0x80
+0056 E100      01121         BNZ     _00157_DS_
+0058 0E04      01122         MOVLW   0x04
+005A 5C00      01123         SUBWF   r0x00, W
+005C 01124 _00157_DS_:
+005C B0D8      01125         BTFSC   STATUS, 0
+005E D000      01126         BRA     _00148_DS_
+               01127 ;       .line   89; main.c      if (channel[control_c].started>0) /// Se já passou do delay inicial do canal
+0060 0E00      01128         MOVLW   LOW(_channel)
+0062 2400      01129         ADDWF   r0x02, W
+0064 6E00      01130         MOVWF   r0x04
+0066 0E00      01131         MOVLW   HIGH(_channel)
+0068 2000      01132         ADDWFC  r0x03, W
+006A 6E00      01133         MOVWF   r0x05
+006C 5000      01134         MOVF    r0x04, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 22
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+006E 0F1C      01135         ADDLW   0x1c
+0070 6E00      01136         MOVWF   r0x06
+0072 0E00      01137         MOVLW   0x00
+0074 2000      01138         ADDWFC  r0x05, W
+0076 6E00      01139         MOVWF   r0x07
+0078 C000 FFE9 01140         MOVFF   r0x06, FSR0L
+007C C000 FFEA 01141         MOVFF   r0x07, FSR0H
+0080 CFEE F000 01142         MOVFF   POSTINC0, r0x06
+0084 CFEF F000 01143         MOVFF   INDF0, r0x07
+0088 5000      01144         MOVF    r0x07, W
+008A 0F80      01145         ADDLW   0x80
+008C 0F80      01146         ADDLW   0x80
+008E E100      01147         BNZ     _00158_DS_
+0090 0E01      01148         MOVLW   0x01
+0092 5C00      01149         SUBWF   r0x06, W
+0094 01150 _00158_DS_:
+0094 A0D8      01151         BTFSS   STATUS, 0
+0096 D000      01152         BRA     _00146_DS_
+               01153 ;       .line   91; main.c      if (channel[control_c].currTime<channel[control_c].timeup) ///Se está no tempo de subida do canal
+0098 5000      01154         MOVF    r0x04, W
+009A 0F18      01155         ADDLW   0x18
+009C 6E00      01156         MOVWF   r0x06
+009E 0E00      01157         MOVLW   0x00
+00A0 2000      01158         ADDWFC  r0x05, W
+00A2 6E00      01159         MOVWF   r0x07
+00A4 C000 FFE9 01160         MOVFF   r0x06, FSR0L
+00A8 C000 FFEA 01161         MOVFF   r0x07, FSR0H
+00AC CFEE F000 01162         MOVFF   POSTINC0, r0x06
+00B0 CFEE F000 01163         MOVFF   POSTINC0, r0x07
+00B4 CFEE F000 01164         MOVFF   POSTINC0, r0x08
+00B8 CFEF F000 01165         MOVFF   INDF0, r0x09
+00BC 5000      01166         MOVF    r0x04, W
+00BE 0F0C      01167         ADDLW   0x0c
+00C0 6E00      01168         MOVWF   r0x0a
+00C2 0E00      01169         MOVLW   0x00
+00C4 2000      01170         ADDWFC  r0x05, W
+00C6 6E00      01171         MOVWF   r0x0b
+00C8 C000 FFE9 01172         MOVFF   r0x0a, FSR0L
+00CC C000 FFEA 01173         MOVFF   r0x0b, FSR0H
+00D0 CFEE F000 01174         MOVFF   POSTINC0, r0x0a
+00D4 CFEE F000 01175         MOVFF   POSTINC0, r0x0b
+00D8 CFEE F000 01176         MOVFF   POSTINC0, r0x0c
+00DC CFEF F000 01177         MOVFF   INDF0, r0x0d
+00E0 5000      01178         MOVF    r0x09, W
+00E2 0F80      01179         ADDLW   0x80
+00E4 6EF3      01180         MOVWF   PRODL
+00E6 5000      01181         MOVF    r0x0d, W
+00E8 0F80      01182         ADDLW   0x80
+00EA 5CF3      01183         SUBWF   PRODL, W
+00EC E100      01184         BNZ     _00159_DS_
+00EE 5000      01185         MOVF    r0x0c, W
+00F0 5C00      01186         SUBWF   r0x08, W
+00F2 E100      01187         BNZ     _00159_DS_
+00F4 5000      01188         MOVF    r0x0b, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 23
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+00F6 5C00      01189         SUBWF   r0x07, W
+00F8 E100      01190         BNZ     _00159_DS_
+00FA 5000      01191         MOVF    r0x0a, W
+00FC 5C00      01192         SUBWF   r0x06, W
+00FE 01193 _00159_DS_:
+00FE E200      01194         BC      _00140_DS_
+               01195 ;       .line   93; main.c      up(control_c);
+0100 5000      01196         MOVF    r0x01, W
+0102 6EE5      01197         MOVWF   POSTDEC1
+0104 5000      01198         MOVF    r0x00, W
+0106 6EE5      01199         MOVWF   POSTDEC1
+0108 EC00 F000 01200         CALL    _up
+010C 0E02      01201         MOVLW   0x02
+010E 26E1      01202         ADDWF   FSR1L, F
+0110 D000      01203         BRA     _00146_DS_
+0112 01204 _00140_DS_:
+               01205 ;       .line   95; main.c      else if (channel[control_c].currTime<channel[control_c].timeup+channel[control_c].time) ///Se está no tempo de subida do canal
+0112 0E08      01206         MOVLW   0x08
+0114 2600      01207         ADDWF   r0x04, F
+0116 B0D8      01208         BTFSC   STATUS, 0
+0118 2A00      01209         INCF    r0x05, F
+011A C000 FFE9 01210         MOVFF   r0x04, FSR0L
+011E C000 FFEA 01211         MOVFF   r0x05, FSR0H
+0122 CFEE F000 01212         MOVFF   POSTINC0, r0x04
+0126 CFEE F000 01213         MOVFF   POSTINC0, r0x05
+012A CFEE F000 01214         MOVFF   POSTINC0, r0x0e
+012E CFEF F000 01215         MOVFF   INDF0, r0x0f
+0132 5000      01216         MOVF    r0x0a, W
+0134 2600      01217         ADDWF   r0x04, F
+0136 5000      01218         MOVF    r0x0b, W
+0138 2200      01219         ADDWFC  r0x05, F
+013A 5000      01220         MOVF    r0x0c, W
+013C 2200      01221         ADDWFC  r0x0e, F
+013E 5000      01222         MOVF    r0x0d, W
+0140 2200      01223         ADDWFC  r0x0f, F
+0142 5000      01224         MOVF    r0x09, W
+0144 0F80      01225         ADDLW   0x80
+0146 6EF3      01226         MOVWF   PRODL
+0148 5000      01227         MOVF    r0x0f, W
+014A 0F80      01228         ADDLW   0x80
+014C 5CF3      01229         SUBWF   PRODL, W
+014E E100      01230         BNZ     _00160_DS_
+0150 5000      01231         MOVF    r0x0e, W
+0152 5C00      01232         SUBWF   r0x08, W
+0154 E100      01233         BNZ     _00160_DS_
+0156 5000      01234         MOVF    r0x05, W
+0158 5C00      01235         SUBWF   r0x07, W
+015A E100      01236         BNZ     _00160_DS_
+015C 5000      01237         MOVF    r0x04, W
+015E 5C00      01238         SUBWF   r0x06, W
+0160 01239 _00160_DS_:
+0160 E200      01240         BC      _00137_DS_
+               01241 ;       .line   97; main.c      top(control_c);
+0162 5000      01242         MOVF    r0x01, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 24
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0164 6EE5      01243         MOVWF   POSTDEC1
+0166 5000      01244         MOVF    r0x00, W
+0168 6EE5      01245         MOVWF   POSTDEC1
+016A EC00 F000 01246         CALL    _top
+016E 0E02      01247         MOVLW   0x02
+0170 26E1      01248         ADDWF   FSR1L, F
+0172 D000      01249         BRA     _00146_DS_
+0174 01250 _00137_DS_:
+               01251 ;       .line   99; main.c      else if (channel[control_c].currTime<channel[control_c].timeup+channel[control_c].time+channel[control_c].timeup) ///Se está no tempo de subida do canal
+0174 5000      01252         MOVF    r0x04, W
+0176 2600      01253         ADDWF   r0x0a, F
+0178 5000      01254         MOVF    r0x05, W
+017A 2200      01255         ADDWFC  r0x0b, F
+017C 5000      01256         MOVF    r0x0e, W
+017E 2200      01257         ADDWFC  r0x0c, F
+0180 5000      01258         MOVF    r0x0f, W
+0182 2200      01259         ADDWFC  r0x0d, F
+0184 5000      01260         MOVF    r0x09, W
+0186 0F80      01261         ADDLW   0x80
+0188 6EF3      01262         MOVWF   PRODL
+018A 5000      01263         MOVF    r0x0d, W
+018C 0F80      01264         ADDLW   0x80
+018E 5CF3      01265         SUBWF   PRODL, W
+0190 E100      01266         BNZ     _00161_DS_
+0192 5000      01267         MOVF    r0x0c, W
+0194 5C00      01268         SUBWF   r0x08, W
+0196 E100      01269         BNZ     _00161_DS_
+0198 5000      01270         MOVF    r0x0b, W
+019A 5C00      01271         SUBWF   r0x07, W
+019C E100      01272         BNZ     _00161_DS_
+019E 5000      01273         MOVF    r0x0a, W
+01A0 5C00      01274         SUBWF   r0x06, W
+01A2 01275 _00161_DS_:
+01A2 E200      01276         BC      _00134_DS_
+               01277 ;       .line   101; main.c     down(control_c);
+01A4 5000      01278         MOVF    r0x01, W
+01A6 6EE5      01279         MOVWF   POSTDEC1
+01A8 5000      01280         MOVF    r0x00, W
+01AA 6EE5      01281         MOVWF   POSTDEC1
+01AC EC00 F000 01282         CALL    _down
+01B0 0E02      01283         MOVLW   0x02
+01B2 26E1      01284         ADDWF   FSR1L, F
+01B4 D000      01285         BRA     _00146_DS_
+01B6 01286 _00134_DS_:
+               01287 ;       .line   105; main.c     c_c[control_c*2]=0;
+01B6 5000      01288         MOVF    r0x00, W
+01B8 6E00      01289         MOVWF   r0x04
+               01290 ; ;multiply lit val:0x02 by variable r0x04 and store in r0x04
+               01291 ; ;Unrolled 8 X 8 multiplication
+               01292 ; ;FIXME: the function does not support result==WREG
+01BA 90D8      01293         BCF     STATUS, 0
+01BC 3600      01294         RLCF    r0x04, F
+               01295 ; ;multiply lit val:0x02 by variable r0x04 and store in r0x05
+               01296 ; ;Unrolled 8 X 8 multiplication
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 25
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               01297 ; ;FIXME: the function does not support result==WREG
+01BE 0E00      01298         MOVLW   0x00
+01C0 BE00      01299         BTFSC   r0x04, 7
+01C2 0EFF      01300         MOVLW   0xff
+01C4 90D8      01301         BCF     STATUS, 0
+01C6 3400      01302         RLCF    r0x04, W
+01C8 6E00      01303         MOVWF   r0x05
+01CA 6A00      01304         CLRF    r0x06
+01CC BE00      01305         BTFSC   r0x05, 7
+01CE 6800      01306         SETF    r0x06
+01D0 0E00      01307         MOVLW   LOW(_c_c)
+01D2 2600      01308         ADDWF   r0x05, F
+01D4 0E00      01309         MOVLW   HIGH(_c_c)
+01D6 2200      01310         ADDWFC  r0x06, F
+01D8 C000 FFE9 01311         MOVFF   r0x05, FSR0L
+01DC C000 FFEA 01312         MOVFF   r0x06, FSR0H
+01E0 0E00      01313         MOVLW   0x00
+01E2 6EEE      01314         MOVWF   POSTINC0
+01E4 0E00      01315         MOVLW   0x00
+01E6 6EEF      01316         MOVWF   INDF0
+               01317 ;       .line   106; main.c     c_c[control_c*2+1]=0;
+01E8 2A00      01318         INCF    r0x04, F
+               01319 ; ;multiply lit val:0x02 by variable r0x04 and store in r0x04
+               01320 ; ;Unrolled 8 X 8 multiplication
+               01321 ; ;FIXME: the function does not support result==WREG
+01EA 90D8      01322         BCF     STATUS, 0
+01EC 3600      01323         RLCF    r0x04, F
+01EE 6A00      01324         CLRF    r0x05
+01F0 BE00      01325         BTFSC   r0x04, 7
+01F2 6800      01326         SETF    r0x05
+01F4 0E00      01327         MOVLW   LOW(_c_c)
+01F6 2600      01328         ADDWF   r0x04, F
+01F8 0E00      01329         MOVLW   HIGH(_c_c)
+01FA 2200      01330         ADDWFC  r0x05, F
+01FC C000 FFE9 01331         MOVFF   r0x04, FSR0L
+0200 C000 FFEA 01332         MOVFF   r0x05, FSR0H
+0204 0E00      01333         MOVLW   0x00
+0206 6EEE      01334         MOVWF   POSTINC0
+0208 0E00      01335         MOVLW   0x00
+020A 6EEF      01336         MOVWF   INDF0
+020C 01337 _00146_DS_:
+               01338 ;       .line   87; main.c      for (control_c=0; control_c<4; control_c++)
+020C 0E1E      01339         MOVLW   0x1e
+020E 2600      01340         ADDWF   r0x02, F
+0210 B0D8      01341         BTFSC   STATUS, 0
+0212 2A00      01342         INCF    r0x03, F
+0214 2A00      01343         INCF    r0x00, F
+0216 B0D8      01344         BTFSC   STATUS, 0
+0218 2A00      01345         INCF    r0x01, F
+021A D000      01346         BRA     _00144_DS_
+021C 01347 _00148_DS_:
+021C CFE4 F000 01348         MOVFF   PREINC1, r0x0f
+0220 CFE4 F000 01349         MOVFF   PREINC1, r0x0e
+0224 CFE4 F000 01350         MOVFF   PREINC1, r0x0d
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 26
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0228 CFE4 F000 01351         MOVFF   PREINC1, r0x0c
+022C CFE4 F000 01352         MOVFF   PREINC1, r0x0b
+0230 CFE4 F000 01353         MOVFF   PREINC1, r0x0a
+0234 CFE4 F000 01354         MOVFF   PREINC1, r0x09
+0238 CFE4 F000 01355         MOVFF   PREINC1, r0x08
+023C CFE4 F000 01356         MOVFF   PREINC1, r0x07
+0240 CFE4 F000 01357         MOVFF   PREINC1, r0x06
+0244 CFE4 F000 01358         MOVFF   PREINC1, r0x05
+0248 CFE4 F000 01359         MOVFF   PREINC1, r0x04
+024C CFE4 F000 01360         MOVFF   PREINC1, r0x03
+0250 CFE4 F000 01361         MOVFF   PREINC1, r0x02
+0254 CFE4 F000 01362         MOVFF   PREINC1, r0x01
+0258 CFE4 F000 01363         MOVFF   PREINC1, r0x00
+025C CFE4 FFD9 01364         MOVFF   PREINC1, FSR2L
+0260 0012      01365         RETURN  
+               01366 
+               01367 ; ; Starting pCode block
+               01368 S_main__down    code
+0000 01369 _down:
+               01370 ;       .line   66; main.c      void down(int _channel)
+0000 CFD9 FFE5 01371         MOVFF   FSR2L, POSTDEC1
+0004 CFE1 FFD9 01372         MOVFF   FSR1L, FSR2L
+0008 C000 FFE5 01373         MOVFF   r0x00, POSTDEC1
+000C C000 FFE5 01374         MOVFF   r0x01, POSTDEC1
+0010 C000 FFE5 01375         MOVFF   r0x02, POSTDEC1
+0014 C000 FFE5 01376         MOVFF   r0x03, POSTDEC1
+0018 C000 FFE5 01377         MOVFF   r0x04, POSTDEC1
+001C C000 FFE5 01378         MOVFF   r0x05, POSTDEC1
+0020 C000 FFE5 01379         MOVFF   r0x06, POSTDEC1
+0024 C000 FFE5 01380         MOVFF   r0x07, POSTDEC1
+0028 C000 FFE5 01381         MOVFF   r0x08, POSTDEC1
+002C C000 FFE5 01382         MOVFF   r0x09, POSTDEC1
+0030 C000 FFE5 01383         MOVFF   r0x0a, POSTDEC1
+0034 C000 FFE5 01384         MOVFF   r0x0b, POSTDEC1
+0038 C000 FFE5 01385         MOVFF   r0x0c, POSTDEC1
+003C C000 FFE5 01386         MOVFF   r0x0d, POSTDEC1
+0040 C000 FFE5 01387         MOVFF   r0x0e, POSTDEC1
+0044 C000 FFE5 01388         MOVFF   r0x0f, POSTDEC1
+0048 C000 FFE5 01389         MOVFF   r0x10, POSTDEC1
+004C C000 FFE5 01390         MOVFF   r0x11, POSTDEC1
+0050 0E02      01391         MOVLW   0x02
+0052 CFDB F000 01392         MOVFF   PLUSW2, r0x00
+0056 0E03      01393         MOVLW   0x03
+0058 CFDB F000 01394         MOVFF   PLUSW2, r0x01
+               01395 ;       .line   68; main.c      long TD = channel[_channel].currTime-channel[_channel].timeup-channel[_channel].time;
+005C 5000      01396         MOVF    r0x01, W
+005E 6EE5      01397         MOVWF   POSTDEC1
+0060 5000      01398         MOVF    r0x00, W
+0062 6EE5      01399         MOVWF   POSTDEC1
+0064 0E00      01400         MOVLW   0x00
+0066 6EE5      01401         MOVWF   POSTDEC1
+0068 0E1E      01402         MOVLW   0x1e
+006A 6EE5      01403         MOVWF   POSTDEC1
+006C EC00 F000 01404         CALL    __mulint
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 27
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0070 6E00      01405         MOVWF   r0x02
+0072 CFF3 F000 01406         MOVFF   PRODL, r0x03
+0076 0E04      01407         MOVLW   0x04
+0078 26E1      01408         ADDWF   FSR1L, F
+007A 0E00      01409         MOVLW   LOW(_channel)
+007C 2600      01410         ADDWF   r0x02, F
+007E 0E00      01411         MOVLW   HIGH(_channel)
+0080 2200      01412         ADDWFC  r0x03, F
+0082 5000      01413         MOVF    r0x02, W
+0084 0F18      01414         ADDLW   0x18
+0086 6E00      01415         MOVWF   r0x04
+0088 0E00      01416         MOVLW   0x00
+008A 2000      01417         ADDWFC  r0x03, W
+008C 6E00      01418         MOVWF   r0x05
+008E C000 FFE9 01419         MOVFF   r0x04, FSR0L
+0092 C000 FFEA 01420         MOVFF   r0x05, FSR0H
+0096 CFEE F000 01421         MOVFF   POSTINC0, r0x04
+009A CFEE F000 01422         MOVFF   POSTINC0, r0x05
+009E CFEE F000 01423         MOVFF   POSTINC0, r0x06
+00A2 CFEF F000 01424         MOVFF   INDF0, r0x07
+00A6 5000      01425         MOVF    r0x02, W
+00A8 0F0C      01426         ADDLW   0x0c
+00AA 6E00      01427         MOVWF   r0x08
+00AC 0E00      01428         MOVLW   0x00
+00AE 2000      01429         ADDWFC  r0x03, W
+00B0 6E00      01430         MOVWF   r0x09
+00B2 C000 FFE9 01431         MOVFF   r0x08, FSR0L
+00B6 C000 FFEA 01432         MOVFF   r0x09, FSR0H
+00BA CFEE F000 01433         MOVFF   POSTINC0, r0x08
+00BE CFEE F000 01434         MOVFF   POSTINC0, r0x09
+00C2 CFEE F000 01435         MOVFF   POSTINC0, r0x0a
+00C6 CFEF F000 01436         MOVFF   INDF0, r0x0b
+00CA 5000      01437         MOVF    r0x08, W
+00CC 5E00      01438         SUBWF   r0x04, F
+00CE 5000      01439         MOVF    r0x09, W
+00D0 5A00      01440         SUBWFB  r0x05, F
+00D2 5000      01441         MOVF    r0x0a, W
+00D4 5A00      01442         SUBWFB  r0x06, F
+00D6 5000      01443         MOVF    r0x0b, W
+00D8 5A00      01444         SUBWFB  r0x07, F
+00DA 5000      01445         MOVF    r0x02, W
+00DC 0F08      01446         ADDLW   0x08
+00DE 6E00      01447         MOVWF   r0x0c
+00E0 0E00      01448         MOVLW   0x00
+00E2 2000      01449         ADDWFC  r0x03, W
+00E4 6E00      01450         MOVWF   r0x0d
+00E6 C000 FFE9 01451         MOVFF   r0x0c, FSR0L
+00EA C000 FFEA 01452         MOVFF   r0x0d, FSR0H
+00EE CFEE F000 01453         MOVFF   POSTINC0, r0x0c
+00F2 CFEE F000 01454         MOVFF   POSTINC0, r0x0d
+00F6 CFEE F000 01455         MOVFF   POSTINC0, r0x0e
+00FA CFEF F000 01456         MOVFF   INDF0, r0x0f
+00FE 5000      01457         MOVF    r0x0c, W
+0100 5E00      01458         SUBWF   r0x04, F
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 28
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0102 5000      01459         MOVF    r0x0d, W
+0104 5A00      01460         SUBWFB  r0x05, F
+0106 5000      01461         MOVF    r0x0e, W
+0108 5A00      01462         SUBWFB  r0x06, F
+010A 5000      01463         MOVF    r0x0f, W
+010C 5A00      01464         SUBWFB  r0x07, F
+               01465 ;       .line   69; main.c      long timeInT = TD-(((int)(TD / channel[_channel].T))*channel[_channel].T);
+010E 0E10      01466         MOVLW   0x10
+0110 2600      01467         ADDWF   r0x02, F
+0112 B0D8      01468         BTFSC   STATUS, 0
+0114 2A00      01469         INCF    r0x03, F
+0116 C000 FFE9 01470         MOVFF   r0x02, FSR0L
+011A C000 FFEA 01471         MOVFF   r0x03, FSR0H
+011E CFEE F000 01472         MOVFF   POSTINC0, r0x02
+0122 CFEE F000 01473         MOVFF   POSTINC0, r0x03
+0126 CFEE F000 01474         MOVFF   POSTINC0, r0x0c
+012A CFEF F000 01475         MOVFF   INDF0, r0x0d
+012E 5000      01476         MOVF    r0x0d, W
+0130 6EE5      01477         MOVWF   POSTDEC1
+0132 5000      01478         MOVF    r0x0c, W
+0134 6EE5      01479         MOVWF   POSTDEC1
+0136 5000      01480         MOVF    r0x03, W
+0138 6EE5      01481         MOVWF   POSTDEC1
+013A 5000      01482         MOVF    r0x02, W
+013C 6EE5      01483         MOVWF   POSTDEC1
+013E 5000      01484         MOVF    r0x07, W
+0140 6EE5      01485         MOVWF   POSTDEC1
+0142 5000      01486         MOVF    r0x06, W
+0144 6EE5      01487         MOVWF   POSTDEC1
+0146 5000      01488         MOVF    r0x05, W
+0148 6EE5      01489         MOVWF   POSTDEC1
+014A 5000      01490         MOVF    r0x04, W
+014C 6EE5      01491         MOVWF   POSTDEC1
+014E EC00 F000 01492         CALL    __divslong
+0152 6E00      01493         MOVWF   r0x0e
+0154 CFF3 F000 01494         MOVFF   PRODL, r0x0f
+0158 CFF4 F000 01495         MOVFF   PRODH, r0x10
+015C CFE9 F000 01496         MOVFF   FSR0L, r0x11
+0160 0E08      01497         MOVLW   0x08
+0162 26E1      01498         ADDWF   FSR1L, F
+0164 6AE8      01499         CLRF    WREG
+0166 BE00      01500         BTFSC   r0x0f, 7
+0168 0EFF      01501         MOVLW   0xff
+016A 6E00      01502         MOVWF   r0x10
+016C 6E00      01503         MOVWF   r0x11
+016E 5000      01504         MOVF    r0x0d, W
+0170 6EE5      01505         MOVWF   POSTDEC1
+0172 5000      01506         MOVF    r0x0c, W
+0174 6EE5      01507         MOVWF   POSTDEC1
+0176 5000      01508         MOVF    r0x03, W
+0178 6EE5      01509         MOVWF   POSTDEC1
+017A 5000      01510         MOVF    r0x02, W
+017C 6EE5      01511         MOVWF   POSTDEC1
+017E 5000      01512         MOVF    r0x11, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 29
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0180 6EE5      01513         MOVWF   POSTDEC1
+0182 5000      01514         MOVF    r0x10, W
+0184 6EE5      01515         MOVWF   POSTDEC1
+0186 5000      01516         MOVF    r0x0f, W
+0188 6EE5      01517         MOVWF   POSTDEC1
+018A 5000      01518         MOVF    r0x0e, W
+018C 6EE5      01519         MOVWF   POSTDEC1
+018E EC00 F000 01520         CALL    __mullong
+0192 6E00      01521         MOVWF   r0x0e
+0194 CFF3 F000 01522         MOVFF   PRODL, r0x0f
+0198 CFF4 F000 01523         MOVFF   PRODH, r0x10
+019C CFE9 F000 01524         MOVFF   FSR0L, r0x11
+01A0 0E08      01525         MOVLW   0x08
+01A2 26E1      01526         ADDWF   FSR1L, F
+01A4 5000      01527         MOVF    r0x0e, W
+01A6 5C00      01528         SUBWF   r0x04, W
+01A8 6E00      01529         MOVWF   r0x0e
+01AA 5000      01530         MOVF    r0x0f, W
+01AC 5800      01531         SUBWFB  r0x05, W
+01AE 6E00      01532         MOVWF   r0x0f
+01B0 5000      01533         MOVF    r0x10, W
+01B2 5800      01534         SUBWFB  r0x06, W
+01B4 6E00      01535         MOVWF   r0x10
+01B6 5000      01536         MOVF    r0x11, W
+01B8 5800      01537         SUBWFB  r0x07, W
+01BA 6E00      01538         MOVWF   r0x11
+               01539 ;       .line   70; main.c      float perTimeUP = (float)TD/(float)channel[_channel].timeup;
+01BC 5000      01540         MOVF    r0x07, W
+01BE 6EE5      01541         MOVWF   POSTDEC1
+01C0 5000      01542         MOVF    r0x06, W
+01C2 6EE5      01543         MOVWF   POSTDEC1
+01C4 5000      01544         MOVF    r0x05, W
+01C6 6EE5      01545         MOVWF   POSTDEC1
+01C8 5000      01546         MOVF    r0x04, W
+01CA 6EE5      01547         MOVWF   POSTDEC1
+01CC EC00 F000 01548         CALL    ___slong2fs
+01D0 6E00      01549         MOVWF   r0x04
+01D2 CFF3 F000 01550         MOVFF   PRODL, r0x05
+01D6 CFF4 F000 01551         MOVFF   PRODH, r0x06
+01DA CFE9 F000 01552         MOVFF   FSR0L, r0x07
+01DE 0E04      01553         MOVLW   0x04
+01E0 26E1      01554         ADDWF   FSR1L, F
+01E2 5000      01555         MOVF    r0x0b, W
+01E4 6EE5      01556         MOVWF   POSTDEC1
+01E6 5000      01557         MOVF    r0x0a, W
+01E8 6EE5      01558         MOVWF   POSTDEC1
+01EA 5000      01559         MOVF    r0x09, W
+01EC 6EE5      01560         MOVWF   POSTDEC1
+01EE 5000      01561         MOVF    r0x08, W
+01F0 6EE5      01562         MOVWF   POSTDEC1
+01F2 EC00 F000 01563         CALL    ___slong2fs
+01F6 6E00      01564         MOVWF   r0x08
+01F8 CFF3 F000 01565         MOVFF   PRODL, r0x09
+01FC CFF4 F000 01566         MOVFF   PRODH, r0x0a
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 30
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0200 CFE9 F000 01567         MOVFF   FSR0L, r0x0b
+0204 0E04      01568         MOVLW   0x04
+0206 26E1      01569         ADDWF   FSR1L, F
+0208 5000      01570         MOVF    r0x0b, W
+020A 6EE5      01571         MOVWF   POSTDEC1
+020C 5000      01572         MOVF    r0x0a, W
+020E 6EE5      01573         MOVWF   POSTDEC1
+0210 5000      01574         MOVF    r0x09, W
+0212 6EE5      01575         MOVWF   POSTDEC1
+0214 5000      01576         MOVF    r0x08, W
+0216 6EE5      01577         MOVWF   POSTDEC1
+0218 5000      01578         MOVF    r0x07, W
+021A 6EE5      01579         MOVWF   POSTDEC1
+021C 5000      01580         MOVF    r0x06, W
+021E 6EE5      01581         MOVWF   POSTDEC1
+0220 5000      01582         MOVF    r0x05, W
+0222 6EE5      01583         MOVWF   POSTDEC1
+0224 5000      01584         MOVF    r0x04, W
+0226 6EE5      01585         MOVWF   POSTDEC1
+0228 EC00 F000 01586         CALL    ___fsdiv
+022C 6E00      01587         MOVWF   r0x04
+022E CFF3 F000 01588         MOVFF   PRODL, r0x05
+0232 CFF4 F000 01589         MOVFF   PRODH, r0x06
+0236 CFE9 F000 01590         MOVFF   FSR0L, r0x07
+023A 0E08      01591         MOVLW   0x08
+023C 26E1      01592         ADDWF   FSR1L, F
+               01593 ;       .line   71; main.c      if (timeInT<=(1-perTimeUP)*channel[_channel].T/2) /// Se o tempo que passou dentro do período for menor q a metade do tempo que é pra ficar on
+023E 5000      01594         MOVF    r0x07, W
+0240 6EE5      01595         MOVWF   POSTDEC1
+0242 5000      01596         MOVF    r0x06, W
+0244 6EE5      01597         MOVWF   POSTDEC1
+0246 5000      01598         MOVF    r0x05, W
+0248 6EE5      01599         MOVWF   POSTDEC1
+024A 5000      01600         MOVF    r0x04, W
+024C 6EE5      01601         MOVWF   POSTDEC1
+024E 0E3F      01602         MOVLW   0x3f
+0250 6EE5      01603         MOVWF   POSTDEC1
+0252 0E80      01604         MOVLW   0x80
+0254 6EE5      01605         MOVWF   POSTDEC1
+0256 0E00      01606         MOVLW   0x00
+0258 6EE5      01607         MOVWF   POSTDEC1
+025A 0E00      01608         MOVLW   0x00
+025C 6EE5      01609         MOVWF   POSTDEC1
+025E EC00 F000 01610         CALL    ___fssub
+0262 6E00      01611         MOVWF   r0x04
+0264 CFF3 F000 01612         MOVFF   PRODL, r0x05
+0268 CFF4 F000 01613         MOVFF   PRODH, r0x06
+026C CFE9 F000 01614         MOVFF   FSR0L, r0x07
+0270 0E08      01615         MOVLW   0x08
+0272 26E1      01616         ADDWF   FSR1L, F
+0274 5000      01617         MOVF    r0x0d, W
+0276 6EE5      01618         MOVWF   POSTDEC1
+0278 5000      01619         MOVF    r0x0c, W
+027A 6EE5      01620         MOVWF   POSTDEC1
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 31
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+027C 5000      01621         MOVF    r0x03, W
+027E 6EE5      01622         MOVWF   POSTDEC1
+0280 5000      01623         MOVF    r0x02, W
+0282 6EE5      01624         MOVWF   POSTDEC1
+0284 EC00 F000 01625         CALL    ___slong2fs
+0288 6E00      01626         MOVWF   r0x02
+028A CFF3 F000 01627         MOVFF   PRODL, r0x03
+028E CFF4 F000 01628         MOVFF   PRODH, r0x08
+0292 CFE9 F000 01629         MOVFF   FSR0L, r0x09
+0296 0E04      01630         MOVLW   0x04
+0298 26E1      01631         ADDWF   FSR1L, F
+029A 5000      01632         MOVF    r0x09, W
+029C 6EE5      01633         MOVWF   POSTDEC1
+029E 5000      01634         MOVF    r0x08, W
+02A0 6EE5      01635         MOVWF   POSTDEC1
+02A2 5000      01636         MOVF    r0x03, W
+02A4 6EE5      01637         MOVWF   POSTDEC1
+02A6 5000      01638         MOVF    r0x02, W
+02A8 6EE5      01639         MOVWF   POSTDEC1
+02AA 5000      01640         MOVF    r0x07, W
+02AC 6EE5      01641         MOVWF   POSTDEC1
+02AE 5000      01642         MOVF    r0x06, W
+02B0 6EE5      01643         MOVWF   POSTDEC1
+02B2 5000      01644         MOVF    r0x05, W
+02B4 6EE5      01645         MOVWF   POSTDEC1
+02B6 5000      01646         MOVF    r0x04, W
+02B8 6EE5      01647         MOVWF   POSTDEC1
+02BA EC00 F000 01648         CALL    ___fsmul
+02BE 6E00      01649         MOVWF   r0x02
+02C0 CFF3 F000 01650         MOVFF   PRODL, r0x03
+02C4 CFF4 F000 01651         MOVFF   PRODH, r0x04
+02C8 CFE9 F000 01652         MOVFF   FSR0L, r0x05
+02CC 0E08      01653         MOVLW   0x08
+02CE 26E1      01654         ADDWF   FSR1L, F
+02D0 0E40      01655         MOVLW   0x40
+02D2 6EE5      01656         MOVWF   POSTDEC1
+02D4 0E00      01657         MOVLW   0x00
+02D6 6EE5      01658         MOVWF   POSTDEC1
+02D8 0E00      01659         MOVLW   0x00
+02DA 6EE5      01660         MOVWF   POSTDEC1
+02DC 0E00      01661         MOVLW   0x00
+02DE 6EE5      01662         MOVWF   POSTDEC1
+02E0 5000      01663         MOVF    r0x05, W
+02E2 6EE5      01664         MOVWF   POSTDEC1
+02E4 5000      01665         MOVF    r0x04, W
+02E6 6EE5      01666         MOVWF   POSTDEC1
+02E8 5000      01667         MOVF    r0x03, W
+02EA 6EE5      01668         MOVWF   POSTDEC1
+02EC 5000      01669         MOVF    r0x02, W
+02EE 6EE5      01670         MOVWF   POSTDEC1
+02F0 EC00 F000 01671         CALL    ___fsdiv
+02F4 6E00      01672         MOVWF   r0x06
+02F6 CFF3 F000 01673         MOVFF   PRODL, r0x07
+02FA CFF4 F000 01674         MOVFF   PRODH, r0x08
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 32
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+02FE CFE9 F000 01675         MOVFF   FSR0L, r0x09
+0302 0E08      01676         MOVLW   0x08
+0304 26E1      01677         ADDWF   FSR1L, F
+0306 5000      01678         MOVF    r0x11, W
+0308 6EE5      01679         MOVWF   POSTDEC1
+030A 5000      01680         MOVF    r0x10, W
+030C 6EE5      01681         MOVWF   POSTDEC1
+030E 5000      01682         MOVF    r0x0f, W
+0310 6EE5      01683         MOVWF   POSTDEC1
+0312 5000      01684         MOVF    r0x0e, W
+0314 6EE5      01685         MOVWF   POSTDEC1
+0316 EC00 F000 01686         CALL    ___slong2fs
+031A 6E00      01687         MOVWF   r0x0a
+031C CFF3 F000 01688         MOVFF   PRODL, r0x0b
+0320 CFF4 F000 01689         MOVFF   PRODH, r0x0c
+0324 CFE9 F000 01690         MOVFF   FSR0L, r0x0d
+0328 0E04      01691         MOVLW   0x04
+032A 26E1      01692         ADDWF   FSR1L, F
+032C 5000      01693         MOVF    r0x09, W
+032E 6EE5      01694         MOVWF   POSTDEC1
+0330 5000      01695         MOVF    r0x08, W
+0332 6EE5      01696         MOVWF   POSTDEC1
+0334 5000      01697         MOVF    r0x07, W
+0336 6EE5      01698         MOVWF   POSTDEC1
+0338 5000      01699         MOVF    r0x06, W
+033A 6EE5      01700         MOVWF   POSTDEC1
+033C 5000      01701         MOVF    r0x0d, W
+033E 6EE5      01702         MOVWF   POSTDEC1
+0340 5000      01703         MOVF    r0x0c, W
+0342 6EE5      01704         MOVWF   POSTDEC1
+0344 5000      01705         MOVF    r0x0b, W
+0346 6EE5      01706         MOVWF   POSTDEC1
+0348 5000      01707         MOVF    r0x0a, W
+034A 6EE5      01708         MOVWF   POSTDEC1
+034C EC00 F000 01709         CALL    ___fsgt
+0350 6E00      01710         MOVWF   r0x06
+0352 0E08      01711         MOVLW   0x08
+0354 26E1      01712         ADDWF   FSR1L, F
+0356 5000      01713         MOVF    r0x06, W
+0358 E100      01714         BNZ     _00126_DS_
+               01715 ;       .line   73; main.c      c_c[_channel*2] = 1;
+035A 5000      01716         MOVF    r0x00, W
+035C 6E00      01717         MOVWF   r0x06
+               01718 ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+               01719 ; ;Unrolled 8 X 8 multiplication
+               01720 ; ;FIXME: the function does not support result==WREG
+035E 90D8      01721         BCF     STATUS, 0
+0360 3600      01722         RLCF    r0x06, F
+               01723 ; ;multiply lit val:0x02 by variable r0x06 and store in r0x07
+               01724 ; ;Unrolled 8 X 8 multiplication
+               01725 ; ;FIXME: the function does not support result==WREG
+0362 0E00      01726         MOVLW   0x00
+0364 BE00      01727         BTFSC   r0x06, 7
+0366 0EFF      01728         MOVLW   0xff
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 33
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0368 90D8      01729         BCF     STATUS, 0
+036A 3400      01730         RLCF    r0x06, W
+036C 6E00      01731         MOVWF   r0x07
+036E 6A00      01732         CLRF    r0x08
+0370 BE00      01733         BTFSC   r0x07, 7
+0372 6800      01734         SETF    r0x08
+0374 0E00      01735         MOVLW   LOW(_c_c)
+0376 2600      01736         ADDWF   r0x07, F
+0378 0E00      01737         MOVLW   HIGH(_c_c)
+037A 2200      01738         ADDWFC  r0x08, F
+037C C000 FFE9 01739         MOVFF   r0x07, FSR0L
+0380 C000 FFEA 01740         MOVFF   r0x08, FSR0H
+0384 0E01      01741         MOVLW   0x01
+0386 6EEE      01742         MOVWF   POSTINC0
+0388 0E00      01743         MOVLW   0x00
+038A 6EEF      01744         MOVWF   INDF0
+               01745 ;       .line   74; main.c      c_c[_channel*2+1] = 0;
+038C 2A00      01746         INCF    r0x06, F
+               01747 ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+               01748 ; ;Unrolled 8 X 8 multiplication
+               01749 ; ;FIXME: the function does not support result==WREG
+038E 90D8      01750         BCF     STATUS, 0
+0390 3600      01751         RLCF    r0x06, F
+0392 6A00      01752         CLRF    r0x07
+0394 BE00      01753         BTFSC   r0x06, 7
+0396 6800      01754         SETF    r0x07
+0398 0E00      01755         MOVLW   LOW(_c_c)
+039A 2600      01756         ADDWF   r0x06, F
+039C 0E00      01757         MOVLW   HIGH(_c_c)
+039E 2200      01758         ADDWFC  r0x07, F
+03A0 C000 FFE9 01759         MOVFF   r0x06, FSR0L
+03A4 C000 FFEA 01760         MOVFF   r0x07, FSR0H
+03A8 0E00      01761         MOVLW   0x00
+03AA 6EEE      01762         MOVWF   POSTINC0
+03AC 0E00      01763         MOVLW   0x00
+03AE 6EEF      01764         MOVWF   INDF0
+03B0 D000      01765         BRA     _00128_DS_
+03B2 01766 _00126_DS_:
+               01767 ;       .line   76; main.c      else if (timeInT<=(1-perTimeUP)*channel[_channel].T) /// Se for a outra metade
+03B2 5000      01768         MOVF    r0x05, W
+03B4 6EE5      01769         MOVWF   POSTDEC1
+03B6 5000      01770         MOVF    r0x04, W
+03B8 6EE5      01771         MOVWF   POSTDEC1
+03BA 5000      01772         MOVF    r0x03, W
+03BC 6EE5      01773         MOVWF   POSTDEC1
+03BE 5000      01774         MOVF    r0x02, W
+03C0 6EE5      01775         MOVWF   POSTDEC1
+03C2 5000      01776         MOVF    r0x0d, W
+03C4 6EE5      01777         MOVWF   POSTDEC1
+03C6 5000      01778         MOVF    r0x0c, W
+03C8 6EE5      01779         MOVWF   POSTDEC1
+03CA 5000      01780         MOVF    r0x0b, W
+03CC 6EE5      01781         MOVWF   POSTDEC1
+03CE 5000      01782         MOVF    r0x0a, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 34
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+03D0 6EE5      01783         MOVWF   POSTDEC1
+03D2 EC00 F000 01784         CALL    ___fsgt
+03D6 6E00      01785         MOVWF   r0x02
+03D8 0E08      01786         MOVLW   0x08
+03DA 26E1      01787         ADDWF   FSR1L, F
+03DC 5000      01788         MOVF    r0x02, W
+03DE E100      01789         BNZ     _00128_DS_
+               01790 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+               01791 ; ;Unrolled 8 X 8 multiplication
+               01792 ; ;FIXME: the function does not support result==WREG
+               01793 ;       .line   78; main.c      c_c[_channel*2] = 0;
+03E0 90D8      01794         BCF     STATUS, 0
+03E2 3600      01795         RLCF    r0x00, F
+               01796 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x01
+               01797 ; ;Unrolled 8 X 8 multiplication
+               01798 ; ;FIXME: the function does not support result==WREG
+03E4 0E00      01799         MOVLW   0x00
+03E6 BE00      01800         BTFSC   r0x00, 7
+03E8 0EFF      01801         MOVLW   0xff
+03EA 90D8      01802         BCF     STATUS, 0
+03EC 3400      01803         RLCF    r0x00, W
+03EE 6E00      01804         MOVWF   r0x01
+03F0 6A00      01805         CLRF    r0x02
+03F2 BE00      01806         BTFSC   r0x01, 7
+03F4 6800      01807         SETF    r0x02
+03F6 0E00      01808         MOVLW   LOW(_c_c)
+03F8 2600      01809         ADDWF   r0x01, F
+03FA 0E00      01810         MOVLW   HIGH(_c_c)
+03FC 2200      01811         ADDWFC  r0x02, F
+03FE C000 FFE9 01812         MOVFF   r0x01, FSR0L
+0402 C000 FFEA 01813         MOVFF   r0x02, FSR0H
+0406 0E00      01814         MOVLW   0x00
+0408 6EEE      01815         MOVWF   POSTINC0
+040A 0E00      01816         MOVLW   0x00
+040C 6EEF      01817         MOVWF   INDF0
+               01818 ;       .line   79; main.c      c_c[_channel*2+1] = 1;
+040E 2A00      01819         INCF    r0x00, F
+               01820 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+               01821 ; ;Unrolled 8 X 8 multiplication
+               01822 ; ;FIXME: the function does not support result==WREG
+0410 90D8      01823         BCF     STATUS, 0
+0412 3600      01824         RLCF    r0x00, F
+0414 6A00      01825         CLRF    r0x01
+0416 BE00      01826         BTFSC   r0x00, 7
+0418 6800      01827         SETF    r0x01
+041A 0E00      01828         MOVLW   LOW(_c_c)
+041C 2600      01829         ADDWF   r0x00, F
+041E 0E00      01830         MOVLW   HIGH(_c_c)
+0420 2200      01831         ADDWFC  r0x01, F
+0422 C000 FFE9 01832         MOVFF   r0x00, FSR0L
+0426 C000 FFEA 01833         MOVFF   r0x01, FSR0H
+042A 0E01      01834         MOVLW   0x01
+042C 6EEE      01835         MOVWF   POSTINC0
+042E 0E00      01836         MOVLW   0x00
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 35
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0430 6EEF      01837         MOVWF   INDF0
+0432 01838 _00128_DS_:
+0432 CFE4 F000 01839         MOVFF   PREINC1, r0x11
+0436 CFE4 F000 01840         MOVFF   PREINC1, r0x10
+043A CFE4 F000 01841         MOVFF   PREINC1, r0x0f
+043E CFE4 F000 01842         MOVFF   PREINC1, r0x0e
+0442 CFE4 F000 01843         MOVFF   PREINC1, r0x0d
+0446 CFE4 F000 01844         MOVFF   PREINC1, r0x0c
+044A CFE4 F000 01845         MOVFF   PREINC1, r0x0b
+044E CFE4 F000 01846         MOVFF   PREINC1, r0x0a
+0452 CFE4 F000 01847         MOVFF   PREINC1, r0x09
+0456 CFE4 F000 01848         MOVFF   PREINC1, r0x08
+045A CFE4 F000 01849         MOVFF   PREINC1, r0x07
+045E CFE4 F000 01850         MOVFF   PREINC1, r0x06
+0462 CFE4 F000 01851         MOVFF   PREINC1, r0x05
+0466 CFE4 F000 01852         MOVFF   PREINC1, r0x04
+046A CFE4 F000 01853         MOVFF   PREINC1, r0x03
+046E CFE4 F000 01854         MOVFF   PREINC1, r0x02
+0472 CFE4 F000 01855         MOVFF   PREINC1, r0x01
+0476 CFE4 F000 01856         MOVFF   PREINC1, r0x00
+047A CFE4 FFD9 01857         MOVFF   PREINC1, FSR2L
+047E 0012      01858         RETURN  
+               01859 
+               01860 ; ; Starting pCode block
+               01861 S_main__top     code
+0000 01862 _top:
+               01863 ;       .line   47; main.c      void top(int _channel)
+0000 CFD9 FFE5 01864         MOVFF   FSR2L, POSTDEC1
+0004 CFE1 FFD9 01865         MOVFF   FSR1L, FSR2L
+0008 C000 FFE5 01866         MOVFF   r0x00, POSTDEC1
+000C C000 FFE5 01867         MOVFF   r0x01, POSTDEC1
+0010 C000 FFE5 01868         MOVFF   r0x02, POSTDEC1
+0014 C000 FFE5 01869         MOVFF   r0x03, POSTDEC1
+0018 C000 FFE5 01870         MOVFF   r0x04, POSTDEC1
+001C C000 FFE5 01871         MOVFF   r0x05, POSTDEC1
+0020 C000 FFE5 01872         MOVFF   r0x06, POSTDEC1
+0024 C000 FFE5 01873         MOVFF   r0x07, POSTDEC1
+0028 C000 FFE5 01874         MOVFF   r0x08, POSTDEC1
+002C C000 FFE5 01875         MOVFF   r0x09, POSTDEC1
+0030 C000 FFE5 01876         MOVFF   r0x0a, POSTDEC1
+0034 C000 FFE5 01877         MOVFF   r0x0b, POSTDEC1
+0038 0E02      01878         MOVLW   0x02
+003A CFDB F000 01879         MOVFF   PLUSW2, r0x00
+003E 0E03      01880         MOVLW   0x03
+0040 CFDB F000 01881         MOVFF   PLUSW2, r0x01
+               01882 ;       .line   50; main.c      NPeriodosPassadosNoCanal[_channel] = (long)(channel[_channel].currTime / (channel[_channel].T / 2));
+0044 5000      01883         MOVF    r0x01, W
+0046 6EE5      01884         MOVWF   POSTDEC1
+0048 5000      01885         MOVF    r0x00, W
+004A 6EE5      01886         MOVWF   POSTDEC1
+004C 0E00      01887         MOVLW   0x00
+004E 6EE5      01888         MOVWF   POSTDEC1
+0050 0E02      01889         MOVLW   0x02
+0052 6EE5      01890         MOVWF   POSTDEC1
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 36
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0054 EC00 F000 01891         CALL    __mulint
+0058 6E00      01892         MOVWF   r0x02
+005A CFF3 F000 01893         MOVFF   PRODL, r0x03
+005E 0E04      01894         MOVLW   0x04
+0060 26E1      01895         ADDWF   FSR1L, F
+0062 0E00      01896         MOVLW   LOW(_NPeriodosPassadosNoCanal)
+0064 2600      01897         ADDWF   r0x02, F
+0066 0E00      01898         MOVLW   HIGH(_NPeriodosPassadosNoCanal)
+0068 2200      01899         ADDWFC  r0x03, F
+006A 5000      01900         MOVF    r0x01, W
+006C 6EE5      01901         MOVWF   POSTDEC1
+006E 5000      01902         MOVF    r0x00, W
+0070 6EE5      01903         MOVWF   POSTDEC1
+0072 0E00      01904         MOVLW   0x00
+0074 6EE5      01905         MOVWF   POSTDEC1
+0076 0E1E      01906         MOVLW   0x1e
+0078 6EE5      01907         MOVWF   POSTDEC1
+007A EC00 F000 01908         CALL    __mulint
+007E 6E00      01909         MOVWF   r0x04
+0080 CFF3 F000 01910         MOVFF   PRODL, r0x05
+0084 0E04      01911         MOVLW   0x04
+0086 26E1      01912         ADDWF   FSR1L, F
+0088 0E00      01913         MOVLW   LOW(_channel)
+008A 2600      01914         ADDWF   r0x04, F
+008C 0E00      01915         MOVLW   HIGH(_channel)
+008E 2200      01916         ADDWFC  r0x05, F
+0090 5000      01917         MOVF    r0x04, W
+0092 0F18      01918         ADDLW   0x18
+0094 6E00      01919         MOVWF   r0x06
+0096 0E00      01920         MOVLW   0x00
+0098 2000      01921         ADDWFC  r0x05, W
+009A 6E00      01922         MOVWF   r0x07
+009C C000 FFE9 01923         MOVFF   r0x06, FSR0L
+00A0 C000 FFEA 01924         MOVFF   r0x07, FSR0H
+00A4 CFEE F000 01925         MOVFF   POSTINC0, r0x06
+00A8 CFEE F000 01926         MOVFF   POSTINC0, r0x07
+00AC CFEE F000 01927         MOVFF   POSTINC0, r0x08
+00B0 CFEF F000 01928         MOVFF   INDF0, r0x09
+00B4 0E10      01929         MOVLW   0x10
+00B6 2600      01930         ADDWF   r0x04, F
+00B8 B0D8      01931         BTFSC   STATUS, 0
+00BA 2A00      01932         INCF    r0x05, F
+00BC C000 FFE9 01933         MOVFF   r0x04, FSR0L
+00C0 C000 FFEA 01934         MOVFF   r0x05, FSR0H
+00C4 CFEE F000 01935         MOVFF   POSTINC0, r0x04
+00C8 CFEE F000 01936         MOVFF   POSTINC0, r0x05
+00CC CFEE F000 01937         MOVFF   POSTINC0, r0x0a
+00D0 CFEF F000 01938         MOVFF   INDF0, r0x0b
+00D4 0E00      01939         MOVLW   0x00
+00D6 6EE5      01940         MOVWF   POSTDEC1
+00D8 0E00      01941         MOVLW   0x00
+00DA 6EE5      01942         MOVWF   POSTDEC1
+00DC 0E00      01943         MOVLW   0x00
+00DE 6EE5      01944         MOVWF   POSTDEC1
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 37
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+00E0 0E02      01945         MOVLW   0x02
+00E2 6EE5      01946         MOVWF   POSTDEC1
+00E4 5000      01947         MOVF    r0x0b, W
+00E6 6EE5      01948         MOVWF   POSTDEC1
+00E8 5000      01949         MOVF    r0x0a, W
+00EA 6EE5      01950         MOVWF   POSTDEC1
+00EC 5000      01951         MOVF    r0x05, W
+00EE 6EE5      01952         MOVWF   POSTDEC1
+00F0 5000      01953         MOVF    r0x04, W
+00F2 6EE5      01954         MOVWF   POSTDEC1
+00F4 EC00 F000 01955         CALL    __divslong
+00F8 6E00      01956         MOVWF   r0x04
+00FA CFF3 F000 01957         MOVFF   PRODL, r0x05
+00FE CFF4 F000 01958         MOVFF   PRODH, r0x0a
+0102 CFE9 F000 01959         MOVFF   FSR0L, r0x0b
+0106 0E08      01960         MOVLW   0x08
+0108 26E1      01961         ADDWF   FSR1L, F
+010A 5000      01962         MOVF    r0x0b, W
+010C 6EE5      01963         MOVWF   POSTDEC1
+010E 5000      01964         MOVF    r0x0a, W
+0110 6EE5      01965         MOVWF   POSTDEC1
+0112 5000      01966         MOVF    r0x05, W
+0114 6EE5      01967         MOVWF   POSTDEC1
+0116 5000      01968         MOVF    r0x04, W
+0118 6EE5      01969         MOVWF   POSTDEC1
+011A 5000      01970         MOVF    r0x09, W
+011C 6EE5      01971         MOVWF   POSTDEC1
+011E 5000      01972         MOVF    r0x08, W
+0120 6EE5      01973         MOVWF   POSTDEC1
+0122 5000      01974         MOVF    r0x07, W
+0124 6EE5      01975         MOVWF   POSTDEC1
+0126 5000      01976         MOVF    r0x06, W
+0128 6EE5      01977         MOVWF   POSTDEC1
+012A EC00 F000 01978         CALL    __divslong
+012E 6E00      01979         MOVWF   r0x04
+0130 CFF3 F000 01980         MOVFF   PRODL, r0x05
+0134 CFF4 F000 01981         MOVFF   PRODH, r0x06
+0138 CFE9 F000 01982         MOVFF   FSR0L, r0x07
+013C 0E08      01983         MOVLW   0x08
+013E 26E1      01984         ADDWF   FSR1L, F
+0140 C000 FFE9 01985         MOVFF   r0x02, FSR0L
+0144 C000 FFEA 01986         MOVFF   r0x03, FSR0H
+0148 C000 FFEE 01987         MOVFF   r0x04, POSTINC0
+014C C000 FFEF 01988         MOVFF   r0x05, INDF0
+               01989 ;       .line   53; main.c      if (NPeriodosPassadosNoCanal[_channel]%2) /// Se o tempo que passou dentro do período for menor q a metade do tempo que é pra ficar on
+0150 0E00      01990         MOVLW   0x00
+0152 6EE5      01991         MOVWF   POSTDEC1
+0154 0E02      01992         MOVLW   0x02
+0156 6EE5      01993         MOVWF   POSTDEC1
+0158 5000      01994         MOVF    r0x05, W
+015A 6EE5      01995         MOVWF   POSTDEC1
+015C 5000      01996         MOVF    r0x04, W
+015E 6EE5      01997         MOVWF   POSTDEC1
+0160 EC00 F000 01998         CALL    __modsint
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 38
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0164 6E00      01999         MOVWF   r0x02
+0166 CFF3 F000 02000         MOVFF   PRODL, r0x03
+016A 0E04      02001         MOVLW   0x04
+016C 26E1      02002         ADDWF   FSR1L, F
+016E 5000      02003         MOVF    r0x02, W
+0170 1000      02004         IORWF   r0x03, W
+0172 E000      02005         BZ      _00116_DS_
+               02006 ;       .line   55; main.c      c_c[_channel*2] = 0;
+0174 5000      02007         MOVF    r0x00, W
+0176 6E00      02008         MOVWF   r0x02
+               02009 ; ;multiply lit val:0x02 by variable r0x02 and store in r0x02
+               02010 ; ;Unrolled 8 X 8 multiplication
+               02011 ; ;FIXME: the function does not support result==WREG
+0178 90D8      02012         BCF     STATUS, 0
+017A 3600      02013         RLCF    r0x02, F
+               02014 ; ;multiply lit val:0x02 by variable r0x02 and store in r0x03
+               02015 ; ;Unrolled 8 X 8 multiplication
+               02016 ; ;FIXME: the function does not support result==WREG
+017C 0E00      02017         MOVLW   0x00
+017E BE00      02018         BTFSC   r0x02, 7
+0180 0EFF      02019         MOVLW   0xff
+0182 90D8      02020         BCF     STATUS, 0
+0184 3400      02021         RLCF    r0x02, W
+0186 6E00      02022         MOVWF   r0x03
+0188 6A00      02023         CLRF    r0x04
+018A BE00      02024         BTFSC   r0x03, 7
+018C 6800      02025         SETF    r0x04
+018E 0E00      02026         MOVLW   LOW(_c_c)
+0190 2600      02027         ADDWF   r0x03, F
+0192 0E00      02028         MOVLW   HIGH(_c_c)
+0194 2200      02029         ADDWFC  r0x04, F
+0196 C000 FFE9 02030         MOVFF   r0x03, FSR0L
+019A C000 FFEA 02031         MOVFF   r0x04, FSR0H
+019E 0E00      02032         MOVLW   0x00
+01A0 6EEE      02033         MOVWF   POSTINC0
+01A2 0E00      02034         MOVLW   0x00
+01A4 6EEF      02035         MOVWF   INDF0
+               02036 ;       .line   56; main.c      c_c[_channel*2+1] = 1;
+01A6 2A00      02037         INCF    r0x02, F
+               02038 ; ;multiply lit val:0x02 by variable r0x02 and store in r0x02
+               02039 ; ;Unrolled 8 X 8 multiplication
+               02040 ; ;FIXME: the function does not support result==WREG
+01A8 90D8      02041         BCF     STATUS, 0
+01AA 3600      02042         RLCF    r0x02, F
+01AC 6A00      02043         CLRF    r0x03
+01AE BE00      02044         BTFSC   r0x02, 7
+01B0 6800      02045         SETF    r0x03
+01B2 0E00      02046         MOVLW   LOW(_c_c)
+01B4 2600      02047         ADDWF   r0x02, F
+01B6 0E00      02048         MOVLW   HIGH(_c_c)
+01B8 2200      02049         ADDWFC  r0x03, F
+01BA C000 FFE9 02050         MOVFF   r0x02, FSR0L
+01BE C000 FFEA 02051         MOVFF   r0x03, FSR0H
+01C2 0E01      02052         MOVLW   0x01
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 39
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+01C4 6EEE      02053         MOVWF   POSTINC0
+01C6 0E00      02054         MOVLW   0x00
+01C8 6EEF      02055         MOVWF   INDF0
+01CA D000      02056         BRA     _00118_DS_
+               02057 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+               02058 ; ;Unrolled 8 X 8 multiplication
+               02059 ; ;FIXME: the function does not support result==WREG
+01CC 02060 _00116_DS_:
+               02061 ;       .line   60; main.c      c_c[_channel*2] = 1;
+01CC 90D8      02062         BCF     STATUS, 0
+01CE 3600      02063         RLCF    r0x00, F
+               02064 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x01
+               02065 ; ;Unrolled 8 X 8 multiplication
+               02066 ; ;FIXME: the function does not support result==WREG
+01D0 0E00      02067         MOVLW   0x00
+01D2 BE00      02068         BTFSC   r0x00, 7
+01D4 0EFF      02069         MOVLW   0xff
+01D6 90D8      02070         BCF     STATUS, 0
+01D8 3400      02071         RLCF    r0x00, W
+01DA 6E00      02072         MOVWF   r0x01
+01DC 6A00      02073         CLRF    r0x02
+01DE BE00      02074         BTFSC   r0x01, 7
+01E0 6800      02075         SETF    r0x02
+01E2 0E00      02076         MOVLW   LOW(_c_c)
+01E4 2600      02077         ADDWF   r0x01, F
+01E6 0E00      02078         MOVLW   HIGH(_c_c)
+01E8 2200      02079         ADDWFC  r0x02, F
+01EA C000 FFE9 02080         MOVFF   r0x01, FSR0L
+01EE C000 FFEA 02081         MOVFF   r0x02, FSR0H
+01F2 0E01      02082         MOVLW   0x01
+01F4 6EEE      02083         MOVWF   POSTINC0
+01F6 0E00      02084         MOVLW   0x00
+01F8 6EEF      02085         MOVWF   INDF0
+               02086 ;       .line   61; main.c      c_c[_channel*2+1] = 0;
+01FA 2A00      02087         INCF    r0x00, F
+               02088 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+               02089 ; ;Unrolled 8 X 8 multiplication
+               02090 ; ;FIXME: the function does not support result==WREG
+01FC 90D8      02091         BCF     STATUS, 0
+01FE 3600      02092         RLCF    r0x00, F
+0200 6A00      02093         CLRF    r0x01
+0202 BE00      02094         BTFSC   r0x00, 7
+0204 6800      02095         SETF    r0x01
+0206 0E00      02096         MOVLW   LOW(_c_c)
+0208 2600      02097         ADDWF   r0x00, F
+020A 0E00      02098         MOVLW   HIGH(_c_c)
+020C 2200      02099         ADDWFC  r0x01, F
+020E C000 FFE9 02100         MOVFF   r0x00, FSR0L
+0212 C000 FFEA 02101         MOVFF   r0x01, FSR0H
+0216 0E00      02102         MOVLW   0x00
+0218 6EEE      02103         MOVWF   POSTINC0
+021A 0E00      02104         MOVLW   0x00
+021C 6EEF      02105         MOVWF   INDF0
+021E 02106 _00118_DS_:
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 40
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+021E CFE4 F000 02107         MOVFF   PREINC1, r0x0b
+0222 CFE4 F000 02108         MOVFF   PREINC1, r0x0a
+0226 CFE4 F000 02109         MOVFF   PREINC1, r0x09
+022A CFE4 F000 02110         MOVFF   PREINC1, r0x08
+022E CFE4 F000 02111         MOVFF   PREINC1, r0x07
+0232 CFE4 F000 02112         MOVFF   PREINC1, r0x06
+0236 CFE4 F000 02113         MOVFF   PREINC1, r0x05
+023A CFE4 F000 02114         MOVFF   PREINC1, r0x04
+023E CFE4 F000 02115         MOVFF   PREINC1, r0x03
+0242 CFE4 F000 02116         MOVFF   PREINC1, r0x02
+0246 CFE4 F000 02117         MOVFF   PREINC1, r0x01
+024A CFE4 F000 02118         MOVFF   PREINC1, r0x00
+024E CFE4 FFD9 02119         MOVFF   PREINC1, FSR2L
+0252 0012      02120         RETURN  
+               02121 
+               02122 ; ; Starting pCode block
+               02123 S_main__up      code
+0000 02124 _up:
+               02125 ;       .line   30; main.c      void up(int _channel)
+0000 CFD9 FFE5 02126         MOVFF   FSR2L, POSTDEC1
+0004 CFE1 FFD9 02127         MOVFF   FSR1L, FSR2L
+0008 C000 FFE5 02128         MOVFF   r0x00, POSTDEC1
+000C C000 FFE5 02129         MOVFF   r0x01, POSTDEC1
+0010 C000 FFE5 02130         MOVFF   r0x02, POSTDEC1
+0014 C000 FFE5 02131         MOVFF   r0x03, POSTDEC1
+0018 C000 FFE5 02132         MOVFF   r0x04, POSTDEC1
+001C C000 FFE5 02133         MOVFF   r0x05, POSTDEC1
+0020 C000 FFE5 02134         MOVFF   r0x06, POSTDEC1
+0024 C000 FFE5 02135         MOVFF   r0x07, POSTDEC1
+0028 C000 FFE5 02136         MOVFF   r0x08, POSTDEC1
+002C C000 FFE5 02137         MOVFF   r0x09, POSTDEC1
+0030 C000 FFE5 02138         MOVFF   r0x0a, POSTDEC1
+0034 C000 FFE5 02139         MOVFF   r0x0b, POSTDEC1
+0038 C000 FFE5 02140         MOVFF   r0x0c, POSTDEC1
+003C C000 FFE5 02141         MOVFF   r0x0d, POSTDEC1
+0040 C000 FFE5 02142         MOVFF   r0x0e, POSTDEC1
+0044 C000 FFE5 02143         MOVFF   r0x0f, POSTDEC1
+0048 C000 FFE5 02144         MOVFF   r0x10, POSTDEC1
+004C C000 FFE5 02145         MOVFF   r0x11, POSTDEC1
+0050 0E02      02146         MOVLW   0x02
+0052 CFDB F000 02147         MOVFF   PLUSW2, r0x00
+0056 0E03      02148         MOVLW   0x03
+0058 CFDB F000 02149         MOVFF   PLUSW2, r0x01
+               02150 ;       .line   32; main.c      long timeInT = channel[_channel].currTime-(((int)(channel[_channel].currTime / channel[_channel].T))*channel[_channel].T);
+005C 5000      02151         MOVF    r0x01, W
+005E 6EE5      02152         MOVWF   POSTDEC1
+0060 5000      02153         MOVF    r0x00, W
+0062 6EE5      02154         MOVWF   POSTDEC1
+0064 0E00      02155         MOVLW   0x00
+0066 6EE5      02156         MOVWF   POSTDEC1
+0068 0E1E      02157         MOVLW   0x1e
+006A 6EE5      02158         MOVWF   POSTDEC1
+006C EC00 F000 02159         CALL    __mulint
+0070 6E00      02160         MOVWF   r0x02
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 41
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0072 CFF3 F000 02161         MOVFF   PRODL, r0x03
+0076 0E04      02162         MOVLW   0x04
+0078 26E1      02163         ADDWF   FSR1L, F
+007A 0E00      02164         MOVLW   LOW(_channel)
+007C 2600      02165         ADDWF   r0x02, F
+007E 0E00      02166         MOVLW   HIGH(_channel)
+0080 2200      02167         ADDWFC  r0x03, F
+0082 5000      02168         MOVF    r0x02, W
+0084 0F18      02169         ADDLW   0x18
+0086 6E00      02170         MOVWF   r0x04
+0088 0E00      02171         MOVLW   0x00
+008A 2000      02172         ADDWFC  r0x03, W
+008C 6E00      02173         MOVWF   r0x05
+008E C000 FFE9 02174         MOVFF   r0x04, FSR0L
+0092 C000 FFEA 02175         MOVFF   r0x05, FSR0H
+0096 CFEE F000 02176         MOVFF   POSTINC0, r0x04
+009A CFEE F000 02177         MOVFF   POSTINC0, r0x05
+009E CFEE F000 02178         MOVFF   POSTINC0, r0x06
+00A2 CFEF F000 02179         MOVFF   INDF0, r0x07
+00A6 5000      02180         MOVF    r0x02, W
+00A8 0F10      02181         ADDLW   0x10
+00AA 6E00      02182         MOVWF   r0x08
+00AC 0E00      02183         MOVLW   0x00
+00AE 2000      02184         ADDWFC  r0x03, W
+00B0 6E00      02185         MOVWF   r0x09
+00B2 C000 FFE9 02186         MOVFF   r0x08, FSR0L
+00B6 C000 FFEA 02187         MOVFF   r0x09, FSR0H
+00BA CFEE F000 02188         MOVFF   POSTINC0, r0x08
+00BE CFEE F000 02189         MOVFF   POSTINC0, r0x09
+00C2 CFEE F000 02190         MOVFF   POSTINC0, r0x0a
+00C6 CFEF F000 02191         MOVFF   INDF0, r0x0b
+00CA 5000      02192         MOVF    r0x0b, W
+00CC 6EE5      02193         MOVWF   POSTDEC1
+00CE 5000      02194         MOVF    r0x0a, W
+00D0 6EE5      02195         MOVWF   POSTDEC1
+00D2 5000      02196         MOVF    r0x09, W
+00D4 6EE5      02197         MOVWF   POSTDEC1
+00D6 5000      02198         MOVF    r0x08, W
+00D8 6EE5      02199         MOVWF   POSTDEC1
+00DA 5000      02200         MOVF    r0x07, W
+00DC 6EE5      02201         MOVWF   POSTDEC1
+00DE 5000      02202         MOVF    r0x06, W
+00E0 6EE5      02203         MOVWF   POSTDEC1
+00E2 5000      02204         MOVF    r0x05, W
+00E4 6EE5      02205         MOVWF   POSTDEC1
+00E6 5000      02206         MOVF    r0x04, W
+00E8 6EE5      02207         MOVWF   POSTDEC1
+00EA EC00 F000 02208         CALL    __divslong
+00EE 6E00      02209         MOVWF   r0x0c
+00F0 CFF3 F000 02210         MOVFF   PRODL, r0x0d
+00F4 CFF4 F000 02211         MOVFF   PRODH, r0x0e
+00F8 CFE9 F000 02212         MOVFF   FSR0L, r0x0f
+00FC 0E08      02213         MOVLW   0x08
+00FE 26E1      02214         ADDWF   FSR1L, F
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 42
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0100 6AE8      02215         CLRF    WREG
+0102 BE00      02216         BTFSC   r0x0d, 7
+0104 0EFF      02217         MOVLW   0xff
+0106 6E00      02218         MOVWF   r0x0e
+0108 6E00      02219         MOVWF   r0x0f
+010A 5000      02220         MOVF    r0x0b, W
+010C 6EE5      02221         MOVWF   POSTDEC1
+010E 5000      02222         MOVF    r0x0a, W
+0110 6EE5      02223         MOVWF   POSTDEC1
+0112 5000      02224         MOVF    r0x09, W
+0114 6EE5      02225         MOVWF   POSTDEC1
+0116 5000      02226         MOVF    r0x08, W
+0118 6EE5      02227         MOVWF   POSTDEC1
+011A 5000      02228         MOVF    r0x0f, W
+011C 6EE5      02229         MOVWF   POSTDEC1
+011E 5000      02230         MOVF    r0x0e, W
+0120 6EE5      02231         MOVWF   POSTDEC1
+0122 5000      02232         MOVF    r0x0d, W
+0124 6EE5      02233         MOVWF   POSTDEC1
+0126 5000      02234         MOVF    r0x0c, W
+0128 6EE5      02235         MOVWF   POSTDEC1
+012A EC00 F000 02236         CALL    __mullong
+012E 6E00      02237         MOVWF   r0x0c
+0130 CFF3 F000 02238         MOVFF   PRODL, r0x0d
+0134 CFF4 F000 02239         MOVFF   PRODH, r0x0e
+0138 CFE9 F000 02240         MOVFF   FSR0L, r0x0f
+013C 0E08      02241         MOVLW   0x08
+013E 26E1      02242         ADDWF   FSR1L, F
+0140 5000      02243         MOVF    r0x0c, W
+0142 5C00      02244         SUBWF   r0x04, W
+0144 6E00      02245         MOVWF   r0x0c
+0146 5000      02246         MOVF    r0x0d, W
+0148 5800      02247         SUBWFB  r0x05, W
+014A 6E00      02248         MOVWF   r0x0d
+014C 5000      02249         MOVF    r0x0e, W
+014E 5800      02250         SUBWFB  r0x06, W
+0150 6E00      02251         MOVWF   r0x0e
+0152 5000      02252         MOVF    r0x0f, W
+0154 5800      02253         SUBWFB  r0x07, W
+0156 6E00      02254         MOVWF   r0x0f
+               02255 ;       .line   33; main.c      float perTimeUP = (float)channel[_channel].currTime/(float)channel[_channel].timeup;
+0158 5000      02256         MOVF    r0x07, W
+015A 6EE5      02257         MOVWF   POSTDEC1
+015C 5000      02258         MOVF    r0x06, W
+015E 6EE5      02259         MOVWF   POSTDEC1
+0160 5000      02260         MOVF    r0x05, W
+0162 6EE5      02261         MOVWF   POSTDEC1
+0164 5000      02262         MOVF    r0x04, W
+0166 6EE5      02263         MOVWF   POSTDEC1
+0168 EC00 F000 02264         CALL    ___slong2fs
+016C 6E00      02265         MOVWF   r0x04
+016E CFF3 F000 02266         MOVFF   PRODL, r0x05
+0172 CFF4 F000 02267         MOVFF   PRODH, r0x06
+0176 CFE9 F000 02268         MOVFF   FSR0L, r0x07
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 43
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+017A 0E04      02269         MOVLW   0x04
+017C 26E1      02270         ADDWF   FSR1L, F
+017E 0E0C      02271         MOVLW   0x0c
+0180 2600      02272         ADDWF   r0x02, F
+0182 B0D8      02273         BTFSC   STATUS, 0
+0184 2A00      02274         INCF    r0x03, F
+0186 C000 FFE9 02275         MOVFF   r0x02, FSR0L
+018A C000 FFEA 02276         MOVFF   r0x03, FSR0H
+018E CFEE F000 02277         MOVFF   POSTINC0, r0x02
+0192 CFEE F000 02278         MOVFF   POSTINC0, r0x03
+0196 CFEE F000 02279         MOVFF   POSTINC0, r0x10
+019A CFEF F000 02280         MOVFF   INDF0, r0x11
+019E 5000      02281         MOVF    r0x11, W
+01A0 6EE5      02282         MOVWF   POSTDEC1
+01A2 5000      02283         MOVF    r0x10, W
+01A4 6EE5      02284         MOVWF   POSTDEC1
+01A6 5000      02285         MOVF    r0x03, W
+01A8 6EE5      02286         MOVWF   POSTDEC1
+01AA 5000      02287         MOVF    r0x02, W
+01AC 6EE5      02288         MOVWF   POSTDEC1
+01AE EC00 F000 02289         CALL    ___slong2fs
+01B2 6E00      02290         MOVWF   r0x02
+01B4 CFF3 F000 02291         MOVFF   PRODL, r0x03
+01B8 CFF4 F000 02292         MOVFF   PRODH, r0x10
+01BC CFE9 F000 02293         MOVFF   FSR0L, r0x11
+01C0 0E04      02294         MOVLW   0x04
+01C2 26E1      02295         ADDWF   FSR1L, F
+01C4 5000      02296         MOVF    r0x11, W
+01C6 6EE5      02297         MOVWF   POSTDEC1
+01C8 5000      02298         MOVF    r0x10, W
+01CA 6EE5      02299         MOVWF   POSTDEC1
+01CC 5000      02300         MOVF    r0x03, W
+01CE 6EE5      02301         MOVWF   POSTDEC1
+01D0 5000      02302         MOVF    r0x02, W
+01D2 6EE5      02303         MOVWF   POSTDEC1
+01D4 5000      02304         MOVF    r0x07, W
+01D6 6EE5      02305         MOVWF   POSTDEC1
+01D8 5000      02306         MOVF    r0x06, W
+01DA 6EE5      02307         MOVWF   POSTDEC1
+01DC 5000      02308         MOVF    r0x05, W
+01DE 6EE5      02309         MOVWF   POSTDEC1
+01E0 5000      02310         MOVF    r0x04, W
+01E2 6EE5      02311         MOVWF   POSTDEC1
+01E4 EC00 F000 02312         CALL    ___fsdiv
+01E8 6E00      02313         MOVWF   r0x02
+01EA CFF3 F000 02314         MOVFF   PRODL, r0x03
+01EE CFF4 F000 02315         MOVFF   PRODH, r0x04
+01F2 CFE9 F000 02316         MOVFF   FSR0L, r0x05
+01F6 0E08      02317         MOVLW   0x08
+01F8 26E1      02318         ADDWF   FSR1L, F
+               02319 ;       .line   34; main.c      if (timeInT<=perTimeUP*channel[_channel].T/2) /// Se o tempo que passou dentro do período for menor q a metade do tempo que é pra ficar on
+01FA 5000      02320         MOVF    r0x0b, W
+01FC 6EE5      02321         MOVWF   POSTDEC1
+01FE 5000      02322         MOVF    r0x0a, W
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 44
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0200 6EE5      02323         MOVWF   POSTDEC1
+0202 5000      02324         MOVF    r0x09, W
+0204 6EE5      02325         MOVWF   POSTDEC1
+0206 5000      02326         MOVF    r0x08, W
+0208 6EE5      02327         MOVWF   POSTDEC1
+020A EC00 F000 02328         CALL    ___slong2fs
+020E 6E00      02329         MOVWF   r0x06
+0210 CFF3 F000 02330         MOVFF   PRODL, r0x07
+0214 CFF4 F000 02331         MOVFF   PRODH, r0x08
+0218 CFE9 F000 02332         MOVFF   FSR0L, r0x09
+021C 0E04      02333         MOVLW   0x04
+021E 26E1      02334         ADDWF   FSR1L, F
+0220 5000      02335         MOVF    r0x09, W
+0222 6EE5      02336         MOVWF   POSTDEC1
+0224 5000      02337         MOVF    r0x08, W
+0226 6EE5      02338         MOVWF   POSTDEC1
+0228 5000      02339         MOVF    r0x07, W
+022A 6EE5      02340         MOVWF   POSTDEC1
+022C 5000      02341         MOVF    r0x06, W
+022E 6EE5      02342         MOVWF   POSTDEC1
+0230 5000      02343         MOVF    r0x05, W
+0232 6EE5      02344         MOVWF   POSTDEC1
+0234 5000      02345         MOVF    r0x04, W
+0236 6EE5      02346         MOVWF   POSTDEC1
+0238 5000      02347         MOVF    r0x03, W
+023A 6EE5      02348         MOVWF   POSTDEC1
+023C 5000      02349         MOVF    r0x02, W
+023E 6EE5      02350         MOVWF   POSTDEC1
+0240 EC00 F000 02351         CALL    ___fsmul
+0244 6E00      02352         MOVWF   r0x02
+0246 CFF3 F000 02353         MOVFF   PRODL, r0x03
+024A CFF4 F000 02354         MOVFF   PRODH, r0x04
+024E CFE9 F000 02355         MOVFF   FSR0L, r0x05
+0252 0E08      02356         MOVLW   0x08
+0254 26E1      02357         ADDWF   FSR1L, F
+0256 0E40      02358         MOVLW   0x40
+0258 6EE5      02359         MOVWF   POSTDEC1
+025A 0E00      02360         MOVLW   0x00
+025C 6EE5      02361         MOVWF   POSTDEC1
+025E 0E00      02362         MOVLW   0x00
+0260 6EE5      02363         MOVWF   POSTDEC1
+0262 0E00      02364         MOVLW   0x00
+0264 6EE5      02365         MOVWF   POSTDEC1
+0266 5000      02366         MOVF    r0x05, W
+0268 6EE5      02367         MOVWF   POSTDEC1
+026A 5000      02368         MOVF    r0x04, W
+026C 6EE5      02369         MOVWF   POSTDEC1
+026E 5000      02370         MOVF    r0x03, W
+0270 6EE5      02371         MOVWF   POSTDEC1
+0272 5000      02372         MOVF    r0x02, W
+0274 6EE5      02373         MOVWF   POSTDEC1
+0276 EC00 F000 02374         CALL    ___fsdiv
+027A 6E00      02375         MOVWF   r0x06
+027C CFF3 F000 02376         MOVFF   PRODL, r0x07
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 45
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0280 CFF4 F000 02377         MOVFF   PRODH, r0x08
+0284 CFE9 F000 02378         MOVFF   FSR0L, r0x09
+0288 0E08      02379         MOVLW   0x08
+028A 26E1      02380         ADDWF   FSR1L, F
+028C 5000      02381         MOVF    r0x0f, W
+028E 6EE5      02382         MOVWF   POSTDEC1
+0290 5000      02383         MOVF    r0x0e, W
+0292 6EE5      02384         MOVWF   POSTDEC1
+0294 5000      02385         MOVF    r0x0d, W
+0296 6EE5      02386         MOVWF   POSTDEC1
+0298 5000      02387         MOVF    r0x0c, W
+029A 6EE5      02388         MOVWF   POSTDEC1
+029C EC00 F000 02389         CALL    ___slong2fs
+02A0 6E00      02390         MOVWF   r0x0a
+02A2 CFF3 F000 02391         MOVFF   PRODL, r0x0b
+02A6 CFF4 F000 02392         MOVFF   PRODH, r0x0c
+02AA CFE9 F000 02393         MOVFF   FSR0L, r0x0d
+02AE 0E04      02394         MOVLW   0x04
+02B0 26E1      02395         ADDWF   FSR1L, F
+02B2 5000      02396         MOVF    r0x09, W
+02B4 6EE5      02397         MOVWF   POSTDEC1
+02B6 5000      02398         MOVF    r0x08, W
+02B8 6EE5      02399         MOVWF   POSTDEC1
+02BA 5000      02400         MOVF    r0x07, W
+02BC 6EE5      02401         MOVWF   POSTDEC1
+02BE 5000      02402         MOVF    r0x06, W
+02C0 6EE5      02403         MOVWF   POSTDEC1
+02C2 5000      02404         MOVF    r0x0d, W
+02C4 6EE5      02405         MOVWF   POSTDEC1
+02C6 5000      02406         MOVF    r0x0c, W
+02C8 6EE5      02407         MOVWF   POSTDEC1
+02CA 5000      02408         MOVF    r0x0b, W
+02CC 6EE5      02409         MOVWF   POSTDEC1
+02CE 5000      02410         MOVF    r0x0a, W
+02D0 6EE5      02411         MOVWF   POSTDEC1
+02D2 EC00 F000 02412         CALL    ___fsgt
+02D6 6E00      02413         MOVWF   r0x06
+02D8 0E08      02414         MOVLW   0x08
+02DA 26E1      02415         ADDWF   FSR1L, F
+02DC 5000      02416         MOVF    r0x06, W
+02DE E100      02417         BNZ     _00108_DS_
+               02418 ;       .line   36; main.c      c_c[_channel*2] = 1;
+02E0 5000      02419         MOVF    r0x00, W
+02E2 6E00      02420         MOVWF   r0x06
+               02421 ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+               02422 ; ;Unrolled 8 X 8 multiplication
+               02423 ; ;FIXME: the function does not support result==WREG
+02E4 90D8      02424         BCF     STATUS, 0
+02E6 3600      02425         RLCF    r0x06, F
+               02426 ; ;multiply lit val:0x02 by variable r0x06 and store in r0x07
+               02427 ; ;Unrolled 8 X 8 multiplication
+               02428 ; ;FIXME: the function does not support result==WREG
+02E8 0E00      02429         MOVLW   0x00
+02EA BE00      02430         BTFSC   r0x06, 7
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 46
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+02EC 0EFF      02431         MOVLW   0xff
+02EE 90D8      02432         BCF     STATUS, 0
+02F0 3400      02433         RLCF    r0x06, W
+02F2 6E00      02434         MOVWF   r0x07
+02F4 6A00      02435         CLRF    r0x08
+02F6 BE00      02436         BTFSC   r0x07, 7
+02F8 6800      02437         SETF    r0x08
+02FA 0E00      02438         MOVLW   LOW(_c_c)
+02FC 2600      02439         ADDWF   r0x07, F
+02FE 0E00      02440         MOVLW   HIGH(_c_c)
+0300 2200      02441         ADDWFC  r0x08, F
+0302 C000 FFE9 02442         MOVFF   r0x07, FSR0L
+0306 C000 FFEA 02443         MOVFF   r0x08, FSR0H
+030A 0E01      02444         MOVLW   0x01
+030C 6EEE      02445         MOVWF   POSTINC0
+030E 0E00      02446         MOVLW   0x00
+0310 6EEF      02447         MOVWF   INDF0
+               02448 ;       .line   37; main.c      c_c[_channel*2+1] = 0;
+0312 2A00      02449         INCF    r0x06, F
+               02450 ; ;multiply lit val:0x02 by variable r0x06 and store in r0x06
+               02451 ; ;Unrolled 8 X 8 multiplication
+               02452 ; ;FIXME: the function does not support result==WREG
+0314 90D8      02453         BCF     STATUS, 0
+0316 3600      02454         RLCF    r0x06, F
+0318 6A00      02455         CLRF    r0x07
+031A BE00      02456         BTFSC   r0x06, 7
+031C 6800      02457         SETF    r0x07
+031E 0E00      02458         MOVLW   LOW(_c_c)
+0320 2600      02459         ADDWF   r0x06, F
+0322 0E00      02460         MOVLW   HIGH(_c_c)
+0324 2200      02461         ADDWFC  r0x07, F
+0326 C000 FFE9 02462         MOVFF   r0x06, FSR0L
+032A C000 FFEA 02463         MOVFF   r0x07, FSR0H
+032E 0E00      02464         MOVLW   0x00
+0330 6EEE      02465         MOVWF   POSTINC0
+0332 0E00      02466         MOVLW   0x00
+0334 6EEF      02467         MOVWF   INDF0
+0336 D000      02468         BRA     _00110_DS_
+0338 02469 _00108_DS_:
+               02470 ;       .line   39; main.c      else if (timeInT<=perTimeUP*channel[_channel].T) /// Se for a outra metade
+0338 5000      02471         MOVF    r0x05, W
+033A 6EE5      02472         MOVWF   POSTDEC1
+033C 5000      02473         MOVF    r0x04, W
+033E 6EE5      02474         MOVWF   POSTDEC1
+0340 5000      02475         MOVF    r0x03, W
+0342 6EE5      02476         MOVWF   POSTDEC1
+0344 5000      02477         MOVF    r0x02, W
+0346 6EE5      02478         MOVWF   POSTDEC1
+0348 5000      02479         MOVF    r0x0d, W
+034A 6EE5      02480         MOVWF   POSTDEC1
+034C 5000      02481         MOVF    r0x0c, W
+034E 6EE5      02482         MOVWF   POSTDEC1
+0350 5000      02483         MOVF    r0x0b, W
+0352 6EE5      02484         MOVWF   POSTDEC1
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 47
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0354 5000      02485         MOVF    r0x0a, W
+0356 6EE5      02486         MOVWF   POSTDEC1
+0358 EC00 F000 02487         CALL    ___fsgt
+035C 6E00      02488         MOVWF   r0x02
+035E 0E08      02489         MOVLW   0x08
+0360 26E1      02490         ADDWF   FSR1L, F
+0362 5000      02491         MOVF    r0x02, W
+0364 E100      02492         BNZ     _00110_DS_
+               02493 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+               02494 ; ;Unrolled 8 X 8 multiplication
+               02495 ; ;FIXME: the function does not support result==WREG
+               02496 ;       .line   41; main.c      c_c[_channel*2] = 0;
+0366 90D8      02497         BCF     STATUS, 0
+0368 3600      02498         RLCF    r0x00, F
+               02499 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x01
+               02500 ; ;Unrolled 8 X 8 multiplication
+               02501 ; ;FIXME: the function does not support result==WREG
+036A 0E00      02502         MOVLW   0x00
+036C BE00      02503         BTFSC   r0x00, 7
+036E 0EFF      02504         MOVLW   0xff
+0370 90D8      02505         BCF     STATUS, 0
+0372 3400      02506         RLCF    r0x00, W
+0374 6E00      02507         MOVWF   r0x01
+0376 6A00      02508         CLRF    r0x02
+0378 BE00      02509         BTFSC   r0x01, 7
+037A 6800      02510         SETF    r0x02
+037C 0E00      02511         MOVLW   LOW(_c_c)
+037E 2600      02512         ADDWF   r0x01, F
+0380 0E00      02513         MOVLW   HIGH(_c_c)
+0382 2200      02514         ADDWFC  r0x02, F
+0384 C000 FFE9 02515         MOVFF   r0x01, FSR0L
+0388 C000 FFEA 02516         MOVFF   r0x02, FSR0H
+038C 0E00      02517         MOVLW   0x00
+038E 6EEE      02518         MOVWF   POSTINC0
+0390 0E00      02519         MOVLW   0x00
+0392 6EEF      02520         MOVWF   INDF0
+               02521 ;       .line   42; main.c      c_c[_channel*2+1] = 1;
+0394 2A00      02522         INCF    r0x00, F
+               02523 ; ;multiply lit val:0x02 by variable r0x00 and store in r0x00
+               02524 ; ;Unrolled 8 X 8 multiplication
+               02525 ; ;FIXME: the function does not support result==WREG
+0396 90D8      02526         BCF     STATUS, 0
+0398 3600      02527         RLCF    r0x00, F
+039A 6A00      02528         CLRF    r0x01
+039C BE00      02529         BTFSC   r0x00, 7
+039E 6800      02530         SETF    r0x01
+03A0 0E00      02531         MOVLW   LOW(_c_c)
+03A2 2600      02532         ADDWF   r0x00, F
+03A4 0E00      02533         MOVLW   HIGH(_c_c)
+03A6 2200      02534         ADDWFC  r0x01, F
+03A8 C000 FFE9 02535         MOVFF   r0x00, FSR0L
+03AC C000 FFEA 02536         MOVFF   r0x01, FSR0H
+03B0 0E01      02537         MOVLW   0x01
+03B2 6EEE      02538         MOVWF   POSTINC0
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 48
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+03B4 0E00      02539         MOVLW   0x00
+03B6 6EEF      02540         MOVWF   INDF0
+03B8 02541 _00110_DS_:
+03B8 CFE4 F000 02542         MOVFF   PREINC1, r0x11
+03BC CFE4 F000 02543         MOVFF   PREINC1, r0x10
+03C0 CFE4 F000 02544         MOVFF   PREINC1, r0x0f
+03C4 CFE4 F000 02545         MOVFF   PREINC1, r0x0e
+03C8 CFE4 F000 02546         MOVFF   PREINC1, r0x0d
+03CC CFE4 F000 02547         MOVFF   PREINC1, r0x0c
+03D0 CFE4 F000 02548         MOVFF   PREINC1, r0x0b
+03D4 CFE4 F000 02549         MOVFF   PREINC1, r0x0a
+03D8 CFE4 F000 02550         MOVFF   PREINC1, r0x09
+03DC CFE4 F000 02551         MOVFF   PREINC1, r0x08
+03E0 CFE4 F000 02552         MOVFF   PREINC1, r0x07
+03E4 CFE4 F000 02553         MOVFF   PREINC1, r0x06
+03E8 CFE4 F000 02554         MOVFF   PREINC1, r0x05
+03EC CFE4 F000 02555         MOVFF   PREINC1, r0x04
+03F0 CFE4 F000 02556         MOVFF   PREINC1, r0x03
+03F4 CFE4 F000 02557         MOVFF   PREINC1, r0x02
+03F8 CFE4 F000 02558         MOVFF   PREINC1, r0x01
+03FC CFE4 F000 02559         MOVFF   PREINC1, r0x00
+0400 CFE4 FFD9 02560         MOVFF   PREINC1, FSR2L
+0404 0012      02561         RETURN  
+               02562 
+               02563 
+               02564 
+               02565 ; Statistics:
+               02566 ; code size:     5172 (0x1434) bytes ( 3.95%)
+               02567 ;                2586 (0x0a1a) words
+               02568 ; udata size:     148 (0x0094) bytes (11.56%)
+               02569 ; access size:     18 (0x0012) bytes
+               02570 
+               02571 
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 49
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+FSR0H                             00000FEA
+FSR0L                             00000FE9
+FSR1L                             00000FE1
+FSR2L                             00000FD9
+INDF0                             00000FEF
+PLUSW2                            00000FDB
+POSTDEC1                          00000FE5
+POSTINC0                          00000FEE
+PREINC1                           00000FE4
+PRODH                             00000FF4
+PRODL                             00000FF3
+STATUS                            00000FD8
+WREG                              00000FE8
+_00108_DS_                        00000338
+_00110_DS_                        000003B8
+_00116_DS_                        000001CC
+_00118_DS_                        0000021E
+_00126_DS_                        000003B2
+_00128_DS_                        00000432
+_00134_DS_                        000001B6
+_00137_DS_                        00000174
+_00140_DS_                        00000112
+_00144_DS_                        00000050
+_00146_DS_                        0000020C
+_00148_DS_                        0000021C
+_00157_DS_                        0000005C
+_00158_DS_                        00000094
+_00159_DS_                        000000FE
+_00160_DS_                        00000160
+_00161_DS_                        000001A2
+_00171_DS_                        0000065E
+_00174_DS_                        000002E0
+_00176_DS_                        00000180
+_00180_DS_                        000002E8
+_00183_DS_                        00000340
+_00186_DS_                        000004A6
+_00187_DS_                        0000053E
+_00189_DS_                        000006EA
+_00205_DS_                        00000190
+_00206_DS_                        000002F8
+_00207_DS_                        0000054E
+_00208_DS_                        00000606
+_00209_DS_                        000006C0
+_10166_DS_                        000002DE
+_20167_DS_                        0000033E
+_30168_DS_                        000006F4
+_ADCON0                           00000000
+_ADCON0bits                       00000000
+_ADCON1                           00000000
+_ADCON1bits                       00000000
+_ADRESH                           00000000
+_ADRESL                           00000000
+_BSR                              00000000
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 50
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_CCP1CON                          00000000
+_CCP1CONbits                      00000000
+_CCP2CON                          00000000
+_CCP2CONbits                      00000000
+_CCPR1H                           00000000
+_CCPR1L                           00000000
+_CCPR2H                           00000000
+_CCPR2L                           00000000
+_EEADR                            00000000
+_EECON1                           00000000
+_EECON1bits                       00000000
+_EECON2                           00000000
+_EEDATA                           00000000
+_FSR0H                            00000000
+_FSR0L                            00000000
+_FSR1H                            00000000
+_FSR1L                            00000000
+_FSR2H                            00000000
+_FSR2L                            00000000
+_INDF0                            00000000
+_INDF1                            00000000
+_INDF2                            00000000
+_INTCON                           00000000
+_INTCON2                          00000000
+_INTCON2bits                      00000000
+_INTCON3                          00000000
+_INTCON3bits                      00000000
+_INTCONbits                       00000000
+_IPR1                             00000000
+_IPR1bits                         00000000
+_IPR2                             00000000
+_IPR2bits                         00000000
+_LATA                             00000000
+_LATAbits                         00000000
+_LATB                             00000000
+_LATBbits                         00000000
+_LATC                             00000000
+_LATCbits                         00000000
+_LATD                             00000000
+_LATDbits                         00000000
+_LATE                             00000000
+_LATEbits                         00000000
+_LVDCON                           00000000
+_LVDCONbits                       00000000
+_NPeriodosPassadosNoCanal         00000000
+_OSCCON                           00000000
+_OSCCONbits                       00000000
+_PCL                              00000000
+_PCLATH                           00000000
+_PCLATU                           00000000
+_PIE1                             00000000
+_PIE1bits                         00000000
+_PIE2                             00000000
+_PIE2bits                         00000000
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 51
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_PIR1                             00000000
+_PIR1bits                         00000000
+_PIR2                             00000000
+_PIR2bits                         00000000
+_PLUSW0                           00000000
+_PLUSW1                           00000000
+_PLUSW2                           00000000
+_PORTA                            00000000
+_PORTAbits                        00000000
+_PORTB                            00000000
+_PORTBbits                        00000000
+_PORTC                            00000000
+_PORTCbits                        00000000
+_PORTD                            00000000
+_PORTDbits                        00000000
+_PORTE                            00000000
+_PORTEbits                        00000000
+_POSTDEC0                         00000000
+_POSTDEC1                         00000000
+_POSTDEC2                         00000000
+_POSTINC0                         00000000
+_POSTINC1                         00000000
+_POSTINC2                         00000000
+_PR2                              00000000
+_PREINC0                          00000000
+_PREINC1                          00000000
+_PREINC2                          00000000
+_PRODH                            00000000
+_PRODL                            00000000
+_RCON                             00000000
+_RCONbits                         00000000
+_RCREG                            00000000
+_RCSTA                            00000000
+_RCSTAbits                        00000000
+_SPBRG                            00000000
+_SSPADD                           00000000
+_SSPBUF                           00000000
+_SSPCON1                          00000000
+_SSPCON1bits                      00000000
+_SSPCON2                          00000000
+_SSPCON2bits                      00000000
+_SSPSTAT                          00000000
+_SSPSTATbits                      00000000
+_STATUS                           00000000
+_STATUSbits                       00000000
+_STKPTR                           00000000
+_STKPTRbits                       00000000
+_T0CON                            00000000
+_T0CONbits                        00000000
+_T1CON                            00000000
+_T1CONbits                        00000000
+_T2CON                            00000000
+_T2CONbits                        00000000
+_T3CON                            00000000
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 52
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_T3CONbits                        00000000
+_TABLAT                           00000000
+_TBLPTRH                          00000000
+_TBLPTRL                          00000000
+_TBLPTRU                          00000000
+_TMR0H                            00000000
+_TMR0L                            00000000
+_TMR1H                            00000000
+_TMR1L                            00000000
+_TMR2                             00000000
+_TMR3H                            00000000
+_TMR3L                            00000000
+_TOSH                             00000000
+_TOSL                             00000000
+_TOSU                             00000000
+_TRISA                            00000000
+_TRISAbits                        00000000
+_TRISB                            00000000
+_TRISBbits                        00000000
+_TRISC                            00000000
+_TRISCbits                        00000000
+_TRISD                            00000000
+_TRISDbits                        00000000
+_TRISE                            00000000
+_TRISEbits                        00000000
+_TXREG                            00000000
+_TXSTA                            00000000
+_TXSTAbits                        00000000
+_WDTCON                           00000000
+_WDTCONbits                       00000000
+_WREG                             00000000
+__18F452                          00000001
+___fsdiv                          00000000
+___fsgt                           00000000
+___fsmul                          00000000
+___fssub                          00000000
+___slong2fs                       00000000
+__divslong                        00000000
+__modsint                         00000000
+__mulint                          00000000
+__mullong                         00000000
+_c                                00000000
+_c_c                              00000000
+_c_total                          00000000
+_channel                          00000000
+_control                          00000000
+_down                             00000000
+_main                             00000000
+_top                              00000000
+_up                               00000000
+r0x00                             00000000
+r0x01                             00000001
+r0x02                             00000002
+r0x03                             00000003
+gpasm-0.13.7 beta               obj\Release\main.asm9-9-2011  12:42:45           PAGE 53
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+r0x04                             00000004
+r0x05                             00000005
+r0x06                             00000006
+r0x07                             00000007
+r0x08                             00000008
+r0x09                             00000009
+r0x0a                             0000000A
+r0x0b                             0000000B
+r0x0c                             0000000C
+r0x0d                             0000000D
+r0x0e                             0000000E
+r0x0f                             0000000F
+r0x10                             00000010
+r0x11                             00000011
+
+
+Errors   :       0
+Warnings :       0 reported,       0 suppressed
+Messages :       0 reported,       0 suppressed
+

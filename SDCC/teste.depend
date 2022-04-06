@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1245982264 source:h:\documents and settings\o0\desktop\tcc-serial\teste\teste\main.c
+	<pic/pic16f876a.h>
+
+1251518198 source:m:\tcc-serial\teste\teste\main.c
+	<pic/pic16f876a.h>
+	"uTime.h"
+
+1251518054 m:\tcc-serial\teste\teste\utime.h
+
+1256774392 source:c:\dropbox\my dropbox\tcc-serial\teste\teste\main.c
+	<pic/pic16f876a.h>
+	"uTime.h"
+
+1251525616 c:\dropbox\my dropbox\tcc-serial\teste\teste\utime.h
+
+1285808517 source:c:\users\fernando\documents\my dropbox\tcc-serial\teste\teste\main.c
+	<pic16/pic18f452.h>
+
+1276276431 c:\users\fernando\documents\my dropbox\tcc-serial\teste\teste\utime.h
+
+1272502006 source:c:\users\fernando\documents\my dropbox\projetoarret\tcc-serial\teste\teste\main.c
+	<pic16/pic18f452.h>
+	"uTime.h"
+
+1270307226 c:\users\fernando\documents\my dropbox\projetoarret\tcc-serial\teste\teste\utime.h
+
+1315584764 source:c:\users\alexandro\documents\my dropbox\outros\impressora3d\sdcc\main.c
+	<pic16/pic18f452.h>
+
+1237681808 d:\sdcc\include\pic16\pic18f452.h
+
